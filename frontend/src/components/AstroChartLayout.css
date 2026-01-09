@@ -103,6 +103,19 @@
     flex: 1;
     font-family: "Segoe UI Symbol", sans-serif;
     font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #334155;
+}
+
+.angle-sign-symbol {
+    font-family: "Segoe UI Symbol", "Noto Sans Symbols 2", sans-serif;
+    color: var(--zodiac-color, #1e3a5f);
+}
+
+.angle-sign-name {
+    font-weight: 600;
 }
 
 .angle-degree {
@@ -172,6 +185,10 @@
     font-size: 0.95rem;
 }
 
+.planets-table .sign-symbol {
+    color: var(--zodiac-color, #1e3a5f);
+}
+
 .planet-degree {
     font-family: monospace;
     color: #64748b;
@@ -222,6 +239,7 @@
 .house-sign {
     font-family: "Segoe UI Symbol", sans-serif;
     font-size: 0.9rem;
+    color: var(--zodiac-color, #1e3a5f);
 }
 
 .house-degree {

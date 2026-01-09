@@ -158,6 +158,7 @@ function AstroChartLayout({ chartData, birthData, chartType }: AstroChartLayoutP
                 signSymbol: SIGN_SYMBOLS[obj.sign?.name] || '',
                 longitude: obj.sign_longitude?.formatted || '',
                 retrograde: obj.movement?.retrograde || false,
+                element: SIGN_ELEMENTS[obj.sign?.name] || undefined,
             }))
 
         return planetList.sort((a, b) => {
@@ -177,11 +178,18 @@ function AstroChartLayout({ chartData, birthData, chartType }: AstroChartLayoutP
                 sign: h.sign?.name || '',
                 signSymbol: SIGN_SYMBOLS[h.sign?.name] || '',
                 degree: h.sign_longitude?.formatted || '',
+                element: SIGN_ELEMENTS[h.sign?.name] || undefined,
             }))
     }, [chartData])
 
     const ascendant = houses.find(h => h.number === 1)
     const midheaven = houses.find(h => h.number === 10)
+    const ascendantStyle = ascendant?.element
+        ? ({ '--zodiac-color': ELEMENT_COLORS[ascendant.element] } as CSSProperties)
+        : undefined
+    const midheavenStyle = midheaven?.element
+        ? ({ '--zodiac-color': ELEMENT_COLORS[midheaven.element] } as CSSProperties)
+        : undefined
 
     const aspects = useMemo(() => {
         if (!chartData?.aspects) return []
@@ -261,12 +269,18 @@ function AstroChartLayout({ chartData, birthData, chartType }: AstroChartLayoutP
                 <div className="angles-box">
                     <div className="angle-row">
                         <span className="angle-label">AC</span>
-                        <span className="angle-sign">{ascendant?.signSymbol} {ascendant?.sign}</span>
+                        <span className="angle-sign" style={ascendantStyle}>
+                            <span className="angle-sign-symbol">{ascendant?.signSymbol}</span>
+                            <span className="angle-sign-name">{ascendant?.sign}</span>
+                        </span>
                         <span className="angle-degree">{ascendant?.degree}</span>
                     </div>
                     <div className="angle-row">
                         <span className="angle-label">MC</span>
-                        <span className="angle-sign">{midheaven?.signSymbol} {midheaven?.sign}</span>
+                        <span className="angle-sign" style={midheavenStyle}>
+                            <span className="angle-sign-symbol">{midheaven?.signSymbol}</span>
+                            <span className="angle-sign-name">{midheaven?.sign}</span>
+                        </span>
                         <span className="angle-degree">{midheaven?.degree}</span>
                     </div>
                 </div>
@@ -281,7 +295,12 @@ function AstroChartLayout({ chartData, birthData, chartType }: AstroChartLayoutP
                                     <td className="planet-symbol">{planet.symbol}</td>
                                     <td className="planet-name">{planet.name}</td>
                                     <td className="planet-sign">
-                                        <span className="sign-symbol">{planet.signSymbol}</span>
+                                        <span
+                                            className="sign-symbol"
+                                            style={planet.element ? ({ '--zodiac-color': ELEMENT_COLORS[planet.element] } as CSSProperties) : undefined}
+                                        >
+                                            {planet.signSymbol}
+                                        </span>
                                     </td>
                                     <td className="planet-degree">{planet.longitude}</td>
                                     <td className="planet-retro">
@@ -300,7 +319,12 @@ function AstroChartLayout({ chartData, birthData, chartType }: AstroChartLayoutP
                         {houses.map((house) => (
                             <div key={house.number} className={`house-item ${[1, 4, 7, 10].includes(house.number) ? 'angular' : ''}`}>
                                 <span className="house-num">{house.number}</span>
-                                <span className="house-sign">{house.signSymbol}</span>
+                                <span
+                                    className="house-sign"
+                                    style={house.element ? ({ '--zodiac-color': ELEMENT_COLORS[house.element] } as CSSProperties) : undefined}
+                                >
+                                    {house.signSymbol}
+                                </span>
                                 <span className="house-degree">{house.degree}</span>
                             </div>
                         ))}
