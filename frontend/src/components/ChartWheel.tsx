@@ -239,6 +239,15 @@ function ChartWheel({ chartData }: ChartWheelProps) {
     const houseLabelRadius = houseInnerRadius - 18
     const axisLabelRadius = outerRadius + 22
     const degreeLabelRadius = (outerRadius + outerRingRadius) / 2  // Degrees IN the outer teal ring (~325)
+    const degreeLabelTrackOffset = 8
+    const degreeLabelTracks = [
+        Math.min(outerRingRadius - 6, degreeLabelRadius + degreeLabelTrackOffset),
+        degreeLabelRadius,
+        Math.max(outerRadius + 6, degreeLabelRadius - degreeLabelTrackOffset),
+    ]
+    const degreeLabelWidth = 30
+    const degreeClusterGap = Math.max(4, Math.min(10, (degreeLabelWidth / degreeLabelRadius) * (180 / Math.PI)))
+    const degreeAngularGap = Math.max(3, Math.min(8, (degreeLabelWidth / degreeLabelRadius) * (180 / Math.PI)))
     const planetTickLength = 8  // Tick mark length
     const planetGlyphSize = 26
     const planetCollisionPadding = 4
@@ -449,6 +458,62 @@ function ChartWheel({ chartData }: ChartWheelProps) {
             })
         })
     }, [planets, ascDegree, planetTracks, clusterGap, minPlanetDistance, averagePlanetRadius])
+
+    const degreeLabelPositions = useMemo(() => {
+        if (planetPositions.length === 0) return new Map<string, { angle: number; radius: number }>()
+
+        const labels = planetPositions
+            .filter((planet) => Boolean(planet.degreeLabel))
+            .map((planet) => ({
+                key: planet.name,
+                angle: normalizeAngle((planet as any).baseAngle ?? planet.angle),
+            }))
+            .sort((a, b) => a.angle - b.angle)
+
+        if (labels.length === 0) return new Map()
+
+        const clusters: Array<typeof labels> = []
+        let current: typeof labels = [labels[0]]
+
+        for (let i = 1; i < labels.length; i += 1) {
+            const prev = labels[i - 1]
+            const next = labels[i]
+            if (angularDistance(prev.angle, next.angle) <= degreeClusterGap) {
+                current.push(next)
+            } else {
+                clusters.push(current)
+                current = [next]
+            }
+        }
+        clusters.push(current)
+
+        if (clusters.length > 1) {
+            const first = clusters[0][0]
+            const lastCluster = clusters[clusters.length - 1]
+            const last = lastCluster[lastCluster.length - 1]
+            if (angularDistance(first.angle, last.angle) <= degreeClusterGap) {
+                clusters[0] = lastCluster.concat(clusters[0])
+                clusters.pop()
+            }
+        }
+
+        const trackOrder = [1, 0, 2]
+        const map = new Map<string, { angle: number; radius: number }>()
+
+        clusters.forEach((cluster) => {
+            const centerIndex = (cluster.length - 1) / 2
+            cluster.forEach((label, index) => {
+                const offset = cluster.length > 1 ? (index - centerIndex) * degreeAngularGap : 0
+                const trackIndex = trackOrder[index % degreeLabelTracks.length]
+                map.set(label.key, {
+                    angle: normalizeAngle(label.angle + offset),
+                    radius: degreeLabelTracks[trackIndex],
+                })
+            })
+        })
+
+        return map
+    }, [planetPositions, degreeClusterGap, degreeAngularGap, degreeLabelTracks])
 
     const objectLongitudes = useMemo(() => {
         const map: Record<string, number> = {}
@@ -720,11 +785,14 @@ function ChartWheel({ chartData }: ChartWheelProps) {
                 const tickInner = toCartesian(trueAngle, outerRingRadius - planetTickLength)
                 // Connector endpoint at planet position (display angle)
                 const connectorEnd = toCartesian(planet.angle, planet.radius)
+                const degreePlacement = degreeLabelPositions.get(planet.name)
+                const degreeAngle = degreePlacement?.angle ?? planet.angle
+                const degreeRadius = degreePlacement?.radius ?? degreeLabelRadius
                 // Degree label positioned IN the outer teal ring - rotated to reduce overlap
-                const degreePos = toCartesian(planet.angle, degreeLabelRadius)
+                const degreePos = toCartesian(degreeAngle, degreeRadius)
                 // Rotate along the radius (perpendicular to ring) and keep text upright
-                const textRotation = -planet.angle
-                const adjustedRotation = planet.angle > 90 && planet.angle < 270
+                const textRotation = -degreeAngle
+                const adjustedRotation = degreeAngle > 90 && degreeAngle < 270
                     ? textRotation + 180
                     : textRotation
 
