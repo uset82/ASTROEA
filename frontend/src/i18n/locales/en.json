@@ -1,0 +1,82 @@
+{
+    "header": {
+        "title": "ASTRAEA",
+        "nav": "Astrology App"
+    },
+    "hero": {
+        "title": "Discover Your Cosmic Blueprint",
+        "description": "Generate professional astrology charts with AI-powered interpretations."
+    },
+    "form": {
+        "title": "Enter Birth Details",
+        "titlePerson1": "Enter Person 1 Details",
+        "titlePerson2": "Enter Person 2 Details",
+        "titleTransit": "Enter Natal Data (Transit defaults to Now)",
+        "name": "Name",
+        "namePlaceholder": "Your name",
+        "birthDate": "Birth Date",
+        "birthTime": "Birth Time",
+        "location": "Birth Location",
+        "selectLocation": "Select a location",
+        "manualCoords": "Or enter coordinates manually",
+        "latitude": "Latitude",
+        "longitude": "Longitude",
+        "houseSystem": "House System",
+        "generate": "Generate Natal Chart",
+        "generating": "Calculating...",
+        "backToPerson1": "← Back to Person 1"
+    },
+    "chartTypes": {
+        "natal": "Natal",
+        "transit": "Transit",
+        "synastry": "Synastry",
+        "composite": "Composite",
+        "solarReturn": "Solar Return"
+    },
+    "tabs": {
+        "fullReport": "Full Report",
+        "aiInterpretation": "AI Interpretation"
+    },
+    "chart": {
+        "newChart": "New Chart",
+        "chartTitle": "{type} Chart",
+        "calculating": "Calculating cosmos..."
+    },
+    "tables": {
+        "planetPositions": "Planetary Positions",
+        "planet": "Planet",
+        "sign": "Sign",
+        "degree": "Degree",
+        "house": "House",
+        "houseCusps": "House Cusps",
+        "cusp": "Cusp",
+        "majorAspects": "Major Aspects",
+        "aspect": "Aspect",
+        "orb": "Orb"
+    },
+    "interpretation": {
+        "focusArea": "Focus Area",
+        "language": "Language",
+        "fullOverview": "Full Chart Overview",
+        "personality": "Personality & Core Self",
+        "career": "Career & Life Purpose",
+        "relationships": "Relationships & Love",
+        "spirituality": "Spirituality & Growth",
+        "challenges": "Challenges & Lessons",
+        "getInterpretation": "Get AI Interpretation",
+        "interpreting": "Interpreting...",
+        "loading": "The stars are aligning...",
+        "emptyTitle": "Unlock Your Cosmic Insights",
+        "emptyDescription": "Click the button above to receive an AI-powered interpretation of your natal chart. You can then ask follow-up questions about any aspect of your chart.",
+        "chatPlaceholder": "Ask a follow-up question about your chart...",
+        "chatHint": "Press Enter to send, Shift+Enter for new line"
+    },
+    "errors": {
+        "generic": "An error occurred",
+        "failedChart": "Failed to calculate chart",
+        "failedInterpretation": "Failed to get interpretation"
+    },
+    "footer": {
+        "copyright": "ASTRAEA © 2026 • Powered by Swiss Ephemeris & AI"
+    }
+}

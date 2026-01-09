@@ -1,0 +1,389 @@
+/* AstroChartLayout Styles - Astro.com Inspired */
+
+.astro-chart-layout {
+    display: flex;
+    gap: 24px;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Left Sidebar */
+.chart-sidebar {
+    width: 320px;
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Chart Header Info */
+.chart-header-info {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+    color: white;
+    padding: 16px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(30, 58, 95, 0.3);
+}
+
+.subject-name {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+}
+
+.birth-details {
+    font-size: 0.85rem;
+    opacity: 0.95;
+}
+
+.detail-row {
+    display: flex;
+    margin-bottom: 4px;
+}
+
+.detail-row .label {
+    width: 50px;
+    opacity: 0.8;
+    font-weight: 500;
+}
+
+.detail-row .value {
+    flex: 1;
+}
+
+.detail-row.coordinates {
+    margin-top: 6px;
+    font-size: 0.8rem;
+    opacity: 0.75;
+}
+
+.chart-type-badge {
+    margin-top: 12px;
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Angles Box */
+.angles-box {
+    background: white;
+    padding: 12px 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border-left: 4px solid #c0392b;
+}
+
+.angle-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 0;
+}
+
+.angle-row:not(:last-child) {
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.angle-label {
+    font-weight: 700;
+    color: #c0392b;
+    width: 30px;
+    font-size: 0.9rem;
+}
+
+.angle-sign {
+    flex: 1;
+    font-family: "Segoe UI Symbol", sans-serif;
+    font-size: 0.9rem;
+}
+
+.angle-degree {
+    color: #64748b;
+    font-size: 0.85rem;
+    font-family: monospace;
+}
+
+/* Tables Common */
+.planets-table,
+.houses-table,
+.aspects-table {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+.table-header {
+    background: linear-gradient(135deg, #64748b 0%, #475569 100%);
+    color: white;
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Planets Table */
+.planets-table table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+
+.planets-table tr {
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.planets-table tr:hover {
+    background: #f8fafc;
+}
+
+.planets-table td {
+    padding: 6px 8px;
+}
+
+.planet-symbol {
+    font-family: "Segoe UI Symbol", "Noto Sans Symbols 2", sans-serif;
+    font-size: 1rem;
+    text-align: center;
+    width: 28px;
+    color: #1e3a5f;
+}
+
+.planet-name {
+    font-weight: 500;
+    color: #334155;
+}
+
+.planet-sign {
+    text-align: center;
+}
+
+.sign-symbol {
+    font-family: "Segoe UI Symbol", "Noto Sans Symbols 2", sans-serif;
+    font-size: 0.95rem;
+}
+
+.planet-degree {
+    font-family: monospace;
+    color: #64748b;
+    font-size: 0.8rem;
+    text-align: right;
+}
+
+.planet-retro {
+    width: 20px;
+    text-align: center;
+}
+
+.retro-badge {
+    color: #c0392b;
+    font-weight: 700;
+    font-size: 0.75rem;
+}
+
+/* Houses Grid */
+.houses-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: #e2e8f0;
+    padding: 1px;
+}
+
+.house-item {
+    background: white;
+    padding: 8px 6px;
+    text-align: center;
+    font-size: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.house-item.angular {
+    background: #fef3c7;
+}
+
+.house-num {
+    font-weight: 700;
+    color: #1e3a5f;
+    font-size: 0.8rem;
+}
+
+.house-sign {
+    font-family: "Segoe UI Symbol", sans-serif;
+    font-size: 0.9rem;
+}
+
+.house-degree {
+    color: #64748b;
+    font-family: monospace;
+    font-size: 0.7rem;
+}
+
+/* Aspects List */
+.aspects-list {
+    padding: 8px;
+}
+
+.aspect-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 8px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    font-size: 0.8rem;
+}
+
+.aspect-row:hover {
+    background: #f8fafc;
+}
+
+.aspect-planet {
+    font-family: "Segoe UI Symbol", sans-serif;
+    font-size: 0.95rem;
+    width: 22px;
+    text-align: center;
+}
+
+.aspect-type {
+    font-family: "Segoe UI Symbol", sans-serif;
+    font-size: 0.9rem;
+    width: 20px;
+    text-align: center;
+}
+
+.aspect-orb {
+    margin-left: auto;
+    color: #64748b;
+    font-family: monospace;
+    font-size: 0.75rem;
+}
+
+/* Aspect type colors */
+.aspect-opposition .aspect-type,
+.aspect-square .aspect-type {
+    color: #c0392b;
+}
+
+.aspect-trine .aspect-type,
+.aspect-sextile .aspect-type {
+    color: #2980b9;
+}
+
+.aspect-conjunction .aspect-type {
+    color: #1a1a2e;
+}
+
+.aspect-quincunx .aspect-type {
+    color: #27ae60;
+}
+
+/* Main Chart Area */
+.chart-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 400px;
+}
+
+.zodiac-legend {
+    width: 100%;
+    max-width: 520px;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.zodiac-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background: var(--zodiac-tint, #ffffff);
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: 1px solid rgba(30, 58, 95, 0.08);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    font-size: 0.75rem;
+    color: #334155;
+}
+
+.zodiac-symbol {
+    font-family: "Segoe UI Symbol", "Noto Sans Symbols 2", sans-serif;
+    font-size: 1rem;
+    color: var(--zodiac-color, #1e3a5f);
+}
+
+.zodiac-name {
+    font-weight: 600;
+}
+
+.chart-footer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 500px;
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid #e2e8f0;
+    font-size: 0.75rem;
+    color: #64748b;
+}
+
+.method-info,
+.date-generated {
+    font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .astro-chart-layout {
+        flex-direction: column;
+    }
+
+    .chart-sidebar {
+        width: 100%;
+        min-width: auto;
+    }
+
+    .chart-main {
+        min-width: auto;
+    }
+
+    .houses-grid {
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    .zodiac-legend {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .houses-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .zodiac-legend {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .astro-chart-layout {
+        padding: 12px;
+        gap: 16px;
+    }
+}

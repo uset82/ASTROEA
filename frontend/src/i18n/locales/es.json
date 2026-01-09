@@ -1,0 +1,82 @@
+{
+    "header": {
+        "title": "ASTRAEA",
+        "nav": "App de Astrología"
+    },
+    "hero": {
+        "title": "Descubre Tu Mapa Cósmico",
+        "description": "Genera cartas astrológicas profesionales con interpretaciones impulsadas por IA."
+    },
+    "form": {
+        "title": "Ingresa los Datos de Nacimiento",
+        "titlePerson1": "Ingresa los Datos de la Persona 1",
+        "titlePerson2": "Ingresa los Datos de la Persona 2",
+        "titleTransit": "Ingresa Datos Natales (Tránsito por defecto: Ahora)",
+        "name": "Nombre",
+        "namePlaceholder": "Tu nombre",
+        "birthDate": "Fecha de Nacimiento",
+        "birthTime": "Hora de Nacimiento",
+        "location": "Lugar de Nacimiento",
+        "selectLocation": "Selecciona una ubicación",
+        "manualCoords": "O ingresa coordenadas manualmente",
+        "latitude": "Latitud",
+        "longitude": "Longitud",
+        "houseSystem": "Sistema de Casas",
+        "generate": "Generar Carta Natal",
+        "generating": "Calculando...",
+        "backToPerson1": "← Volver a Persona 1"
+    },
+    "chartTypes": {
+        "natal": "Natal",
+        "transit": "Tránsito",
+        "synastry": "Sinastría",
+        "composite": "Compuesta",
+        "solarReturn": "Revolución Solar"
+    },
+    "tabs": {
+        "fullReport": "Informe Completo",
+        "aiInterpretation": "Interpretación IA"
+    },
+    "chart": {
+        "newChart": "Nueva Carta",
+        "chartTitle": "Carta {type}",
+        "calculating": "Calculando el cosmos..."
+    },
+    "tables": {
+        "planetPositions": "Posiciones Planetarias",
+        "planet": "Planeta",
+        "sign": "Signo",
+        "degree": "Grado",
+        "house": "Casa",
+        "houseCusps": "Cúspides de Casas",
+        "cusp": "Cúspide",
+        "majorAspects": "Aspectos Mayores",
+        "aspect": "Aspecto",
+        "orb": "Orbe"
+    },
+    "interpretation": {
+        "focusArea": "Área de Enfoque",
+        "language": "Idioma",
+        "fullOverview": "Visión General Completa",
+        "personality": "Personalidad y Ser Interior",
+        "career": "Carrera y Propósito de Vida",
+        "relationships": "Relaciones y Amor",
+        "spirituality": "Espiritualidad y Crecimiento",
+        "challenges": "Desafíos y Lecciones",
+        "getInterpretation": "Obtener Interpretación IA",
+        "interpreting": "Interpretando...",
+        "loading": "Las estrellas se están alineando...",
+        "emptyTitle": "Desbloquea Tus Percepciones Cósmicas",
+        "emptyDescription": "Haz clic en el botón de arriba para recibir una interpretación de tu carta natal impulsada por IA. Luego puedes hacer preguntas de seguimiento sobre cualquier aspecto de tu carta.",
+        "chatPlaceholder": "Haz una pregunta de seguimiento sobre tu carta...",
+        "chatHint": "Presiona Enter para enviar, Shift+Enter para nueva línea"
+    },
+    "errors": {
+        "generic": "Ocurrió un error",
+        "failedChart": "Error al calcular la carta",
+        "failedInterpretation": "Error al obtener la interpretación"
+    },
+    "footer": {
+        "copyright": "ASTRAEA © 2026 • Impulsado por Swiss Ephemeris e IA"
+    }
+}

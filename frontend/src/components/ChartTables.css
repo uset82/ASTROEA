@@ -1,0 +1,175 @@
+/* ChartTables Styles */
+
+.chart-tables {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+}
+
+.aspects-card {
+    grid-column: span 2;
+}
+
+@media (max-width: 900px) {
+    .chart-tables {
+        grid-template-columns: 1fr;
+    }
+
+    .aspects-card {
+        grid-column: span 1;
+    }
+}
+
+.table-card {
+    overflow: hidden;
+}
+
+.table-title {
+    font-size: 1.1rem;
+    color: var(--color-accent-gold);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table th,
+.data-table td {
+    padding: var(--spacing-sm) var(--spacing-md);
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.data-table th {
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.data-table td {
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+}
+
+.data-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.angle-row {
+    background: rgba(212, 175, 55, 0.05);
+}
+
+.angle-row td {
+    color: var(--color-accent-gold);
+}
+
+/* Planet cell */
+.planet-cell {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.planet-symbol {
+    font-size: 1.1rem;
+    color: var(--color-accent-gold);
+    width: 20px;
+    text-align: center;
+    font-family: "Segoe UI Symbol", "Noto Sans Symbols 2", "Noto Sans Symbols", "DejaVu Sans", "Arial Unicode MS", sans-serif;
+}
+
+.sign-symbol {
+    font-size: 0.95rem;
+    line-height: 1;
+    font-family: "Segoe UI Symbol", "Noto Sans Symbols 2", "Noto Sans Symbols", "DejaVu Sans", "Arial Unicode MS", sans-serif;
+}
+
+.retrograde-badge {
+    font-size: 0.65rem;
+    color: #ef4444;
+    font-weight: bold;
+    padding: 1px 4px;
+    background: rgba(239, 68, 68, 0.2);
+    border-radius: 3px;
+    margin-left: var(--spacing-xs);
+}
+
+/* Degree and house cells */
+.degree-cell {
+    font-family: monospace;
+    font-size: 0.85rem;
+}
+
+.house-cell,
+.house-num {
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+/* Aspect types */
+.aspect-type {
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.aspect-conjunction {
+    color: #d4af37;
+}
+
+.aspect-opposition {
+    color: #ef4444;
+}
+
+.aspect-trine {
+    color: #22c55e;
+}
+
+.aspect-square {
+    color: #ef4444;
+}
+
+.aspect-sextile {
+    color: #3b82f6;
+}
+
+.aspect-quincunx {
+    color: #a855f7;
+}
+
+.orb-cell {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    font-family: monospace;
+}
+
+/* Aspects table */
+.aspects-table {
+    table-layout: fixed;
+}
+
+.aspects-table th:nth-child(1),
+.aspects-table td:nth-child(1),
+.aspects-table th:nth-child(3),
+.aspects-table td:nth-child(3) {
+    width: 30%;
+}
+
+.aspects-table th:nth-child(2),
+.aspects-table td:nth-child(2) {
+    width: 25%;
+}
+
+.aspects-table th:nth-child(4),
+.aspects-table td:nth-child(4) {
+    width: 15%;
+}

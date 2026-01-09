@@ -1,0 +1,30 @@
+/* ChartWheel Styles - Astro.com Style */
+
+.chart-wheel {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    display: block;
+    background: transparent;
+    margin: 0 auto;
+}
+
+.planet-group {
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.planet-group:hover text {
+    font-weight: 900;
+    transform: scale(1.1);
+}
+
+.planet-group:hover line {
+    stroke-width: 2;
+}
+
+/* Retrograde indicator styling */
+.retrograde-indicator {
+    fill: #c0392b;
+    font-size: 8px;
+}

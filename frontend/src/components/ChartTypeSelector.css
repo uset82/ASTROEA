@@ -1,0 +1,55 @@
+/* ChartTypeSelector Styles */
+
+.chart-type-selector {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+    flex-wrap: wrap;
+}
+
+.type-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: 10px 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(5px);
+}
+
+.type-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.type-btn.active {
+    background: rgba(212, 175, 55, 0.15);
+    border-color: var(--color-accent-gold);
+    color: var(--color-accent-gold);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
+}
+
+.type-icon {
+    font-size: 1.1rem;
+}
+
+.type-name {
+    font-weight: 500;
+}
+
+@media (max-width: 600px) {
+    .chart-type-selector {
+        gap: 8px;
+    }
+
+    .type-btn {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+}

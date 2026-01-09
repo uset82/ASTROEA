@@ -1,0 +1,82 @@
+{
+    "header": {
+        "title": "ASTRAEA",
+        "nav": "Astrologi-app"
+    },
+    "hero": {
+        "title": "Oppdag Ditt Kosmiske Kart",
+        "description": "Generer profesjonelle astrologikart med AI-drevne tolkninger."
+    },
+    "form": {
+        "title": "Skriv Inn Fødselsdata",
+        "titlePerson1": "Skriv Inn Data for Person 1",
+        "titlePerson2": "Skriv Inn Data for Person 2",
+        "titleTransit": "Skriv Inn Nataldata (Transitt standard: Nå)",
+        "name": "Navn",
+        "namePlaceholder": "Ditt navn",
+        "birthDate": "Fødselsdato",
+        "birthTime": "Fødselstid",
+        "location": "Fødested",
+        "selectLocation": "Velg en plassering",
+        "manualCoords": "Eller skriv inn koordinater manuelt",
+        "latitude": "Breddegrad",
+        "longitude": "Lengdegrad",
+        "houseSystem": "Hussystem",
+        "generate": "Generer Fødselshoroskop",
+        "generating": "Beregner...",
+        "backToPerson1": "← Tilbake til Person 1"
+    },
+    "chartTypes": {
+        "natal": "Natal",
+        "transit": "Transitt",
+        "synastry": "Synastri",
+        "composite": "Kompositt",
+        "solarReturn": "Solretur"
+    },
+    "tabs": {
+        "fullReport": "Full Rapport",
+        "aiInterpretation": "AI-tolkning"
+    },
+    "chart": {
+        "newChart": "Nytt Horoskop",
+        "chartTitle": "{type} Horoskop",
+        "calculating": "Beregner kosmos..."
+    },
+    "tables": {
+        "planetPositions": "Planetposisjoner",
+        "planet": "Planet",
+        "sign": "Tegn",
+        "degree": "Grad",
+        "house": "Hus",
+        "houseCusps": "Huskusper",
+        "cusp": "Kusp",
+        "majorAspects": "Hovedaspekter",
+        "aspect": "Aspekt",
+        "orb": "Orb"
+    },
+    "interpretation": {
+        "focusArea": "Fokusområde",
+        "language": "Språk",
+        "fullOverview": "Full Kartoversikt",
+        "personality": "Personlighet og Indre Selv",
+        "career": "Karriere og Livsformål",
+        "relationships": "Relasjoner og Kjærlighet",
+        "spirituality": "Spiritualitet og Vekst",
+        "challenges": "Utfordringer og Leksjoner",
+        "getInterpretation": "Få AI-tolkning",
+        "interpreting": "Tolker...",
+        "loading": "Stjernene stiller seg på linje...",
+        "emptyTitle": "Lås Opp Dine Kosmiske Innsikter",
+        "emptyDescription": "Klikk på knappen over for å motta en AI-drevet tolkning av fødselshoroskopet ditt. Du kan deretter stille oppfølgingsspørsmål om alle aspekter av horoskopet ditt.",
+        "chatPlaceholder": "Still et oppfølgingsspørsmål om horoskopet ditt...",
+        "chatHint": "Trykk Enter for å sende, Shift+Enter for ny linje"
+    },
+    "errors": {
+        "generic": "En feil oppstod",
+        "failedChart": "Kunne ikke beregne horoskop",
+        "failedInterpretation": "Kunne ikke hente tolkning"
+    },
+    "footer": {
+        "copyright": "ASTRAEA © 2026 • Drevet av Swiss Ephemeris og AI"
+    }
+}
