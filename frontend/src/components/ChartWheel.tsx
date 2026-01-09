@@ -235,7 +235,7 @@ function ChartWheel({ chartData }: ChartWheelProps) {
         206,  // track 3
         186,  // innermost planet track (above house labels)
     ]
-    const zodiacLabelRadius = outerRadius - 16
+    const zodiacLabelRadius = outerRadius - 28
     const houseLabelRadius = houseInnerRadius - 18
     const axisLabelRadius = outerRadius + 22
     const degreeLabelRadius = (outerRadius + outerRingRadius) / 2  // Degrees IN the outer teal ring (~325)
@@ -746,7 +746,7 @@ function ChartWheel({ chartData }: ChartWheelProps) {
                             strokeWidth="0.5"
                             strokeDasharray="2,2"
                         />
-                        {/* Planet glyph in the zodiac band */}
+                        {/* Planet glyph inside the zodiac ring */}
                         <text
                             x={pos.x}
                             y={pos.y}
