@@ -1,1 +1,3 @@
-/*    /index.html   200
+/api/charts/*  /.netlify/functions/charts  200
+/api/interpret  /.netlify/functions/interpret  200
+/*  /index.html  200

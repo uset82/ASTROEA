@@ -221,7 +221,7 @@ function ChartWheel({ chartData }: ChartWheelProps) {
     const size = 700
     const center = size / 2
 
-    const outerRingRadius = 340
+    const outerRingRadius = 346
     const outerRadius = 310
     const zodiacInnerRadius = 260
     const houseInnerRadius = 185
@@ -720,10 +720,13 @@ function ChartWheel({ chartData }: ChartWheelProps) {
                 const tickInner = toCartesian(trueAngle, outerRingRadius - planetTickLength)
                 // Connector endpoint at planet position (display angle)
                 const connectorEnd = toCartesian(planet.angle, planet.radius)
-                // Degree label positioned IN the outer teal ring - rotated radially
+                // Degree label positioned IN the outer teal ring - rotated to reduce overlap
                 const degreePos = toCartesian(planet.angle, degreeLabelRadius)
-                // Calculate rotation angle for radial text (pointing outward from center)
-                const textRotation = -planet.angle + 90  // Rotate to be perpendicular to radius
+                // Rotate along the radius (perpendicular to ring) and keep text upright
+                const textRotation = -planet.angle
+                const adjustedRotation = planet.angle > 90 && planet.angle < 270
+                    ? textRotation + 180
+                    : textRotation
 
                 return (
                     <g key={`planet-${planet.name}`} className="planet-group">
@@ -769,7 +772,7 @@ function ChartWheel({ chartData }: ChartWheelProps) {
                                 fontFamily={LABEL_FONT}
                                 textAnchor="middle"
                                 dominantBaseline="middle"
-                                transform={`rotate(${textRotation}, ${degreePos.x}, ${degreePos.y})`}
+                                transform={`rotate(${adjustedRotation}, ${degreePos.x}, ${degreePos.y})`}
                             >
                                 {planet.degreeLabel}
                             </text>
