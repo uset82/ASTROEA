@@ -2,6 +2,22 @@
   base = "frontend"
   publish = "dist"
   command = "npm run build"
+  functions = "../netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+  directory = "../netlify/functions"
+  included_files = ["../netlify/functions/**"]
+
+[[redirects]]
+  from = "/api/charts/*"
+  to = "/.netlify/functions/charts"
+  status = 200
+
+[[redirects]]
+  from = "/api/interpret"
+  to = "/.netlify/functions/interpret"
+  status = 200
 
 [[redirects]]
   from = "/*"
