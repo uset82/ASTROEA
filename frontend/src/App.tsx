@@ -128,8 +128,11 @@ function AppContent() {
         setError(null)
         setChartData(null)
 
+        // Use environment variable for API URL, fallback to relative path for local dev
+        const apiBase = import.meta.env.VITE_API_URL || ''
+
         try {
-            const response = await fetch(`/api/charts/${endpoint}`, {
+            const response = await fetch(`${apiBase}/api/charts/${endpoint}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)

@@ -230,12 +230,12 @@ function ChartWheel({ chartData }: ChartWheelProps) {
 
     // ASTRO.COM STYLE: Signs live in the colored zodiac band, planets live inside it
     const planetTracks = [
-        246,  // outermost planet track (just inside zodiac band)
-        226,  // track 2
-        206,  // track 3
-        186,  // innermost planet track (above house labels)
+        270,  // outermost planet track (closer to zodiac band)
+        252,  // track 2
+        234,  // track 3
+        216,  // innermost planet track (above house labels)
     ]
-    const zodiacLabelRadius = outerRadius - 28
+    const zodiacLabelRadius = outerRadius - 40
     const houseLabelRadius = houseInnerRadius - 18
     const axisLabelRadius = outerRadius + 22
     const degreeLabelRadius = (outerRadius + outerRingRadius) / 2  // Degrees IN the outer teal ring (~325)
