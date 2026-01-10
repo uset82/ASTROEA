@@ -1,4 +1,6 @@
 // Netlify Function for AI Chart Interpretation using OpenRouter
+const https = require('https');
+
 exports.handler = async (event, context) => {
     // Handle CORS
     const headers = {
@@ -28,28 +30,33 @@ exports.handler = async (event, context) => {
             ? `You are an expert astrologer. Chart:\n${chartSummary}\n\nHistory:\n${conversation_history.map(m => `${m.role}: ${m.content}`).join('\n')}\n\nUser: ${user_message}\n\n${langInstruction}`
             : `You are an expert astrologer. Provide a detailed natal chart interpretation.\n\nChart:\n${chartSummary}\n\n${focus ? `Focus on: ${focus}.` : ''}\n\nCover: Sun sign, Moon sign, Ascendant, key aspects, house placements.\n\n${langInstruction}`;
 
-        const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+        // Make request to OpenRouter using https module
+        const requestBody = JSON.stringify({
+            model: 'google/gemini-2.0-flash-exp:free',
+            messages: [{ role: 'user', content: prompt }],
+        });
+
+        const result = await makeHttpsRequest({
+            hostname: 'openrouter.ai',
+            path: '/api/v1/chat/completions',
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${apiKey}`,
                 'HTTP-Referer': 'https://lively-sunburst-274cb9.netlify.app/',
-                'X-Title': 'ASTRAEA Astrology App'
-            },
-            body: JSON.stringify({
-                model: 'google/gemini-2.0-flash-exp:free',
-                messages: [{ role: 'user', content: prompt }],
-            })
-        });
+                'X-Title': 'ASTRAEA Astrology App',
+                'Content-Length': Buffer.byteLength(requestBody)
+            }
+        }, requestBody);
 
-        if (!response.ok) {
-            const errorData = await response.json();
-            console.error('OpenRouter error:', errorData);
-            throw new Error(errorData.error?.message || 'OpenRouter API request failed');
+        const parsed = JSON.parse(result);
+
+        if (parsed.error) {
+            console.error('OpenRouter error:', parsed.error);
+            throw new Error(parsed.error.message || 'OpenRouter API request failed');
         }
 
-        const result = await response.json();
-        const text = result.choices?.[0]?.message?.content || 'No interpretation generated';
+        const text = parsed.choices?.[0]?.message?.content || 'No interpretation generated';
 
         return {
             statusCode: 200,
@@ -65,6 +72,21 @@ exports.handler = async (event, context) => {
         };
     }
 };
+
+// Helper function to make HTTPS request using built-in module
+function makeHttpsRequest(options, body) {
+    return new Promise((resolve, reject) => {
+        const req = https.request(options, (res) => {
+            let data = '';
+            res.on('data', (chunk) => { data += chunk; });
+            res.on('end', () => { resolve(data); });
+        });
+
+        req.on('error', (err) => { reject(err); });
+        req.write(body);
+        req.end();
+    });
+}
 
 function buildChartSummary(chartData) {
     if (!chartData?.objects) return 'No chart data';
