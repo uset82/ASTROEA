@@ -35,7 +35,7 @@ exports.handler = async (event) => {
         const sunLong = normalize(calcSun(jd));
         const moonLong = normalize(calcMoon(jd));
         const asc = normalize(calcAsc(jd, lat, lon));
-        const mc = normalize((asc + 270) % 360); // MC is roughly 90° before ASC
+        const mc = normalize(calcMC(jd, lon));  // Proper MC calculation
 
         // Build houses (equal house system) with proper structure
         const houses = {};
@@ -146,14 +146,46 @@ function calcMoon(jd) {
 
 function calcAsc(jd, lat, lon) {
     const T = (jd - 2451545.0) / 36525;
-    const theta0 = 280.46061837 + 360.98564736629 * (jd - 2451545.0);
+    // Greenwich Mean Sidereal Time
+    const theta0 = 280.46061837 + 360.98564736629 * (jd - 2451545.0) + 0.000387933 * T * T;
+    // Local Sidereal Time
     const lst = normalize(theta0 + lon);
-    const eps = 23.4393 - 0.0130 * T;
+    // Obliquity of the ecliptic
+    const eps = 23.4392911 - 0.0130042 * T;
+
     const lstRad = lst * Math.PI / 180;
     const epsRad = eps * Math.PI / 180;
     const latRad = lat * Math.PI / 180;
-    const ascRad = Math.atan2(Math.cos(lstRad), -(Math.sin(lstRad) * Math.cos(epsRad) + Math.tan(latRad) * Math.sin(epsRad)));
-    return ascRad * 180 / Math.PI;
+
+    // Correct Ascendant formula: Asc = atan2(-cos(LST), sin(ε)·tan(φ) + cos(ε)·sin(LST))
+    const y = -Math.cos(lstRad);
+    const x = Math.sin(epsRad) * Math.tan(latRad) + Math.cos(epsRad) * Math.sin(lstRad);
+    let ascRad = Math.atan2(y, x);
+
+    // Convert to degrees and normalize to 0-360
+    let asc = ascRad * 180 / Math.PI;
+    return normalize(asc);
+}
+
+// Calculate Midheaven (MC) - the point where the ecliptic crosses the meridian
+function calcMC(jd, lon) {
+    const T = (jd - 2451545.0) / 36525;
+    // Greenwich Mean Sidereal Time
+    const theta0 = 280.46061837 + 360.98564736629 * (jd - 2451545.0) + 0.000387933 * T * T;
+    // Local Sidereal Time (RAMC - Right Ascension of MC)
+    const lst = normalize(theta0 + lon);
+    // Obliquity of the ecliptic
+    const eps = 23.4392911 - 0.0130042 * T;
+
+    const lstRad = lst * Math.PI / 180;
+    const epsRad = eps * Math.PI / 180;
+
+    // MC is where the ecliptic crosses the local meridian
+    // MC = atan(tan(RAMC) / cos(ε))
+    let mcRad = Math.atan2(Math.sin(lstRad), Math.cos(lstRad) * Math.cos(epsRad));
+    let mc = mcRad * 180 / Math.PI;
+
+    return normalize(mc);
 }
 
 function calcPlanet(planet, jd) {
