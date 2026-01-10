@@ -137,5 +137,16 @@ function buildChartSummary(chartData) {
         }
     }
 
+    // Add detected patterns (T-Square, Grand Trine, Grand Cross, Yod)
+    if (chartData.patterns && chartData.patterns.length > 0) {
+        summary += '\n## Aspect Patterns (IMPORTANT - interpret these specifically):\n';
+        for (const pattern of chartData.patterns) {
+            summary += `- **${pattern.type}**: ${pattern.description}\n`;
+            if (pattern.apex) {
+                summary += `  (Apex planet: ${pattern.apex} - key focus of tension/energy)\n`;
+            }
+        }
+    }
+
     return summary;
 }

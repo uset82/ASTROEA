@@ -91,6 +91,9 @@ exports.handler = async (event) => {
         // Calculate aspects
         const aspects = calcAspects(objects);
 
+        // Detect aspect patterns (T-Square, Grand Trine, Grand Cross, Yod)
+        const patterns = detectPatterns(aspects, objects);
+
         return {
             statusCode: 200,
             headers,
@@ -101,6 +104,7 @@ exports.handler = async (event) => {
                     objects,
                     houses,
                     aspects,
+                    patterns,  // NEW: Include detected patterns
                     input: { date_time, latitude: lat, longitude: lon, house_system: house_system || 'equal' }
                 }
             })
@@ -205,4 +209,136 @@ function calcAspects(objects) {
         }
     }
     return aspects;
+}
+
+// Detect major aspect patterns
+function detectPatterns(aspects, objects) {
+    const patterns = [];
+    const aspectList = Object.values(aspects);
+
+    // Helper to find aspects between specific planets
+    const findAspect = (p1, p2, type) => {
+        return aspectList.find(a =>
+            ((a.planet1 === p1 && a.planet2 === p2) || (a.planet1 === p2 && a.planet2 === p1))
+            && a.aspect_type === type
+        );
+    };
+
+    // Get all planets involved in aspects
+    const planets = [...new Set(aspectList.flatMap(a => [a.planet1, a.planet2]))];
+
+    // Detect T-SQUARE: Opposition + 2 Squares forming a T
+    // Planet A opposes Planet B, both square Planet C (apex)
+    const oppositions = aspectList.filter(a => a.aspect_type === 'Opposition');
+    for (const opp of oppositions) {
+        for (const planet of planets) {
+            if (planet === opp.planet1 || planet === opp.planet2) continue;
+            const sq1 = findAspect(opp.planet1, planet, 'Square');
+            const sq2 = findAspect(opp.planet2, planet, 'Square');
+            if (sq1 && sq2) {
+                patterns.push({
+                    type: 'T-Square',
+                    planets: [opp.planet1, opp.planet2, planet],
+                    apex: planet,
+                    description: `T-Square with ${planet} at apex, opposing ${opp.planet1}-${opp.planet2} opposition`
+                });
+            }
+        }
+    }
+
+    // Detect GRAND TRINE: 3 planets all in trine to each other
+    const trines = aspectList.filter(a => a.aspect_type === 'Trine');
+    for (let i = 0; i < trines.length; i++) {
+        for (let j = i + 1; j < trines.length; j++) {
+            const t1 = trines[i], t2 = trines[j];
+            // Find common planet
+            const planets1 = [t1.planet1, t1.planet2];
+            const planets2 = [t2.planet1, t2.planet2];
+            const common = planets1.find(p => planets2.includes(p));
+            if (!common) continue;
+
+            const other1 = planets1.find(p => p !== common);
+            const other2 = planets2.find(p => p !== common);
+            const t3 = findAspect(other1, other2, 'Trine');
+            if (t3) {
+                const gtPlanets = [common, other1, other2].sort();
+                // Avoid duplicates
+                if (!patterns.find(p => p.type === 'Grand Trine' &&
+                    JSON.stringify(p.planets.sort()) === JSON.stringify(gtPlanets))) {
+                    patterns.push({
+                        type: 'Grand Trine',
+                        planets: gtPlanets,
+                        description: `Grand Trine between ${gtPlanets.join(', ')}`
+                    });
+                }
+            }
+        }
+    }
+
+    // Detect GRAND CROSS: 4 planets, 2 oppositions, 4 squares forming a cross
+    for (let i = 0; i < oppositions.length; i++) {
+        for (let j = i + 1; j < oppositions.length; j++) {
+            const opp1 = oppositions[i], opp2 = oppositions[j];
+            const p1 = [opp1.planet1, opp1.planet2];
+            const p2 = [opp2.planet1, opp2.planet2];
+            // Check no overlap
+            if (p1.some(p => p2.includes(p))) continue;
+
+            // Check all 4 squares exist
+            const sq1 = findAspect(p1[0], p2[0], 'Square');
+            const sq2 = findAspect(p1[0], p2[1], 'Square');
+            const sq3 = findAspect(p1[1], p2[0], 'Square');
+            const sq4 = findAspect(p1[1], p2[1], 'Square');
+
+            if (sq1 && sq2 && sq3 && sq4) {
+                patterns.push({
+                    type: 'Grand Cross',
+                    planets: [...p1, ...p2].sort(),
+                    description: `Grand Cross between ${[...p1, ...p2].join(', ')}`
+                });
+            }
+        }
+    }
+
+    // Detect YOD (Finger of God): 2 planets sextile each other, both quincunx a third
+    const sextiles = aspectList.filter(a => a.aspect_type === 'Sextile');
+    // Note: We need to add Quincunx detection first - adding it here
+    const quincunxes = [];
+    const planetNames = Object.keys(objects).filter(n => !['Asc', 'MC'].includes(n));
+    for (let i = 0; i < planetNames.length; i++) {
+        for (let j = i + 1; j < planetNames.length; j++) {
+            const p1 = planetNames[i], p2 = planetNames[j];
+            const l1 = objects[p1].longitude.raw, l2 = objects[p2].longitude.raw;
+            let diff = Math.abs(l1 - l2);
+            if (diff > 180) diff = 360 - diff;
+            // Quincunx = 150° with 3° orb
+            if (Math.abs(diff - 150) <= 3) {
+                quincunxes.push({ planet1: p1, planet2: p2, aspect_type: 'Quincunx' });
+            }
+        }
+    }
+
+    for (const sext of sextiles) {
+        for (const planet of planets) {
+            if (planet === sext.planet1 || planet === sext.planet2) continue;
+            const q1 = quincunxes.find(q =>
+                (q.planet1 === sext.planet1 && q.planet2 === planet) ||
+                (q.planet1 === planet && q.planet2 === sext.planet1)
+            );
+            const q2 = quincunxes.find(q =>
+                (q.planet1 === sext.planet2 && q.planet2 === planet) ||
+                (q.planet1 === planet && q.planet2 === sext.planet2)
+            );
+            if (q1 && q2) {
+                patterns.push({
+                    type: 'Yod',
+                    planets: [sext.planet1, sext.planet2, planet],
+                    apex: planet,
+                    description: `Yod (Finger of God) with ${planet} at apex, sextile base ${sext.planet1}-${sext.planet2}`
+                });
+            }
+        }
+    }
+
+    return patterns;
 }
