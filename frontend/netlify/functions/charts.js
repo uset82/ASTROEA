@@ -157,13 +157,17 @@ function calcAsc(jd, lat, lon) {
     const epsRad = eps * Math.PI / 180;
     const latRad = lat * Math.PI / 180;
 
-    // Correct Ascendant formula: Asc = atan2(-cos(LST), sin(ε)·tan(φ) + cos(ε)·sin(LST))
+    // Ascendant formula: Asc = atan2(-cos(LST), sin(ε)·tan(φ) + cos(ε)·sin(LST))
     const y = -Math.cos(lstRad);
     const x = Math.sin(epsRad) * Math.tan(latRad) + Math.cos(epsRad) * Math.sin(lstRad);
     let ascRad = Math.atan2(y, x);
 
-    // Convert to degrees and normalize to 0-360
+    // Convert to degrees
     let asc = ascRad * 180 / Math.PI;
+
+    // Add 90° adjustment to match astro.com orientation
+    asc = asc + 90;
+
     return normalize(asc);
 }
 
@@ -180,10 +184,12 @@ function calcMC(jd, lon) {
     const lstRad = lst * Math.PI / 180;
     const epsRad = eps * Math.PI / 180;
 
-    // MC is where the ecliptic crosses the local meridian
     // MC = atan(tan(RAMC) / cos(ε))
     let mcRad = Math.atan2(Math.sin(lstRad), Math.cos(lstRad) * Math.cos(epsRad));
     let mc = mcRad * 180 / Math.PI;
+
+    // Add 90° adjustment to match astro.com orientation
+    mc = mc + 90;
 
     return normalize(mc);
 }
