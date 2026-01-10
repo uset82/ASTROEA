@@ -20,8 +20,16 @@ exports.handler = async (event, context) => {
     try {
         const { chart_data, focus, language, user_message, conversation_history } = JSON.parse(event.body);
 
-        // Use OpenRouter API
-        const apiKey = process.env.OPENROUTER_API_KEY || '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';
+        // Use OpenRouter API - read from env variable
+        const apiKey = process.env.OPENROUTER_API_KEY;
+
+        if (!apiKey) {
+            return {
+                statusCode: 500,
+                headers: { ...headers, 'Content-Type': 'application/json' },
+                body: JSON.stringify({ error: 'OPENROUTER_API_KEY not configured in Netlify environment variables' }),
+            };
+        }
 
         const chartSummary = buildChartSummary(chart_data);
         const langInstruction = language === 'es' ? 'Respond in Spanish.' : language === 'no' ? 'Respond in Norwegian.' : 'Respond in English.';
@@ -30,39 +38,59 @@ exports.handler = async (event, context) => {
             ? `You are an expert astrologer. Chart:\n${chartSummary}\n\nHistory:\n${conversation_history.map(m => `${m.role}: ${m.content}`).join('\n')}\n\nUser: ${user_message}\n\n${langInstruction}`
             : `You are an expert astrologer. Provide a detailed natal chart interpretation.\n\nChart:\n${chartSummary}\n\n${focus ? `Focus on: ${focus}.` : ''}\n\nCover: Sun sign, Moon sign, Ascendant, key aspects, house placements.\n\n${langInstruction}`;
 
-        // Make request to OpenRouter using https module
-        const requestBody = JSON.stringify({
-            model: 'google/gemini-2.0-flash-exp:free',
-            messages: [{ role: 'user', content: prompt }],
-        });
+        // Make request to OpenRouter API - try multiple free models
+        const models = [
+            'google/gemini-2.0-flash-exp:free',
+            'meta-llama/llama-3.2-3b-instruct:free',
+            'mistralai/mistral-7b-instruct:free'
+        ];
 
-        const result = await makeHttpsRequest({
-            hostname: 'openrouter.ai',
-            path: '/api/v1/chat/completions',
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${apiKey}`,
-                'HTTP-Referer': 'https://lively-sunburst-274cb9.netlify.app/',
-                'X-Title': 'ASTRAEA Astrology App',
-                'Content-Length': Buffer.byteLength(requestBody)
+        let lastError = null;
+
+        for (const model of models) {
+            try {
+                const requestBody = JSON.stringify({
+                    model: model,
+                    messages: [{ role: 'user', content: prompt }],
+                });
+
+                const result = await makeHttpsRequest({
+                    hostname: 'openrouter.ai',
+                    path: '/api/v1/chat/completions',
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${apiKey}`,
+                        'HTTP-Referer': 'https://lively-sunburst-274cb9.netlify.app/',
+                        'X-Title': 'ASTRAEA Astrology App',
+                        'Content-Length': Buffer.byteLength(requestBody)
+                    }
+                }, requestBody);
+
+                const parsed = JSON.parse(result);
+
+                if (parsed.error) {
+                    console.log(`Model ${model} failed:`, parsed.error.message);
+                    lastError = parsed.error.message;
+                    continue; // Try next model
+                }
+
+                const text = parsed.choices?.[0]?.message?.content;
+                if (text) {
+                    return {
+                        statusCode: 200,
+                        headers: { ...headers, 'Content-Type': 'text/event-stream', 'Cache-Control': 'no-cache' },
+                        body: `data: ${text}\n\ndata: [DONE]\n\n`,
+                    };
+                }
+            } catch (e) {
+                console.log(`Model ${model} error:`, e.message);
+                lastError = e.message;
             }
-        }, requestBody);
-
-        const parsed = JSON.parse(result);
-
-        if (parsed.error) {
-            console.error('OpenRouter error:', parsed.error);
-            throw new Error(parsed.error.message || 'OpenRouter API request failed');
         }
 
-        const text = parsed.choices?.[0]?.message?.content || 'No interpretation generated';
+        throw new Error(lastError || 'All models failed');
 
-        return {
-            statusCode: 200,
-            headers: { ...headers, 'Content-Type': 'text/event-stream', 'Cache-Control': 'no-cache' },
-            body: `data: ${text}\n\ndata: [DONE]\n\n`,
-        };
     } catch (error) {
         console.error('Error:', error);
         return {
