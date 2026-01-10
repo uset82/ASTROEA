@@ -37,19 +37,19 @@ exports.handler = async (event) => {
         const asc = normalize(calcAsc(jd, lat, lon));
         const mc = normalize((asc + 270) % 360); // MC is roughly 90° before ASC
 
-        // Build houses (equal house system)
+        // Build houses (equal house system) with proper structure
         const houses = {};
         for (let i = 1; i <= 12; i++) {
             const cusp = normalize(asc + (i - 1) * 30);
-            houses[i] = { longitude: cusp, sign: getSign(cusp) };
+            houses[i] = { number: i, longitude: { raw: cusp }, sign: { name: getSign(cusp) } };
         }
 
         // Get house for a longitude
         const getHouse = (lng) => {
             const norm = normalize(lng);
             for (let i = 1; i <= 12; i++) {
-                const cusp = houses[i].longitude;
-                const nextCusp = houses[i % 12 + 1].longitude;
+                const cusp = houses[i].longitude.raw;
+                const nextCusp = houses[i % 12 + 1].longitude.raw;
                 if (nextCusp < cusp) {
                     if (norm >= cusp || norm < nextCusp) return i;
                 } else {
@@ -59,24 +59,33 @@ exports.handler = async (event) => {
             return 1;
         };
 
-        // Build objects
+        // Helper to create object with proper structure for ChartWheel.tsx
+        const createObject = (name, lng, symbol) => {
+            const signName = getSign(lng);
+            const signLongitude = lng % 30; // Degrees within the sign
+            return {
+                name,
+                longitude: { raw: lng, formatted: `${Math.floor(lng)}°${Math.round((lng % 1) * 60)}'` },
+                sign: { name: signName },
+                sign_longitude: { raw: signLongitude, formatted: `${Math.floor(signLongitude)}°${Math.round((signLongitude % 1) * 60)}'` },
+                symbol,
+                house: getHouse(lng)
+            };
+        };
+
+        // Build objects with proper structure
         const objects = {
-            Sun: { longitude: sunLong, sign: getSign(sunLong), symbol: '☉', house: getHouse(sunLong) },
-            Moon: { longitude: moonLong, sign: getSign(moonLong), symbol: '☽', house: getHouse(moonLong) },
-            Asc: { longitude: asc, sign: getSign(asc), symbol: 'Asc', house: 1 },
-            MC: { longitude: mc, sign: getSign(mc), symbol: 'MC', house: 10 },
+            Sun: createObject('Sun', sunLong, '☉'),
+            Moon: createObject('Moon', moonLong, '☽'),
+            Asc: createObject('Asc', asc, 'Asc'),
+            MC: createObject('MC', mc, 'MC'),
         };
 
         // Add other planets
         const planets = ['Mercury', 'Venus', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune', 'Pluto'];
         for (const planet of planets) {
             const lng = normalize(calcPlanet(planet, jd));
-            objects[planet] = {
-                longitude: lng,
-                sign: getSign(lng),
-                symbol: SYMBOLS[planet],
-                house: getHouse(lng)
-            };
+            objects[planet] = createObject(planet, lng, SYMBOLS[planet]);
         }
 
         // Calculate aspects
@@ -175,7 +184,7 @@ function calcAspects(objects) {
     for (let i = 0; i < planets.length; i++) {
         for (let j = i + 1; j < planets.length; j++) {
             const p1 = planets[i], p2 = planets[j];
-            const l1 = objects[p1].longitude, l2 = objects[p2].longitude;
+            const l1 = objects[p1].longitude.raw, l2 = objects[p2].longitude.raw;
             let diff = Math.abs(l1 - l2);
             if (diff > 180) diff = 360 - diff;
 
