@@ -196,8 +196,12 @@ function calcAspects(objects) {
                 const orb = Math.abs(diff - asp.angle);
                 if (orb <= asp.orb) {
                     aspects[`${p1}-${p2}`] = {
+                        // Both formats for compatibility
                         planet1: p1,
                         planet2: p2,
+                        active: p1,      // ChartWheel.tsx expects this
+                        passive: p2,     // ChartWheel.tsx expects this
+                        type: asp.name,  // Alternative to aspect_type
                         aspect_type: asp.name,
                         symbol: asp.symbol,
                         angle: asp.angle,
