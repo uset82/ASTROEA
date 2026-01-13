@@ -120,6 +120,19 @@
 .aspect-type {
     font-weight: 500;
     text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.aspect-symbol {
+    font-size: 1.3rem;
+    font-weight: bold;
+    font-family: "Segoe UI Symbol", "Noto Sans Symbols 2", "Noto Sans Symbols", "DejaVu Sans", "Arial Unicode MS", sans-serif;
+}
+
+.aspect-name {
+    font-size: 0.85rem;
 }
 
 .aspect-conjunction {

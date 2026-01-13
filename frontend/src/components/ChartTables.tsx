@@ -121,16 +121,36 @@ function ChartTables({ chartData }: ChartTablesProps) {
 
     const aspects = useMemo(() => {
         if (!chartData.aspects) return []
+
+        const ASPECT_SYMBOLS: Record<string, string> = {
+            Conjunction: '☌',
+            Sextile: '⚹',
+            Square: '□',
+            Trine: '△',
+            Opposition: '☍',
+            Quincunx: '⚻',
+        }
+
         return Object.values(chartData.aspects)
-            .filter((a: any) => a.active && a.passive && (a.type || a.aspect))
-            .map((a: any) => ({
-                active: a.active.name,
-                activeSymbol: getObjectSymbol(a.active),
-                aspect: getAspectName(a),
-                passive: a.passive.name,
-                passiveSymbol: getObjectSymbol(a.passive),
-                orb: a.orb?.formatted || ''
-            }))
+            .filter((a: any) => (a.active || a.planet1) && (a.passive || a.planet2) && (a.type || a.aspect || a.aspect_type))
+            .map((a: any) => {
+                // Handle both object format (Python backend) and string format (Netlify)
+                const activeName = typeof a.active === 'string' ? a.active : (a.active?.name || a.planet1 || '')
+                const passiveName = typeof a.passive === 'string' ? a.passive : (a.passive?.name || a.planet2 || '')
+                const aspectType = a.type || a.aspect || a.aspect_type || ''
+                const aspectSymbol = a.symbol || ASPECT_SYMBOLS[aspectType] || ''
+                const orb = typeof a.orb === 'number' ? `${a.orb.toFixed(1)}°` : (a.orb?.formatted || '')
+
+                return {
+                    active: activeName,
+                    activeSymbol: PLANET_SYMBOLS[activeName] || PLANET_SYMBOLS_NORMALIZED[normalizeObjectKey(activeName)] || '',
+                    aspect: aspectType,
+                    aspectSymbol,
+                    passive: passiveName,
+                    passiveSymbol: PLANET_SYMBOLS[passiveName] || PLANET_SYMBOLS_NORMALIZED[normalizeObjectKey(passiveName)] || '',
+                    orb
+                }
+            })
     }, [chartData])
 
     return (
@@ -223,7 +243,8 @@ function ChartTables({ chartData }: ChartTablesProps) {
                                         </span>
                                     </td>
                                     <td className={`aspect-type aspect-${aspect.aspect.toLowerCase()}`}>
-                                        {aspect.aspect}
+                                        <span className="aspect-symbol">{aspect.aspectSymbol}</span>
+                                        <span className="aspect-name">{aspect.aspect}</span>
                                     </td>
                                     <td>
                                         <span className="planet-cell">
@@ -238,7 +259,7 @@ function ChartTables({ chartData }: ChartTablesProps) {
                     </table>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 
