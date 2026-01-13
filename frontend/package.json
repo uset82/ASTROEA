@@ -10,11 +10,11 @@
     },
     "dependencies": {
         "@google/generative-ai": "^0.21.0",
+        "ephemeris": "^2.2.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-markdown": "^10.1.0",
         "remark-gfm": "^4.0.1",
-        "swisseph-wasm": "^0.0.4",
         "zod": "^3.22.0"
     },
     "devDependencies": {

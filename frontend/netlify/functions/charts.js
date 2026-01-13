@@ -1,33 +1,24 @@
-// Netlify Function for Chart Calculation with Swiss Ephemeris WASM
-// Uses swisseph-wasm for accurate planetary positions (same as astro.com)
+// Netlify Function for Chart Calculation with Ephemeris (Moshier)
+// Uses pure JavaScript ephemeris for accurate planetary positions
 
-const { initSwissEph, getSwissEph } = require('swisseph-wasm');
+const ephemeris = require('ephemeris');
 
 const SIGNS = ['Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces'];
 const SYMBOLS = { Sun: '☉', Moon: '☽', Mercury: '☿', Venus: '♀', Mars: '♂', Jupiter: '♃', Saturn: '♄', Uranus: '♅', Neptune: '♆', Pluto: '♇', Chiron: '⚷' };
 
-// Swiss Ephemeris planet IDs
-const SE_SUN = 0;
-const SE_MOON = 1;
-const SE_MERCURY = 2;
-const SE_VENUS = 3;
-const SE_MARS = 4;
-const SE_JUPITER = 5;
-const SE_SATURN = 6;
-const SE_URANUS = 7;
-const SE_NEPTUNE = 8;
-const SE_PLUTO = 9;
-const SE_CHIRON = 15;
-
-// House system codes
-const HOUSE_SYSTEMS = {
-    placidus: 'P',
-    koch: 'K',
-    whole_sign: 'W',
-    equal: 'E',
-    regiomontanus: 'R',
-    campanus: 'C',
-    porphyry: 'O'
+// Planet name mapping from ephemeris to our format
+const PLANET_MAPPING = {
+    sun: 'Sun',
+    moon: 'Moon',
+    mercury: 'Mercury',
+    venus: 'Venus',
+    mars: 'Mars',
+    jupiter: 'Jupiter',
+    saturn: 'Saturn',
+    uranus: 'Uranus',
+    neptune: 'Neptune',
+    pluto: 'Pluto',
+    chiron: 'Chiron'
 };
 
 // Normalize angle to 0-360 range
@@ -38,6 +29,46 @@ function normalize(angle) {
 function getSign(longitude) {
     const norm = normalize(longitude);
     return SIGNS[Math.floor(norm / 30)];
+}
+
+// Format degrees to degrees and minutes
+function formatDegrees(deg) {
+    const d = Math.floor(deg);
+    const m = Math.round((deg - d) * 60);
+    return `${d}°${m.toString().padStart(2, '0')}'`;
+}
+
+// Calculate Ascendant using proper formula
+function calcAsc(jd, lat, lon) {
+    const T = (jd - 2451545.0) / 36525;
+    const theta0 = 280.46061837 + 360.98564736629 * (jd - 2451545.0) + 0.000387933 * T * T;
+    const lst = normalize(theta0 + lon);
+    const eps = 23.4392911 - 0.0130042 * T;
+
+    const lstRad = lst * Math.PI / 180;
+    const epsRad = eps * Math.PI / 180;
+    const latRad = lat * Math.PI / 180;
+
+    const y = -Math.cos(lstRad);
+    const x = Math.sin(epsRad) * Math.tan(latRad) + Math.cos(epsRad) * Math.sin(lstRad);
+    let asc = Math.atan2(y, x) * 180 / Math.PI + 180;
+
+    return normalize(asc);
+}
+
+// Calculate MC
+function calcMC(jd, lon) {
+    const T = (jd - 2451545.0) / 36525;
+    const theta0 = 280.46061837 + 360.98564736629 * (jd - 2451545.0) + 0.000387933 * T * T;
+    const lst = normalize(theta0 + lon);
+    const eps = 23.4392911 - 0.0130042 * T;
+
+    const lstRad = lst * Math.PI / 180;
+    const epsRad = eps * Math.PI / 180;
+
+    let mc = Math.atan2(Math.sin(lstRad), Math.cos(lstRad) * Math.cos(epsRad)) * 180 / Math.PI + 180;
+
+    return normalize(mc);
 }
 
 // Convert Date to Julian Day
@@ -56,13 +87,6 @@ function dateToJulianDay(date) {
     return jd;
 }
 
-// Format degrees to degrees and minutes
-function formatDegrees(deg) {
-    const d = Math.floor(deg);
-    const m = Math.round((deg - d) * 60);
-    return `${d}°${m.toString().padStart(2, '0')}'`;
-}
-
 exports.handler = async (event) => {
     const headers = {
         'Access-Control-Allow-Origin': '*',
@@ -77,10 +101,6 @@ exports.handler = async (event) => {
         const { date_time, latitude, longitude, house_system } = JSON.parse(event.body);
         if (!date_time) return { statusCode: 400, headers, body: JSON.stringify({ success: false, detail: 'Missing date_time' }) };
 
-        // Initialize Swiss Ephemeris WASM
-        await initSwissEph();
-        const sweph = getSwissEph();
-
         // Parse the date_time as LOCAL time at the given longitude
         const lon = longitude || 0;
         const lat = latitude || 0;
@@ -91,37 +111,18 @@ exports.handler = async (event) => {
         const dt = new Date(dtLocal.getTime() - timezoneOffsetHours * 60 * 60 * 1000);
         const jd = dateToJulianDay(dt);
 
-        // Calculate planetary positions using Swiss Ephemeris
-        const planetIds = {
-            Sun: SE_SUN,
-            Moon: SE_MOON,
-            Mercury: SE_MERCURY,
-            Venus: SE_VENUS,
-            Mars: SE_MARS,
-            Jupiter: SE_JUPITER,
-            Saturn: SE_SATURN,
-            Uranus: SE_URANUS,
-            Neptune: SE_NEPTUNE,
-            Pluto: SE_PLUTO,
-            Chiron: SE_CHIRON
-        };
+        // Calculate planetary positions using ephemeris package
+        // getAllPlanets(date, longitude, latitude, height)
+        const ephemResult = ephemeris.getAllPlanets(dt, lon, lat, 0);
 
-        // SEFLG_SPEED = 256 to get speed (for retrograde detection)
-        const SEFLG_SPEED = 256;
+        // Calculate ASC and MC
+        const asc = calcAsc(jd, lat, lon);
+        const mc = calcMC(jd, lon);
 
-        // Calculate houses using Swiss Ephemeris
-        const hsys = HOUSE_SYSTEMS[house_system] || 'P';
-        const houseResult = sweph.swe_houses(jd, lat, lon, hsys);
-
-        // houseResult.cusps[1-12] = house cusps
-        // houseResult.ascmc[0] = ASC, houseResult.ascmc[1] = MC
-        const asc = houseResult.ascmc[0];
-        const mc = houseResult.ascmc[1];
-
-        // Build houses object
+        // Build houses (equal house system)
         const houses = {};
         for (let i = 1; i <= 12; i++) {
-            const cusp = houseResult.cusps[i];
+            const cusp = normalize(asc + (i - 1) * 30);
             houses[i] = {
                 number: i,
                 longitude: { raw: cusp, formatted: formatDegrees(cusp) },
@@ -159,22 +160,36 @@ exports.handler = async (event) => {
             };
         };
 
-        // Calculate all planetary positions
+        // Build objects from ephemeris result
         const objects = {
             Asc: createObject('Asc', asc, 'Asc'),
             MC: createObject('MC', mc, 'MC'),
         };
 
-        for (const [name, id] of Object.entries(planetIds)) {
-            try {
-                const result = sweph.swe_calc_ut(jd, id, SEFLG_SPEED);
-                if (result && result.longitude !== undefined) {
-                    const lng = normalize(result.longitude);
-                    const speed = result.speedLongitude || 0;
-                    objects[name] = createObject(name, lng, SYMBOLS[name] || name[0], speed);
+        // Extract planetary positions from ephemeris result
+        // The ephemeris package returns: observed.apparentLongitudeDd (apparent longitude in decimal degrees)
+        if (ephemResult && ephemResult.observed) {
+            for (const [ephemName, ourName] of Object.entries(PLANET_MAPPING)) {
+                if (ephemResult.observed[ephemName]) {
+                    const planetData = ephemResult.observed[ephemName];
+                    // apparentLongitudeDd is the longitude we need
+                    let lng = planetData.apparentLongitudeDd || planetData.apparentLongitudeDms;
+
+                    // If it's in DMS format, convert (but should be Dd - decimal degrees)
+                    if (typeof lng === 'string') {
+                        // Parse DMS string like "16°04'07''"
+                        const match = lng.match(/(\d+)°(\d+)'(\d+(?:\.\d+)?)''/);
+                        if (match) {
+                            lng = parseFloat(match[1]) + parseFloat(match[2]) / 60 + parseFloat(match[3]) / 3600;
+                        }
+                    }
+
+                    if (typeof lng === 'number' && !isNaN(lng)) {
+                        lng = normalize(lng);
+                        const speed = planetData.speedLongitude || 0;
+                        objects[ourName] = createObject(ourName, lng, SYMBOLS[ourName] || ourName[0], speed);
+                    }
                 }
-            } catch (e) {
-                console.log(`Error calculating ${name}:`, e.message);
             }
         }
 
@@ -195,7 +210,7 @@ exports.handler = async (event) => {
                     houses,
                     aspects,
                     patterns,
-                    input: { date_time, latitude: lat, longitude: lon, house_system: house_system || 'placidus' }
+                    input: { date_time, latitude: lat, longitude: lon, house_system: house_system || 'equal' }
                 }
             })
         };
