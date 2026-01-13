@@ -173,8 +173,8 @@ function calcAsc(jd, lat, lon) {
     // Convert to degrees
     let asc = ascRad * 180 / Math.PI;
 
-    // Add 90° adjustment to match astro.com orientation
-    asc = asc + 90;
+    // Add 180° adjustment to match Swiss Ephemeris orientation
+    asc = asc + 180;
 
     return normalize(asc);
 }
@@ -196,8 +196,8 @@ function calcMC(jd, lon) {
     let mcRad = Math.atan2(Math.sin(lstRad), Math.cos(lstRad) * Math.cos(epsRad));
     let mc = mcRad * 180 / Math.PI;
 
-    // Add 90° adjustment to match astro.com orientation
-    mc = mc + 90;
+    // Add 180° adjustment to match Swiss Ephemeris orientation
+    mc = mc + 180;
 
     return normalize(mc);
 }
