@@ -38,13 +38,12 @@ exports.handler = async (event, context) => {
             ? `You are an expert astrologer. Chart:\n${chartSummary}\n\nHistory:\n${conversation_history.map(m => `${m.role}: ${m.content}`).join('\n')}\n\nUser: ${user_message}\n\n${langInstruction}`
             : `You are an expert astrologer. Provide a detailed natal chart interpretation.\n\nChart:\n${chartSummary}\n\n${focus ? `Focus on: ${focus}.` : ''}\n\nCover: Sun sign, Moon sign, Ascendant, key aspects, house placements.\n\n${langInstruction}`;
 
-        // Make request to OpenRouter API
-        // Primary: DeepSeek for chat/writing
-        // Fallback: Gemini flash for general use
+        // Primary: TNG DeepSeek R1T Chimera (working free model)
+        // Fallback: Other available free models
         const models = [
-            'nex-agi/deepseek-v3.1-nex-n1:free',  // User's preferred for chat/writing
-            'google/gemini-2.0-flash-exp:free',    // Fallback
-            'meta-llama/llama-3.2-3b-instruct:free'
+            'tngtech/deepseek-r1t-chimera:free',   // User's preferred model
+            'deepseek/deepseek-r1-0528:free',       // DeepSeek R1 backup
+            'google/gemma-3n-e4b-it:free'           // Google Gemma fallback
         ];
 
         let lastError = null;
