@@ -26,10 +26,18 @@ exports.handler = async (event) => {
         const { date_time, latitude, longitude, house_system } = JSON.parse(event.body);
         if (!date_time) return { statusCode: 400, headers, body: JSON.stringify({ success: false, detail: 'Missing date_time' }) };
 
-        const dt = new Date(date_time.replace(' ', 'T'));
-        const jd = julianDay(dt);
-        const lat = latitude || 0;
+        // Parse the date_time as LOCAL time at the given longitude
+        // Birth time is always entered as local time, so we need to convert to UTC
+        // Approximate timezone offset from longitude: 1 hour per 15 degrees
         const lon = longitude || 0;
+        const lat = latitude || 0;
+        const timezoneOffsetHours = lon / 15;  // Approximate timezone from longitude
+
+        // Parse as UTC first, then adjust for the local timezone
+        const dtLocal = new Date(date_time.replace(' ', 'T'));
+        // Subtract the timezone offset to convert local time to UTC
+        const dt = new Date(dtLocal.getTime() - timezoneOffsetHours * 60 * 60 * 1000);
+        const jd = julianDay(dt);
 
         // Calculate positions
         const sunLong = normalize(calcSun(jd));
