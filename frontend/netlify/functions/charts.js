@@ -1,6 +1,34 @@
-// Netlify Function for Chart Calculation
+// Netlify Function for Chart Calculation with Swiss Ephemeris WASM
+// Uses swisseph-wasm for accurate planetary positions (same as astro.com)
+
+const { initSwissEph, getSwissEph } = require('swisseph-wasm');
+
 const SIGNS = ['Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces'];
 const SYMBOLS = { Sun: '☉', Moon: '☽', Mercury: '☿', Venus: '♀', Mars: '♂', Jupiter: '♃', Saturn: '♄', Uranus: '♅', Neptune: '♆', Pluto: '♇', Chiron: '⚷' };
+
+// Swiss Ephemeris planet IDs
+const SE_SUN = 0;
+const SE_MOON = 1;
+const SE_MERCURY = 2;
+const SE_VENUS = 3;
+const SE_MARS = 4;
+const SE_JUPITER = 5;
+const SE_SATURN = 6;
+const SE_URANUS = 7;
+const SE_NEPTUNE = 8;
+const SE_PLUTO = 9;
+const SE_CHIRON = 15;
+
+// House system codes
+const HOUSE_SYSTEMS = {
+    placidus: 'P',
+    koch: 'K',
+    whole_sign: 'W',
+    equal: 'E',
+    regiomontanus: 'R',
+    campanus: 'C',
+    porphyry: 'O'
+};
 
 // Normalize angle to 0-360 range
 function normalize(angle) {
@@ -10,6 +38,29 @@ function normalize(angle) {
 function getSign(longitude) {
     const norm = normalize(longitude);
     return SIGNS[Math.floor(norm / 30)];
+}
+
+// Convert Date to Julian Day
+function dateToJulianDay(date) {
+    const year = date.getUTCFullYear();
+    const month = date.getUTCMonth() + 1;
+    const day = date.getUTCDate();
+    const hour = date.getUTCHours() + date.getUTCMinutes() / 60 + date.getUTCSeconds() / 3600;
+
+    let jy = year, jm = month;
+    if (month <= 2) { jy--; jm += 12; }
+    const a = Math.floor(jy / 100);
+    const b = 2 - a + Math.floor(a / 4);
+    const jd = Math.floor(365.25 * (jy + 4716)) + Math.floor(30.6001 * (jm + 1)) + day + hour / 24 + b - 1524.5;
+
+    return jd;
+}
+
+// Format degrees to degrees and minutes
+function formatDegrees(deg) {
+    const d = Math.floor(deg);
+    const m = Math.round((deg - d) * 60);
+    return `${d}°${m.toString().padStart(2, '0')}'`;
 }
 
 exports.handler = async (event) => {
@@ -26,30 +77,57 @@ exports.handler = async (event) => {
         const { date_time, latitude, longitude, house_system } = JSON.parse(event.body);
         if (!date_time) return { statusCode: 400, headers, body: JSON.stringify({ success: false, detail: 'Missing date_time' }) };
 
+        // Initialize Swiss Ephemeris WASM
+        await initSwissEph();
+        const sweph = getSwissEph();
+
         // Parse the date_time as LOCAL time at the given longitude
-        // Birth time is always entered as local time, so we need to convert to UTC
-        // Approximate timezone offset from longitude: 1 hour per 15 degrees
         const lon = longitude || 0;
         const lat = latitude || 0;
-        const timezoneOffsetHours = lon / 15;  // Approximate timezone from longitude
+        const timezoneOffsetHours = lon / 15;
 
-        // Parse as UTC first, then adjust for the local timezone
+        // Parse and convert local time to UTC
         const dtLocal = new Date(date_time.replace(' ', 'T'));
-        // Subtract the timezone offset to convert local time to UTC
         const dt = new Date(dtLocal.getTime() - timezoneOffsetHours * 60 * 60 * 1000);
-        const jd = julianDay(dt);
+        const jd = dateToJulianDay(dt);
 
-        // Calculate positions
-        const sunLong = normalize(calcSun(jd));
-        const moonLong = normalize(calcMoon(jd));
-        const asc = normalize(calcAsc(jd, lat, lon));
-        const mc = normalize(calcMC(jd, lon));  // Proper MC calculation
+        // Calculate planetary positions using Swiss Ephemeris
+        const planetIds = {
+            Sun: SE_SUN,
+            Moon: SE_MOON,
+            Mercury: SE_MERCURY,
+            Venus: SE_VENUS,
+            Mars: SE_MARS,
+            Jupiter: SE_JUPITER,
+            Saturn: SE_SATURN,
+            Uranus: SE_URANUS,
+            Neptune: SE_NEPTUNE,
+            Pluto: SE_PLUTO,
+            Chiron: SE_CHIRON
+        };
 
-        // Build houses (equal house system) with proper structure
+        // SEFLG_SPEED = 256 to get speed (for retrograde detection)
+        const SEFLG_SPEED = 256;
+
+        // Calculate houses using Swiss Ephemeris
+        const hsys = HOUSE_SYSTEMS[house_system] || 'P';
+        const houseResult = sweph.swe_houses(jd, lat, lon, hsys);
+
+        // houseResult.cusps[1-12] = house cusps
+        // houseResult.ascmc[0] = ASC, houseResult.ascmc[1] = MC
+        const asc = houseResult.ascmc[0];
+        const mc = houseResult.ascmc[1];
+
+        // Build houses object
         const houses = {};
         for (let i = 1; i <= 12; i++) {
-            const cusp = normalize(asc + (i - 1) * 30);
-            houses[i] = { number: i, longitude: { raw: cusp }, sign: { name: getSign(cusp) } };
+            const cusp = houseResult.cusps[i];
+            houses[i] = {
+                number: i,
+                longitude: { raw: cusp, formatted: formatDegrees(cusp) },
+                sign: { name: getSign(cusp) },
+                sign_longitude: { raw: cusp % 30, formatted: formatDegrees(cusp % 30) }
+            };
         }
 
         // Get house for a longitude
@@ -67,39 +145,43 @@ exports.handler = async (event) => {
             return 1;
         };
 
-        // Helper to create object with proper structure for ChartWheel.tsx
-        const createObject = (name, lng, symbol) => {
-            const signName = getSign(lng);
-            const signLongitude = lng % 30; // Degrees within the sign
+        // Helper to create object with proper structure
+        const createObject = (name, lng, symbol, speed = 0) => {
+            const signLongitude = lng % 30;
             return {
                 name,
-                longitude: { raw: lng, formatted: `${Math.floor(lng)}°${Math.round((lng % 1) * 60)}'` },
-                sign: { name: signName },
-                sign_longitude: { raw: signLongitude, formatted: `${Math.floor(signLongitude)}°${Math.round((signLongitude % 1) * 60)}'` },
+                longitude: { raw: lng, formatted: formatDegrees(lng) },
+                sign: { name: getSign(lng) },
+                sign_longitude: { raw: signLongitude, formatted: formatDegrees(signLongitude) },
                 symbol,
-                house: getHouse(lng)
+                house: getHouse(lng),
+                movement: { formatted: speed < 0 ? 'Retrograde' : 'Direct' }
             };
         };
 
-        // Build objects with proper structure
+        // Calculate all planetary positions
         const objects = {
-            Sun: createObject('Sun', sunLong, '☉'),
-            Moon: createObject('Moon', moonLong, '☽'),
             Asc: createObject('Asc', asc, 'Asc'),
             MC: createObject('MC', mc, 'MC'),
         };
 
-        // Add other planets
-        const planets = ['Mercury', 'Venus', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune', 'Pluto'];
-        for (const planet of planets) {
-            const lng = normalize(calcPlanet(planet, jd));
-            objects[planet] = createObject(planet, lng, SYMBOLS[planet]);
+        for (const [name, id] of Object.entries(planetIds)) {
+            try {
+                const result = sweph.swe_calc_ut(jd, id, SEFLG_SPEED);
+                if (result && result.longitude !== undefined) {
+                    const lng = normalize(result.longitude);
+                    const speed = result.speedLongitude || 0;
+                    objects[name] = createObject(name, lng, SYMBOLS[name] || name[0], speed);
+                }
+            } catch (e) {
+                console.log(`Error calculating ${name}:`, e.message);
+            }
         }
 
         // Calculate aspects
         const aspects = calcAspects(objects);
 
-        // Detect aspect patterns (T-Square, Grand Trine, Grand Cross, Yod)
+        // Detect aspect patterns
         const patterns = detectPatterns(aspects, objects);
 
         return {
@@ -112,8 +194,8 @@ exports.handler = async (event) => {
                     objects,
                     houses,
                     aspects,
-                    patterns,  // NEW: Include detected patterns
-                    input: { date_time, latitude: lat, longitude: lon, house_system: house_system || 'equal' }
+                    patterns,
+                    input: { date_time, latitude: lat, longitude: lon, house_system: house_system || 'placidus' }
                 }
             })
         };
@@ -122,102 +204,6 @@ exports.handler = async (event) => {
         return { statusCode: 500, headers, body: JSON.stringify({ success: false, detail: e.message }) };
     }
 };
-
-function julianDay(d) {
-    const y = d.getUTCFullYear();
-    const m = d.getUTCMonth() + 1;
-    const day = d.getUTCDate() + d.getUTCHours() / 24 + d.getUTCMinutes() / 1440 + d.getUTCSeconds() / 86400;
-    let jy = y, jm = m;
-    if (m <= 2) { jy--; jm += 12; }
-    const a = Math.floor(jy / 100);
-    const b = 2 - a + Math.floor(a / 4);
-    return Math.floor(365.25 * (jy + 4716)) + Math.floor(30.6001 * (jm + 1)) + day + b - 1524.5;
-}
-
-function calcSun(jd) {
-    const T = (jd - 2451545.0) / 36525;
-    const L0 = 280.46646 + 36000.76983 * T + 0.0003032 * T * T;
-    const M = 357.52911 + 35999.05029 * T - 0.0001537 * T * T;
-    const Mrad = M * Math.PI / 180;
-    const C = (1.914602 - 0.004817 * T) * Math.sin(Mrad) + 0.019993 * Math.sin(2 * Mrad);
-    return L0 + C;
-}
-
-function calcMoon(jd) {
-    const T = (jd - 2451545.0) / 36525;
-    const L = 218.3165 + 481267.8813 * T;
-    const D = 297.8502 + 445267.1115 * T;
-    const M = 357.5291 + 35999.0503 * T;
-    const Mm = 134.9634 + 477198.8675 * T;
-    return L + 6.289 * Math.sin(Mm * Math.PI / 180) + 1.274 * Math.sin((2 * D - Mm) * Math.PI / 180) + 0.658 * Math.sin(2 * D * Math.PI / 180);
-}
-
-function calcAsc(jd, lat, lon) {
-    const T = (jd - 2451545.0) / 36525;
-    // Greenwich Mean Sidereal Time
-    const theta0 = 280.46061837 + 360.98564736629 * (jd - 2451545.0) + 0.000387933 * T * T;
-    // Local Sidereal Time
-    const lst = normalize(theta0 + lon);
-    // Obliquity of the ecliptic
-    const eps = 23.4392911 - 0.0130042 * T;
-
-    const lstRad = lst * Math.PI / 180;
-    const epsRad = eps * Math.PI / 180;
-    const latRad = lat * Math.PI / 180;
-
-    // Ascendant formula: Asc = atan2(-cos(LST), sin(ε)·tan(φ) + cos(ε)·sin(LST))
-    const y = -Math.cos(lstRad);
-    const x = Math.sin(epsRad) * Math.tan(latRad) + Math.cos(epsRad) * Math.sin(lstRad);
-    let ascRad = Math.atan2(y, x);
-
-    // Convert to degrees
-    let asc = ascRad * 180 / Math.PI;
-
-    // Add 180° adjustment to match Swiss Ephemeris orientation
-    asc = asc + 180;
-
-    return normalize(asc);
-}
-
-// Calculate Midheaven (MC) - the point where the ecliptic crosses the meridian
-function calcMC(jd, lon) {
-    const T = (jd - 2451545.0) / 36525;
-    // Greenwich Mean Sidereal Time
-    const theta0 = 280.46061837 + 360.98564736629 * (jd - 2451545.0) + 0.000387933 * T * T;
-    // Local Sidereal Time (RAMC - Right Ascension of MC)
-    const lst = normalize(theta0 + lon);
-    // Obliquity of the ecliptic
-    const eps = 23.4392911 - 0.0130042 * T;
-
-    const lstRad = lst * Math.PI / 180;
-    const epsRad = eps * Math.PI / 180;
-
-    // MC = atan(tan(RAMC) / cos(ε))
-    let mcRad = Math.atan2(Math.sin(lstRad), Math.cos(lstRad) * Math.cos(epsRad));
-    let mc = mcRad * 180 / Math.PI;
-
-    // Add 180° adjustment to match Swiss Ephemeris orientation
-    mc = mc + 180;
-
-    return normalize(mc);
-}
-
-function calcPlanet(planet, jd) {
-    const T = (jd - 2451545.0) / 36525;
-    const orbits = {
-        Mercury: { L0: 252.2509, rate: 149472.6747 },
-        Venus: { L0: 181.9798, rate: 58517.8156 },
-        Mars: { L0: 355.4330, rate: 19140.2993 },
-        Jupiter: { L0: 34.3515, rate: 3034.9057 },
-        Saturn: { L0: 50.0774, rate: 1222.1138 },
-        Uranus: { L0: 314.0550, rate: 428.4669 },
-        Neptune: { L0: 304.3487, rate: 218.4602 },
-        Pluto: { L0: 238.9289, rate: 145.2078 }
-    };
-    const orbit = orbits[planet];
-    if (!orbit) return 0;
-    return orbit.L0 + orbit.rate * T;
-}
 
 function calcAspects(objects) {
     const aspects = {};
@@ -242,12 +228,11 @@ function calcAspects(objects) {
                 const orb = Math.abs(diff - asp.angle);
                 if (orb <= asp.orb) {
                     aspects[`${p1}-${p2}`] = {
-                        // Both formats for compatibility
                         planet1: p1,
                         planet2: p2,
-                        active: p1,      // ChartWheel.tsx expects this
-                        passive: p2,     // ChartWheel.tsx expects this
-                        type: asp.name,  // Alternative to aspect_type
+                        active: p1,
+                        passive: p2,
+                        type: asp.name,
                         aspect_type: asp.name,
                         symbol: asp.symbol,
                         angle: asp.angle,
@@ -261,12 +246,10 @@ function calcAspects(objects) {
     return aspects;
 }
 
-// Detect major aspect patterns
 function detectPatterns(aspects, objects) {
     const patterns = [];
     const aspectList = Object.values(aspects);
 
-    // Helper to find aspects between specific planets
     const findAspect = (p1, p2, type) => {
         return aspectList.find(a =>
             ((a.planet1 === p1 && a.planet2 === p2) || (a.planet1 === p2 && a.planet2 === p1))
@@ -274,11 +257,9 @@ function detectPatterns(aspects, objects) {
         );
     };
 
-    // Get all planets involved in aspects
     const planets = [...new Set(aspectList.flatMap(a => [a.planet1, a.planet2]))];
 
-    // Detect T-SQUARE: Opposition + 2 Squares forming a T
-    // Planet A opposes Planet B, both square Planet C (apex)
+    // Detect T-SQUARE
     const oppositions = aspectList.filter(a => a.aspect_type === 'Opposition');
     for (const opp of oppositions) {
         for (const planet of planets) {
@@ -296,12 +277,11 @@ function detectPatterns(aspects, objects) {
         }
     }
 
-    // Detect GRAND TRINE: 3 planets all in trine to each other
+    // Detect GRAND TRINE
     const trines = aspectList.filter(a => a.aspect_type === 'Trine');
     for (let i = 0; i < trines.length; i++) {
         for (let j = i + 1; j < trines.length; j++) {
             const t1 = trines[i], t2 = trines[j];
-            // Find common planet
             const planets1 = [t1.planet1, t1.planet2];
             const planets2 = [t2.planet1, t2.planet2];
             const common = planets1.find(p => planets2.includes(p));
@@ -312,7 +292,6 @@ function detectPatterns(aspects, objects) {
             const t3 = findAspect(other1, other2, 'Trine');
             if (t3) {
                 const gtPlanets = [common, other1, other2].sort();
-                // Avoid duplicates
                 if (!patterns.find(p => p.type === 'Grand Trine' &&
                     JSON.stringify(p.planets.sort()) === JSON.stringify(gtPlanets))) {
                     patterns.push({
@@ -325,16 +304,14 @@ function detectPatterns(aspects, objects) {
         }
     }
 
-    // Detect GRAND CROSS: 4 planets, 2 oppositions, 4 squares forming a cross
+    // Detect GRAND CROSS
     for (let i = 0; i < oppositions.length; i++) {
         for (let j = i + 1; j < oppositions.length; j++) {
             const opp1 = oppositions[i], opp2 = oppositions[j];
             const p1 = [opp1.planet1, opp1.planet2];
             const p2 = [opp2.planet1, opp2.planet2];
-            // Check no overlap
             if (p1.some(p => p2.includes(p))) continue;
 
-            // Check all 4 squares exist
             const sq1 = findAspect(p1[0], p2[0], 'Square');
             const sq2 = findAspect(p1[0], p2[1], 'Square');
             const sq3 = findAspect(p1[1], p2[0], 'Square');
@@ -350,9 +327,8 @@ function detectPatterns(aspects, objects) {
         }
     }
 
-    // Detect YOD (Finger of God): 2 planets sextile each other, both quincunx a third
+    // Detect YOD
     const sextiles = aspectList.filter(a => a.aspect_type === 'Sextile');
-    // Note: We need to add Quincunx detection first - adding it here
     const quincunxes = [];
     const planetNames = Object.keys(objects).filter(n => !['Asc', 'MC'].includes(n));
     for (let i = 0; i < planetNames.length; i++) {
@@ -361,7 +337,6 @@ function detectPatterns(aspects, objects) {
             const l1 = objects[p1].longitude.raw, l2 = objects[p2].longitude.raw;
             let diff = Math.abs(l1 - l2);
             if (diff > 180) diff = 360 - diff;
-            // Quincunx = 150° with 3° orb
             if (Math.abs(diff - 150) <= 3) {
                 quincunxes.push({ planet1: p1, planet2: p2, aspect_type: 'Quincunx' });
             }
