@@ -38,12 +38,12 @@ exports.handler = async (event, context) => {
             ? `You are an expert astrologer. Chart:\n${chartSummary}\n\nHistory:\n${conversation_history.map(m => `${m.role}: ${m.content}`).join('\n')}\n\nUser: ${user_message}\n\n${langInstruction}`
             : `You are an expert astrologer. Provide a detailed natal chart interpretation.\n\nChart:\n${chartSummary}\n\n${focus ? `Focus on: ${focus}.` : ''}\n\nCover: Sun sign, Moon sign, Ascendant, key aspects, house placements.\n\n${langInstruction}`;
 
-        // Primary: TNG DeepSeek R1T Chimera (working free model)
+        // Primary: DeepSeek R1 (from project spec)
         // Fallback: Other available free models
         const models = [
-            'tngtech/deepseek-r1t-chimera:free',   // User's preferred model
-            'deepseek/deepseek-r1-0528:free',       // DeepSeek R1 backup
-            'google/gemma-3n-e4b-it:free'           // Google Gemma fallback
+            'deepseek/deepseek-r1-0528:free',       // Project spec model
+            'tngtech/deepseek-r1t-chimera:free',     // Previous working model
+            'google/gemma-3n-e4b-it:free'            // Google Gemma fallback
         ];
 
         let lastError = null;

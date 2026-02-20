@@ -11,7 +11,7 @@ class AIService:
     """Service for AI-powered chart interpretation"""
     
     OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
-    DEFAULT_MODEL = "tngtech/deepseek-r1t-chimera:free"
+    DEFAULT_MODEL = "deepseek/deepseek-r1-0528:free"
     
     # System prompt for grounded astrology interpretation
     SYSTEM_PROMPT = """You are ASTRAEA, a professional astrology interpreter. Your role is to provide insightful, grounded interpretations of astrological charts.

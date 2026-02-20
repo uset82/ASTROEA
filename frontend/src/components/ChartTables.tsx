@@ -80,14 +80,6 @@ const getObjectSymbol = (obj: any) => {
     return ''
 }
 
-const getAspectName = (aspect: any) => {
-    if (!aspect) return ''
-    if (typeof aspect.type === 'string') return aspect.type
-    if (typeof aspect.type?.name === 'string') return aspect.type.name
-    if (typeof aspect.aspect === 'string') return aspect.aspect
-    return ''
-}
-
 function ChartTables({ chartData }: ChartTablesProps) {
     const planets = useMemo(() => {
         if (!chartData.objects) return []
