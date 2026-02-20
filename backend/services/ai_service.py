@@ -3,15 +3,22 @@ AI Interpretation Service using OpenRouter API
 Provides grounded astrology interpretations based on chart data
 """
 import os
+import asyncio
 import httpx
-from typing import Dict, Any, AsyncGenerator, Optional
+from typing import Dict, Any, AsyncGenerator, Optional, List
 
 
 class AIService:
     """Service for AI-powered chart interpretation"""
     
     OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
-    DEFAULT_MODEL = "deepseek/deepseek-r1-0528:free"
+    MODELS: List[str] = [
+        "deepseek/deepseek-r1-0528:free",
+        "tngtech/deepseek-r1t-chimera:free",
+        "google/gemma-3n-e4b-it:free",
+    ]
+    MAX_RETRIES = 2
+    RETRY_BASE_DELAY = 2.0  # seconds
     
     # System prompt for grounded astrology interpretation
     SYSTEM_PROMPT = """You are ASTRAEA, a professional astrology interpreter. Your role is to provide insightful, grounded interpretations of astrological charts.
@@ -103,6 +110,33 @@ Languages: Respond in the same language the user uses (English, Spanish, or Norw
         
         return "\n".join(lines)
     
+    async def _request_with_retry(
+        self,
+        client: httpx.AsyncClient,
+        model: str,
+        messages: list,
+        stream: bool = False
+    ):
+        """Make a request with retry on 429 rate limit errors"""
+        for attempt in range(self.MAX_RETRIES + 1):
+            response = await client.post(
+                f"{self.OPENROUTER_BASE_URL}/chat/completions",
+                headers=self._get_headers(),
+                json={
+                    "model": model,
+                    "messages": messages,
+                    "temperature": 0.7,
+                    "max_tokens": 2000,
+                    **(({"stream": True}) if stream else {})
+                }
+            )
+            if response.status_code == 429 and attempt < self.MAX_RETRIES:
+                delay = self.RETRY_BASE_DELAY * (2 ** attempt)
+                await asyncio.sleep(delay)
+                continue
+            return response
+        return response  # return last response even if still 429
+
     async def interpret_chart(
         self,
         chart_data: Dict[str, Any],
@@ -110,15 +144,8 @@ Languages: Respond in the same language the user uses (English, Spanish, or Norw
         language: str = "en"
     ) -> str:
         """
-        Generate AI interpretation for a chart
-        
-        Args:
-            chart_data: Complete chart data from chart_service
-            focus: Optional focus area (e.g., "career", "relationships", "personality")
-            language: Response language preference
-        
-        Returns:
-            AI-generated interpretation text
+        Generate AI interpretation for a chart.
+        Tries multiple models with retry on 429 rate limits.
         """
         if not self.api_key:
             return "Error: OpenRouter API key not configured. Please set OPENROUTER_API_KEY."
@@ -138,26 +165,26 @@ Languages: Respond in the same language the user uses (English, Spanish, or Norw
         elif language == "no":
             user_prompt += "\n\nPlease respond in Norwegian."
         
-        async with httpx.AsyncClient(timeout=60.0) as client:
-            response = await client.post(
-                f"{self.OPENROUTER_BASE_URL}/chat/completions",
-                headers=self._get_headers(),
-                json={
-                    "model": self.DEFAULT_MODEL,
-                    "messages": [
-                        {"role": "system", "content": self.SYSTEM_PROMPT},
-                        {"role": "user", "content": user_prompt}
-                    ],
-                    "temperature": 0.7,
-                    "max_tokens": 2000
-                }
-            )
+        messages = [
+            {"role": "system", "content": self.SYSTEM_PROMPT},
+            {"role": "user", "content": user_prompt}
+        ]
+        
+        last_error = ""
+        async with httpx.AsyncClient(timeout=90.0) as client:
+            for model in self.MODELS:
+                try:
+                    response = await self._request_with_retry(client, model, messages)
+                    if response.status_code == 200:
+                        data = response.json()
+                        content = data.get("choices", [{}])[0].get("message", {}).get("content")
+                        if content:
+                            return content
+                    last_error = f"Model {model}: status {response.status_code}"
+                except Exception as e:
+                    last_error = f"Model {model}: {str(e)}"
             
-            if response.status_code != 200:
-                return f"Error: API request failed with status {response.status_code}: {response.text}"
-            
-            data = response.json()
-            return data["choices"][0]["message"]["content"]
+            return f"Error: All AI models are currently rate-limited. Please try again in a minute. Last error: {last_error}"
     
     async def interpret_chart_stream(
         self,
@@ -166,10 +193,8 @@ Languages: Respond in the same language the user uses (English, Spanish, or Norw
         language: str = "en"
     ) -> AsyncGenerator[str, None]:
         """
-        Generate streaming AI interpretation for a chart
-        
-        Yields:
-            Chunks of interpretation text as they arrive
+        Generate streaming AI interpretation for a chart.
+        Tries multiple models with retry on 429 rate limits.
         """
         if not self.api_key:
             yield "Error: OpenRouter API key not configured. Please set OPENROUTER_API_KEY."
@@ -190,41 +215,62 @@ Languages: Respond in the same language the user uses (English, Spanish, or Norw
         elif language == "no":
             user_prompt += "\n\nPlease respond in Norwegian."
         
+        messages = [
+            {"role": "system", "content": self.SYSTEM_PROMPT},
+            {"role": "user", "content": user_prompt}
+        ]
+        
+        last_error = ""
         async with httpx.AsyncClient(timeout=120.0) as client:
-            async with client.stream(
-                "POST",
-                f"{self.OPENROUTER_BASE_URL}/chat/completions",
-                headers=self._get_headers(),
-                json={
-                    "model": self.DEFAULT_MODEL,
-                    "messages": [
-                        {"role": "system", "content": self.SYSTEM_PROMPT},
-                        {"role": "user", "content": user_prompt}
-                    ],
-                    "temperature": 0.7,
-                    "max_tokens": 2000,
-                    "stream": True
-                }
-            ) as response:
-                if response.status_code != 200:
-                    yield f"Error: API request failed with status {response.status_code}"
-                    return
-                
-                async for line in response.aiter_lines():
-                    if line.startswith("data: "):
-                        data_str = line[6:]
-                        if data_str == "[DONE]":
-                            break
-                        try:
-                            import json
-                            data = json.loads(data_str)
-                            if "choices" in data and len(data["choices"]) > 0:
-                                delta = data["choices"][0].get("delta", {})
-                                content = delta.get("content", "")
-                                if content:
-                                    yield content
-                        except:
-                            pass
+            for model in self.MODELS:
+                for attempt in range(self.MAX_RETRIES + 1):
+                    try:
+                        async with client.stream(
+                            "POST",
+                            f"{self.OPENROUTER_BASE_URL}/chat/completions",
+                            headers=self._get_headers(),
+                            json={
+                                "model": model,
+                                "messages": messages,
+                                "temperature": 0.7,
+                                "max_tokens": 2000,
+                                "stream": True
+                            }
+                        ) as response:
+                            if response.status_code == 429:
+                                if attempt < self.MAX_RETRIES:
+                                    delay = self.RETRY_BASE_DELAY * (2 ** attempt)
+                                    await asyncio.sleep(delay)
+                                    continue
+                                last_error = f"Model {model}: rate limited (429)"
+                                break  # try next model
+                            
+                            if response.status_code != 200:
+                                last_error = f"Model {model}: status {response.status_code}"
+                                break  # try next model
+                            
+                            # Success - stream the response
+                            async for line in response.aiter_lines():
+                                if line.startswith("data: "):
+                                    data_str = line[6:]
+                                    if data_str == "[DONE]":
+                                        return
+                                    try:
+                                        import json
+                                        data = json.loads(data_str)
+                                        if "choices" in data and len(data["choices"]) > 0:
+                                            delta = data["choices"][0].get("delta", {})
+                                            content = delta.get("content", "")
+                                            if content:
+                                                yield content
+                                    except:
+                                        pass
+                            return  # successfully streamed
+                    except Exception as e:
+                        last_error = f"Model {model}: {str(e)}"
+                        break  # try next model
+            
+            yield f"Error: All AI models are currently rate-limited. Please try again in a minute. ({last_error})"
 
 
 # Singleton instance

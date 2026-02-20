@@ -49,44 +49,56 @@ exports.handler = async (event, context) => {
         let lastError = null;
 
         for (const model of models) {
-            try {
-                const requestBody = JSON.stringify({
-                    model: model,
-                    messages: [{ role: 'user', content: prompt }],
-                });
+            // Retry up to 2 times with exponential backoff on 429
+            for (let attempt = 0; attempt < 3; attempt++) {
+                try {
+                    const requestBody = JSON.stringify({
+                        model: model,
+                        messages: [{ role: 'user', content: prompt }],
+                    });
 
-                const result = await makeHttpsRequest({
-                    hostname: 'openrouter.ai',
-                    path: '/api/v1/chat/completions',
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${apiKey}`,
-                        'HTTP-Referer': 'https://lively-sunburst-274cb9.netlify.app/',
-                        'X-Title': 'ASTRAEA Astrology App',
-                        'Content-Length': Buffer.byteLength(requestBody)
+                    const result = await makeHttpsRequest({
+                        hostname: 'openrouter.ai',
+                        path: '/api/v1/chat/completions',
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${apiKey}`,
+                            'HTTP-Referer': 'https://lively-sunburst-274cb9.netlify.app/',
+                            'X-Title': 'ASTRAEA Astrology App',
+                            'Content-Length': Buffer.byteLength(requestBody)
+                        }
+                    }, requestBody);
+
+                    const parsed = JSON.parse(result);
+
+                    if (parsed.error) {
+                        const statusCode = parsed.error.code || parsed.error.status;
+                        if (statusCode === 429 && attempt < 2) {
+                            const delay = 2000 * Math.pow(2, attempt);
+                            console.log(`Model ${model} rate limited (429), retrying in ${delay}ms...`);
+                            await new Promise(r => setTimeout(r, delay));
+                            continue;
+                        }
+                        console.log(`Model ${model} failed:`, parsed.error.message);
+                        lastError = parsed.error.message;
+                        break; // try next model
                     }
-                }, requestBody);
 
-                const parsed = JSON.parse(result);
-
-                if (parsed.error) {
-                    console.log(`Model ${model} failed:`, parsed.error.message);
-                    lastError = parsed.error.message;
-                    continue; // Try next model
+                    const text = parsed.choices?.[0]?.message?.content;
+                    if (text) {
+                        return {
+                            statusCode: 200,
+                            headers: { ...headers, 'Content-Type': 'text/event-stream', 'Cache-Control': 'no-cache' },
+                            body: `data: ${text}\n\ndata: [DONE]\n\n`,
+                        };
+                    }
+                    break; // no content, try next model
+                } catch (e) {
+                    console.log(`Model ${model} error:`, e.message);
+                    lastError = e.message;
+                    break; // try next model
                 }
-
-                const text = parsed.choices?.[0]?.message?.content;
-                if (text) {
-                    return {
-                        statusCode: 200,
-                        headers: { ...headers, 'Content-Type': 'text/event-stream', 'Cache-Control': 'no-cache' },
-                        body: `data: ${text}\n\ndata: [DONE]\n\n`,
-                    };
-                }
-            } catch (e) {
-                console.log(`Model ${model} error:`, e.message);
-                lastError = e.message;
             }
         }
 
