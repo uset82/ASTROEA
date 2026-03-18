@@ -38,11 +38,10 @@ exports.handler = async (event, context) => {
             ? `You are an expert astrologer. Chart:\n${chartSummary}\n\nHistory:\n${conversation_history.map(m => `${m.role}: ${m.content}`).join('\n')}\n\nUser: ${user_message}\n\n${langInstruction}`
             : `You are an expert astrologer. Provide a detailed natal chart interpretation.\n\nChart:\n${chartSummary}\n\n${focus ? `Focus on: ${focus}.` : ''}\n\nCover: Sun sign, Moon sign, Ascendant, key aspects, house placements.\n\n${langInstruction}`;
 
-        // Primary: DeepSeek R1 (from project spec)
-        // Fallback: Other available free models
+        // Models to try in order
         const models = [
             'openrouter/free',                   // Auto-routes to available free models
-            'google/gemma-3-12b-it:free',        // Fallback if router is down
+            'google/gemma-3-12b-it:free',        // Fallback
         ];
 
         let lastError = null;
@@ -63,10 +62,11 @@ exports.handler = async (event, context) => {
                         headers: {
                             'Content-Type': 'application/json',
                             'Authorization': `Bearer ${apiKey}`,
-                            'HTTP-Referer': 'https://lively-sunburst-274cb9.netlify.app/',
+                            'HTTP-Referer': 'https://astraia.netlify.app/',
                             'X-Title': 'ASTRAEA Astrology App',
                             'Content-Length': Buffer.byteLength(requestBody)
-                        }
+                        },
+                        timeout: 25000, // 25s timeout (Netlify allows 26s max)
                     }, requestBody);
 
                     const parsed = JSON.parse(result);
@@ -86,17 +86,25 @@ exports.handler = async (event, context) => {
 
                     const text = parsed.choices?.[0]?.message?.content;
                     if (text) {
+                        // Format each line properly for SSE: multi-line text needs
+                        // each line prefixed with "data: " for proper SSE parsing
+                        const sseLines = text.split('\n').map(line => `data: ${line}`).join('\n');
                         return {
                             statusCode: 200,
                             headers: { ...headers, 'Content-Type': 'text/event-stream', 'Cache-Control': 'no-cache' },
-                            body: `data: ${text}\n\ndata: [DONE]\n\n`,
+                            body: `${sseLines}\n\ndata: [DONE]\n\n`,
                         };
                     }
+                    console.log(`Model ${model} returned empty content`);
+                    lastError = 'Empty response from model';
                     break; // no content, try next model
                 } catch (e) {
-                    console.log(`Model ${model} error:`, e.message);
+                    console.log(`Model ${model} error (attempt ${attempt + 1}):`, e.message);
                     lastError = e.message;
-                    break; // try next model
+                    if (e.message.includes('timeout') && attempt < 2) {
+                        continue; // retry on timeout
+                    }
+                    break; // try next model on other errors
                 }
             }
         }
@@ -113,13 +121,20 @@ exports.handler = async (event, context) => {
     }
 };
 
-// Helper function to make HTTPS request using built-in module
+// Helper function to make HTTPS request with timeout support
 function makeHttpsRequest(options, body) {
     return new Promise((resolve, reject) => {
+        const timeoutMs = options.timeout || 25000;
+
         const req = https.request(options, (res) => {
             let data = '';
             res.on('data', (chunk) => { data += chunk; });
             res.on('end', () => { resolve(data); });
+        });
+
+        req.setTimeout(timeoutMs, () => {
+            req.destroy();
+            reject(new Error(`Request timeout after ${timeoutMs}ms`));
         });
 
         req.on('error', (err) => { reject(err); });

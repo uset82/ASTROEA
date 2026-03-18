@@ -95,6 +95,8 @@ function Interpretation({ chartData }: InterpretationProps) {
                     if (line.startsWith('data: ')) {
                         const data = line.slice(6)
                         if (data === '[DONE]') break
+                        // Add newline between data lines to reconstruct multi-line text
+                        if (fullText.length > 0) fullText += '\n'
                         fullText += data
                         setMessages(prev => {
                             const updated = [...prev]
