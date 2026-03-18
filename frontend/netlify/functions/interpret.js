@@ -1,5 +1,5 @@
-// Netlify Function for AI Chart Interpretation using OpenRouter
-const https = require('https');
+// Netlify Function for AI Chart Interpretation using Google Gemini API
+const { GoogleGenerativeAI } = require('@google/generative-ai');
 
 exports.handler = async (event, context) => {
     // Handle CORS
@@ -20,113 +20,63 @@ exports.handler = async (event, context) => {
     try {
         const { chart_data, focus, language, user_message, conversation_history } = JSON.parse(event.body);
 
-        // Use OpenRouter API - read from env variable
-        const apiKey = process.env.OPENROUTER_API_KEY;
+        const apiKey = process.env.GEMINI_API_KEY;
 
         if (!apiKey) {
             return {
                 statusCode: 500,
                 headers: { ...headers, 'Content-Type': 'application/json' },
-                body: JSON.stringify({ error: 'OPENROUTER_API_KEY not configured in Netlify environment variables' }),
+                body: JSON.stringify({ error: 'GEMINI_API_KEY not configured in Netlify environment variables' }),
             };
         }
 
+        const genAI = new GoogleGenerativeAI(apiKey);
+        const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
+
         const chartSummary = buildChartSummary(chart_data);
-        const langInstruction = language === 'es' ? 'Respond in Spanish.' : language === 'no' ? 'Respond in Norwegian.' : 'Respond in English.';
+        const langInstruction = language === 'es'
+            ? 'Respond entirely in Spanish.'
+            : language === 'no'
+                ? 'Respond entirely in Norwegian.'
+                : 'Respond entirely in English.';
 
-        let prompt = user_message && conversation_history?.length > 0
-            ? `You are an expert astrologer. Chart:\n${chartSummary}\n\nHistory:\n${conversation_history.map(m => `${m.role}: ${m.content}`).join('\n')}\n\nUser: ${user_message}\n\n${langInstruction}`
-            : `You are an expert astrologer. Provide a detailed natal chart interpretation.\n\nChart:\n${chartSummary}\n\n${focus ? `Focus on: ${focus}.` : ''}\n\nCover: Sun sign, Moon sign, Ascendant, key aspects, house placements.\n\n${langInstruction}`;
+        const systemInstruction = `You are an expert professional astrologer with deep knowledge of Western tropical astrology (Placidus house system). You provide insightful, detailed, and empathetic natal chart interpretations. Use markdown formatting with headers (##, ###) and bold text for key points. ${langInstruction}`;
 
-        // Primary: DeepSeek R1 (from project spec)
-        // Fallback: Other available free models
-        const models = [
-            'openrouter/free',                   // Auto-routes to available free models
-            'google/gemma-3-12b-it:free',        // Fallback if router is down
-        ];
-
-        let lastError = null;
-
-        for (const model of models) {
-            // Retry up to 2 times with exponential backoff on 429
-            for (let attempt = 0; attempt < 3; attempt++) {
-                try {
-                    const requestBody = JSON.stringify({
-                        model: model,
-                        messages: [{ role: 'user', content: prompt }],
-                    });
-
-                    const result = await makeHttpsRequest({
-                        hostname: 'openrouter.ai',
-                        path: '/api/v1/chat/completions',
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Authorization': `Bearer ${apiKey}`,
-                            'HTTP-Referer': 'https://lively-sunburst-274cb9.netlify.app/',
-                            'X-Title': 'ASTRAEA Astrology App',
-                            'Content-Length': Buffer.byteLength(requestBody)
-                        }
-                    }, requestBody);
-
-                    const parsed = JSON.parse(result);
-
-                    if (parsed.error) {
-                        const statusCode = parsed.error.code || parsed.error.status;
-                        if (statusCode === 429 && attempt < 2) {
-                            const delay = 2000 * Math.pow(2, attempt);
-                            console.log(`Model ${model} rate limited (429), retrying in ${delay}ms...`);
-                            await new Promise(r => setTimeout(r, delay));
-                            continue;
-                        }
-                        console.log(`Model ${model} failed:`, parsed.error.message);
-                        lastError = parsed.error.message;
-                        break; // try next model
-                    }
-
-                    const text = parsed.choices?.[0]?.message?.content;
-                    if (text) {
-                        return {
-                            statusCode: 200,
-                            headers: { ...headers, 'Content-Type': 'text/event-stream', 'Cache-Control': 'no-cache' },
-                            body: `data: ${text}\n\ndata: [DONE]\n\n`,
-                        };
-                    }
-                    break; // no content, try next model
-                } catch (e) {
-                    console.log(`Model ${model} error:`, e.message);
-                    lastError = e.message;
-                    break; // try next model
-                }
-            }
+        let prompt;
+        if (user_message && conversation_history?.length > 0) {
+            // Follow-up conversation
+            prompt = `Chart data:\n${chartSummary}\n\nConversation history:\n${conversation_history.map(m => `${m.role === 'user' ? 'User' : 'Astrologer'}: ${m.content}`).join('\n')}\n\nUser: ${user_message}`;
+        } else {
+            // Initial interpretation
+            prompt = `Provide a detailed natal chart interpretation.\n\nChart data:\n${chartSummary}\n\n${focus ? `Focus area: ${focus}.` : ''}\n\nCover: Sun sign personality, Moon sign emotions, Ascendant/Rising sign, key planetary aspects, house placements, and any notable patterns. Structure with clear markdown headers for each section.`;
         }
 
-        throw new Error(lastError || 'All models failed');
+        const result = await model.generateContent({
+            contents: [{ role: 'user', parts: [{ text: prompt }] }],
+            systemInstruction: { parts: [{ text: systemInstruction }] },
+        });
+
+        const text = result.response.text();
+
+        if (!text) {
+            throw new Error('Empty response from Gemini API');
+        }
+
+        return {
+            statusCode: 200,
+            headers: { ...headers, 'Content-Type': 'text/event-stream', 'Cache-Control': 'no-cache' },
+            body: `data: ${text}\n\ndata: [DONE]\n\n`,
+        };
 
     } catch (error) {
-        console.error('Error:', error);
+        console.error('Gemini interpretation error:', error);
         return {
             statusCode: 500,
             headers: { ...headers, 'Content-Type': 'application/json' },
-            body: JSON.stringify({ error: error.message }),
+            body: JSON.stringify({ error: error.message || 'Failed to generate interpretation' }),
         };
     }
 };
-
-// Helper function to make HTTPS request using built-in module
-function makeHttpsRequest(options, body) {
-    return new Promise((resolve, reject) => {
-        const req = https.request(options, (res) => {
-            let data = '';
-            res.on('data', (chunk) => { data += chunk; });
-            res.on('end', () => { resolve(data); });
-        });
-
-        req.on('error', (err) => { reject(err); });
-        req.write(body);
-        req.end();
-    });
-}
 
 function buildChartSummary(chartData) {
     if (!chartData?.objects) return 'No chart data';
