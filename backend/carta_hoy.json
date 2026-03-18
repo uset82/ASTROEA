@@ -1,0 +1,5340 @@
+{
+  "type": "Natal",
+  "native": {
+    "date_time": {
+      "datetime": "2026-01-27 20:14:00+01:00",
+      "timezone": "Europe/Madrid",
+      "ambiguous": false,
+      "julian": 2461068.301388889,
+      "deltat": 0.0007973494019737056,
+      "sidereal_time": "03:27:30"
+    },
+    "coordinates": {
+      "latitude": {
+        "raw": 40.4168,
+        "formatted": "40N25.0",
+        "direction": "+",
+        "degrees": 40,
+        "minutes": 25,
+        "seconds": 0
+      },
+      "longitude": {
+        "raw": -3.7038,
+        "formatted": "3W42.24",
+        "direction": "-",
+        "degrees": 3,
+        "minutes": 42,
+        "seconds": 14
+      }
+    }
+  },
+  "house_system": "Placidus",
+  "shape": "Bowl",
+  "diurnal": false,
+  "moon_phase": {
+    "new_moon": false,
+    "waxing_crescent": false,
+    "first_quarter": true,
+    "waxing_gibbous": false,
+    "full_moon": false,
+    "disseminating": false,
+    "third_quarter": false,
+    "balsamic": false,
+    "formatted": "First Quarter"
+  },
+  "objects": {
+    "3000001": {
+      "index": 3000001,
+      "name": "Asc",
+      "type": {
+        "index": 3000000,
+        "name": "Angle"
+      },
+      "longitude": {
+        "raw": 149.79367208318743,
+        "formatted": "149°47'37\"",
+        "direction": "+",
+        "degrees": 149,
+        "minutes": 47,
+        "seconds": 37
+      },
+      "sign_longitude": {
+        "raw": 29.79367208318743,
+        "formatted": "29°47'37\"",
+        "direction": "+",
+        "degrees": 29,
+        "minutes": 47,
+        "seconds": 37
+      },
+      "sign": {
+        "number": 5,
+        "name": "Leo",
+        "element": "Fire",
+        "modality": "Fixed"
+      },
+      "decan": {
+        "number": 3,
+        "name": "3rd Decan"
+      },
+      "house": {
+        "index": 2000001,
+        "number": 1,
+        "name": "1st House"
+      },
+      "speed": 283.83369472324694,
+      "declination": {
+        "raw": 11.543931090848982,
+        "formatted": "11°32'38\"",
+        "direction": "+",
+        "degrees": 11,
+        "minutes": 32,
+        "seconds": 38
+      }
+    },
+    "3000002": {
+      "index": 3000002,
+      "name": "Desc",
+      "type": {
+        "index": 3000000,
+        "name": "Angle"
+      },
+      "longitude": {
+        "raw": 329.7936720831874,
+        "formatted": "329°47'37\"",
+        "direction": "+",
+        "degrees": 329,
+        "minutes": 47,
+        "seconds": 37
+      },
+      "sign_longitude": {
+        "raw": 29.793672083187403,
+        "formatted": "29°47'37\"",
+        "direction": "+",
+        "degrees": 29,
+        "minutes": 47,
+        "seconds": 37
+      },
+      "sign": {
+        "number": 11,
+        "name": "Aquarius",
+        "element": "Air",
+        "modality": "Fixed"
+      },
+      "decan": {
+        "number": 3,
+        "name": "3rd Decan"
+      },
+      "house": {
+        "index": 2000007,
+        "number": 7,
+        "name": "7th House"
+      },
+      "speed": 283.83369472324694,
+      "declination": {
+        "raw": -11.543931090848982,
+        "formatted": "-11°32'38\"",
+        "direction": "-",
+        "degrees": 11,
+        "minutes": 32,
+        "seconds": 38
+      }
+    },
+    "3000003": {
+      "index": 3000003,
+      "name": "MC",
+      "type": {
+        "index": 3000000,
+        "name": "Angle"
+      },
+      "longitude": {
+        "raw": 54.244657357226664,
+        "formatted": "54°14'41\"",
+        "direction": "+",
+        "degrees": 54,
+        "minutes": 14,
+        "seconds": 41
+      },
+      "sign_longitude": {
+        "raw": 24.244657357226664,
+        "formatted": "24°14'41\"",
+        "direction": "+",
+        "degrees": 24,
+        "minutes": 14,
+        "seconds": 41
+      },
+      "sign": {
+        "number": 2,
+        "name": "Taurus",
+        "element": "Earth",
+        "modality": "Fixed"
+      },
+      "decan": {
+        "number": 3,
+        "name": "3rd Decan"
+      },
+      "house": {
+        "index": 2000010,
+        "number": 10,
+        "name": "10th House"
+      },
+      "speed": 352.45452819884986,
+      "declination": {
+        "raw": 18.83174061338532,
+        "formatted": "18°49'54\"",
+        "direction": "+",
+        "degrees": 18,
+        "minutes": 49,
+        "seconds": 54
+      }
+    },
+    "3000004": {
+      "index": 3000004,
+      "name": "IC",
+      "type": {
+        "index": 3000000,
+        "name": "Angle"
+      },
+      "longitude": {
+        "raw": 234.24465735722666,
+        "formatted": "234°14'41\"",
+        "direction": "+",
+        "degrees": 234,
+        "minutes": 14,
+        "seconds": 41
+      },
+      "sign_longitude": {
+        "raw": 24.244657357226657,
+        "formatted": "24°14'41\"",
+        "direction": "+",
+        "degrees": 24,
+        "minutes": 14,
+        "seconds": 41
+      },
+      "sign": {
+        "number": 8,
+        "name": "Scorpio",
+        "element": "Water",
+        "modality": "Fixed"
+      },
+      "decan": {
+        "number": 3,
+        "name": "3rd Decan"
+      },
+      "house": {
+        "index": 2000004,
+        "number": 4,
+        "name": "4th House"
+      },
+      "speed": 352.45452819884986,
+      "declination": {
+        "raw": -18.83174061338532,
+        "formatted": "-18°49'54\"",
+        "direction": "-",
+        "degrees": 18,
+        "minutes": 49,
+        "seconds": 54
+      }
+    },
+    "6000003": {
+      "index": 6000003,
+      "name": "True North Node",
+      "type": {
+        "index": 6000000,
+        "name": "Point"
+      },
+      "latitude": {
+        "raw": 0.0,
+        "formatted": "00°00'00\"",
+        "direction": "+",
+        "degrees": 0,
+        "minutes": 0,
+        "seconds": 0
+      },
+      "longitude": {
+        "raw": 339.38930418162374,
+        "formatted": "339°23'21\"",
+        "direction": "+",
+        "degrees": 339,
+        "minutes": 23,
+        "seconds": 21
+      },
+      "sign_longitude": {
+        "raw": 9.389304181623743,
+        "formatted": "09°23'21\"",
+        "direction": "+",
+        "degrees": 9,
+        "minutes": 23,
+        "seconds": 21
+      },
+      "sign": {
+        "number": 12,
+        "name": "Pisces",
+        "element": "Water",
+        "modality": "Mutable"
+      },
+      "decan": {
+        "number": 1,
+        "name": "1st Decan"
+      },
+      "house": {
+        "index": 2000007,
+        "number": 7,
+        "name": "7th House"
+      },
+      "speed": -0.039414970589134984,
+      "movement": {
+        "direct": false,
+        "stationary": false,
+        "retrograde": true,
+        "typical": true,
+        "formatted": "Retrograde"
+      },
+      "declination": {
+        "raw": -8.048891778495861,
+        "formatted": "-08°02'56\"",
+        "direction": "-",
+        "degrees": 8,
+        "minutes": 2,
+        "seconds": 56
+      },
+      "out_of_bounds": false
+    },
+    "6000004": {
+      "index": 6000004,
+      "name": "True South Node",
+      "type": {
+        "index": 6000000,
+        "name": "Point"
+      },
+      "latitude": {
+        "raw": 0.0,
+        "formatted": "00°00'00\"",
+        "direction": "+",
+        "degrees": 0,
+        "minutes": 0,
+        "seconds": 0
+      },
+      "longitude": {
+        "raw": 159.38930418162374,
+        "formatted": "159°23'21\"",
+        "direction": "+",
+        "degrees": 159,
+        "minutes": 23,
+        "seconds": 21
+      },
+      "sign_longitude": {
+        "raw": 9.389304181623743,
+        "formatted": "09°23'21\"",
+        "direction": "+",
+        "degrees": 9,
+        "minutes": 23,
+        "seconds": 21
+      },
+      "sign": {
+        "number": 6,
+        "name": "Virgo",
+        "element": "Earth",
+        "modality": "Mutable"
+      },
+      "decan": {
+        "number": 1,
+        "name": "1st Decan"
+      },
+      "house": {
+        "index": 2000001,
+        "number": 1,
+        "name": "1st House"
+      },
+      "speed": -0.039414970589134984,
+      "movement": {
+        "direct": false,
+        "stationary": false,
+        "retrograde": true,
+        "typical": true,
+        "formatted": "Retrograde"
+      },
+      "declination": {
+        "raw": 8.048891778495868,
+        "formatted": "08°02'56\"",
+        "direction": "+",
+        "degrees": 8,
+        "minutes": 2,
+        "seconds": 56
+      },
+      "out_of_bounds": false
+    },
+    "6000005": {
+      "index": 6000005,
+      "name": "Vertex",
+      "type": {
+        "index": 6000000,
+        "name": "Point"
+      },
+      "longitude": {
+        "raw": 292.4166768885375,
+        "formatted": "292°25'00\"",
+        "direction": "+",
+        "degrees": 292,
+        "minutes": 25,
+        "seconds": 0
+      },
+      "sign_longitude": {
+        "raw": 22.416676888537495,
+        "formatted": "22°25'00\"",
+        "direction": "+",
+        "degrees": 22,
+        "minutes": 25,
+        "seconds": 0
+      },
+      "sign": {
+        "number": 10,
+        "name": "Capricorn",
+        "element": "Earth",
+        "modality": "Cardinal"
+      },
+      "decan": {
+        "number": 3,
+        "name": "3rd Decan"
+      },
+      "house": {
+        "index": 2000005,
+        "number": 5,
+        "name": "5th House"
+      },
+      "speed": 445.1898340897142,
+      "movement": {
+        "direct": true,
+        "stationary": false,
+        "retrograde": false,
+        "typical": true,
+        "formatted": "Direct"
+      },
+      "declination": {
+        "raw": -21.574048294658546,
+        "formatted": "-21°34'27\"",
+        "direction": "-",
+        "degrees": 21,
+        "minutes": 34,
+        "seconds": 27
+      },
+      "out_of_bounds": false
+    },
+    "6000010": {
+      "index": 6000010,
+      "name": "Part of Fortune",
+      "type": {
+        "index": 6000000,
+        "name": "Point"
+      },
+      "latitude": {
+        "raw": 0.0,
+        "formatted": "00°00'00\"",
+        "direction": "+",
+        "degrees": 0,
+        "minutes": 0,
+        "seconds": 0
+      },
+      "longitude": {
+        "raw": 38.66349168977649,
+        "formatted": "38°39'49\"",
+        "direction": "+",
+        "degrees": 38,
+        "minutes": 39,
+        "seconds": 49
+      },
+      "sign_longitude": {
+        "raw": 8.663491689776492,
+        "formatted": "08°39'49\"",
+        "direction": "+",
+        "degrees": 8,
+        "minutes": 39,
+        "seconds": 49
+      },
+      "sign": {
+        "number": 2,
+        "name": "Taurus",
+        "element": "Earth",
+        "modality": "Fixed"
+      },
+      "decan": {
+        "number": 1,
+        "name": "1st Decan"
+      },
+      "house": {
+        "index": 2000009,
+        "number": 9,
+        "name": "9th House"
+      },
+      "speed": 0.0,
+      "movement": {
+        "direct": false,
+        "stationary": true,
+        "retrograde": false,
+        "typical": true,
+        "formatted": "Stationary"
+      },
+      "declination": {
+        "raw": 14.388692265728036,
+        "formatted": "14°23'19\"",
+        "direction": "+",
+        "degrees": 14,
+        "minutes": 23,
+        "seconds": 19
+      },
+      "out_of_bounds": false
+    },
+    "6000007": {
+      "index": 6000007,
+      "name": "True Lilith",
+      "type": {
+        "index": 6000000,
+        "name": "Point"
+      },
+      "latitude": {
+        "raw": -4.799445566523783,
+        "formatted": "-04°47'58\"",
+        "direction": "-",
+        "degrees": 4,
+        "minutes": 47,
+        "seconds": 58
+      },
+      "longitude": {
+        "raw": 272.1810649737694,
+        "formatted": "272°10'52\"",
+        "direction": "+",
+        "degrees": 272,
+        "minutes": 10,
+        "seconds": 52
+      },
+      "sign_longitude": {
+        "raw": 2.1810649737694234,
+        "formatted": "02°10'52\"",
+        "direction": "+",
+        "degrees": 2,
+        "minutes": 10,
+        "seconds": 52
+      },
+      "sign": {
+        "number": 10,
+        "name": "Capricorn",
+        "element": "Earth",
+        "modality": "Cardinal"
+      },
+      "decan": {
+        "number": 1,
+        "name": "1st Decan"
+      },
+      "house": {
+        "index": 2000005,
+        "number": 5,
+        "name": "5th House"
+      },
+      "speed": -1.0513530215569642,
+      "movement": {
+        "direct": false,
+        "stationary": false,
+        "retrograde": true,
+        "typical": false,
+        "formatted": "Retrograde"
+      },
+      "declination": {
+        "raw": -28.21899776683252,
+        "formatted": "-28°13'08\"",
+        "direction": "-",
+        "degrees": 28,
+        "minutes": 13,
+        "seconds": 8
+      },
+      "out_of_bounds": true
+    },
+    "4000001": {
+      "index": 4000001,
+      "name": "Sun",
+      "type": {
+        "index": 4000000,
+        "name": "Planet"
+      },
+      "latitude": {
+        "raw": 0.0001710680091470967,
+        "formatted": "00°00'01\"",
+        "direction": "+",
+        "degrees": 0,
+        "minutes": 0,
+        "seconds": 1
+      },
+      "longitude": {
+        "raw": 307.8614140828301,
+        "formatted": "307°51'41\"",
+        "direction": "+",
+        "degrees": 307,
+        "minutes": 51,
+        "seconds": 41
+      },
+      "sign_longitude": {
+        "raw": 7.861414082830095,
+        "formatted": "07°51'41\"",
+        "direction": "+",
+        "degrees": 7,
+        "minutes": 51,
+        "seconds": 41
+      },
+      "sign": {
+        "number": 11,
+        "name": "Aquarius",
+        "element": "Air",
+        "modality": "Fixed"
+      },
+      "decan": {
+        "number": 1,
+        "name": "1st Decan"
+      },
+      "house": {
+        "index": 2000006,
+        "number": 6,
+        "name": "6th House"
+      },
+      "distance": 0.9847732460389339,
+      "speed": 1.0160770616836146,
+      "movement": {
+        "direct": true,
+        "stationary": false,
+        "retrograde": false,
+        "typical": true,
+        "formatted": "Direct"
+      },
+      "declination": {
+        "raw": -18.30213872643859,
+        "formatted": "-18°18'08\"",
+        "direction": "-",
+        "degrees": 18,
+        "minutes": 18,
+        "seconds": 8
+      },
+      "out_of_bounds": false,
+      "in_sect": false,
+      "dignities": {
+        "ruler": false,
+        "exalted": false,
+        "triplicity_ruler": false,
+        "term_ruler": false,
+        "face_ruler": false,
+        "mutual_reception_ruler": false,
+        "mutual_reception_exalted": false,
+        "mutual_reception_triplicity_ruler": false,
+        "mutual_reception_term_ruler": false,
+        "mutual_reception_face_ruler": false,
+        "detriment": true,
+        "fall": false,
+        "peregrine": true,
+        "formatted": [
+          "Detriment",
+          "Peregrine"
+        ]
+      },
+      "score": -10
+    },
+    "4000002": {
+      "index": 4000002,
+      "name": "Moon",
+      "type": {
+        "index": 4000000,
+        "name": "Planet"
+      },
+      "latitude": {
+        "raw": 5.118790033783652,
+        "formatted": "05°07'08\"",
+        "direction": "+",
+        "degrees": 5,
+        "minutes": 7,
+        "seconds": 8
+      },
+      "longitude": {
+        "raw": 58.99159447624108,
+        "formatted": "58°59'30\"",
+        "direction": "+",
+        "degrees": 58,
+        "minutes": 59,
+        "seconds": 30
+      },
+      "sign_longitude": {
+        "raw": 28.991594476241083,
+        "formatted": "28°59'30\"",
+        "direction": "+",
+        "degrees": 28,
+        "minutes": 59,
+        "seconds": 30
+      },
+      "sign": {
+        "number": 2,
+        "name": "Taurus",
+        "element": "Earth",
+        "modality": "Fixed"
+      },
+      "decan": {
+        "number": 3,
+        "name": "3rd Decan"
+      },
+      "house": {
+        "index": 2000010,
+        "number": 10,
+        "name": "10th House"
+      },
+      "distance": 0.00246067092134965,
+      "speed": 14.369653552289964,
+      "movement": {
+        "direct": true,
+        "stationary": false,
+        "retrograde": false,
+        "typical": true,
+        "formatted": "Direct"
+      },
+      "declination": {
+        "raw": 24.9240515437688,
+        "formatted": "24°55'27\"",
+        "direction": "+",
+        "degrees": 24,
+        "minutes": 55,
+        "seconds": 27
+      },
+      "out_of_bounds": true,
+      "in_sect": true,
+      "dignities": {
+        "ruler": false,
+        "exalted": true,
+        "triplicity_ruler": true,
+        "term_ruler": false,
+        "face_ruler": false,
+        "mutual_reception_ruler": false,
+        "mutual_reception_exalted": false,
+        "mutual_reception_triplicity_ruler": false,
+        "mutual_reception_term_ruler": false,
+        "mutual_reception_face_ruler": false,
+        "detriment": false,
+        "fall": false,
+        "peregrine": false,
+        "formatted": [
+          "Exalted",
+          "Triplicity Ruler"
+        ]
+      },
+      "score": 7
+    },
+    "4000003": {
+      "index": 4000003,
+      "name": "Mercury",
+      "type": {
+        "index": 4000000,
+        "name": "Planet"
+      },
+      "latitude": {
+        "raw": -2.0544914685793545,
+        "formatted": "-02°03'16\"",
+        "direction": "-",
+        "degrees": 2,
+        "minutes": 3,
+        "seconds": 16
+      },
+      "longitude": {
+        "raw": 312.1124832564895,
+        "formatted": "312°06'45\"",
+        "direction": "+",
+        "degrees": 312,
+        "minutes": 6,
+        "seconds": 45
+      },
+      "sign_longitude": {
+        "raw": 12.112483256489497,
+        "formatted": "12°06'45\"",
+        "direction": "+",
+        "degrees": 12,
+        "minutes": 6,
+        "seconds": 45
+      },
+      "sign": {
+        "number": 11,
+        "name": "Aquarius",
+        "element": "Air",
+        "modality": "Fixed"
+      },
+      "decan": {
+        "number": 2,
+        "name": "2nd Decan"
+      },
+      "house": {
+        "index": 2000006,
+        "number": 6,
+        "name": "6th House"
+      },
+      "distance": 1.3797976137648935,
+      "speed": 1.7372640471268401,
+      "movement": {
+        "direct": true,
+        "stationary": false,
+        "retrograde": false,
+        "typical": true,
+        "formatted": "Direct"
+      },
+      "declination": {
+        "raw": -19.133634079756334,
+        "formatted": "-19°08'01\"",
+        "direction": "-",
+        "degrees": 19,
+        "minutes": 8,
+        "seconds": 1
+      },
+      "out_of_bounds": false,
+      "in_sect": true,
+      "dignities": {
+        "ruler": false,
+        "exalted": false,
+        "triplicity_ruler": true,
+        "term_ruler": false,
+        "face_ruler": true,
+        "mutual_reception_ruler": false,
+        "mutual_reception_exalted": false,
+        "mutual_reception_triplicity_ruler": false,
+        "mutual_reception_term_ruler": false,
+        "mutual_reception_face_ruler": false,
+        "detriment": false,
+        "fall": false,
+        "peregrine": false,
+        "formatted": [
+          "Triplicity Ruler",
+          "Face Ruler",
+          "In rulership element"
+        ]
+      },
+      "score": 4
+    },
+    "4000004": {
+      "index": 4000004,
+      "name": "Venus",
+      "type": {
+        "index": 4000000,
+        "name": "Planet"
+      },
+      "latitude": {
+        "raw": -1.290981802380688,
+        "formatted": "-01°17'28\"",
+        "direction": "-",
+        "degrees": 1,
+        "minutes": 17,
+        "seconds": 28
+      },
+      "longitude": {
+        "raw": 312.90729345761406,
+        "formatted": "312°54'26\"",
+        "direction": "+",
+        "degrees": 312,
+        "minutes": 54,
+        "seconds": 26
+      },
+      "sign_longitude": {
+        "raw": 12.90729345761406,
+        "formatted": "12°54'26\"",
+        "direction": "+",
+        "degrees": 12,
+        "minutes": 54,
+        "seconds": 26
+      },
+      "sign": {
+        "number": 11,
+        "name": "Aquarius",
+        "element": "Air",
+        "modality": "Fixed"
+      },
+      "decan": {
+        "number": 2,
+        "name": "2nd Decan"
+      },
+      "house": {
+        "index": 2000006,
+        "number": 6,
+        "name": "6th House"
+      },
+      "distance": 1.7033929245315065,
+      "speed": 1.2556952021763081,
+      "movement": {
+        "direct": true,
+        "stationary": false,
+        "retrograde": false,
+        "typical": true,
+        "formatted": "Direct"
+      },
+      "declination": {
+        "raw": -18.17611797962545,
+        "formatted": "-18°10'34\"",
+        "direction": "-",
+        "degrees": 18,
+        "minutes": 10,
+        "seconds": 34
+      },
+      "out_of_bounds": false,
+      "in_sect": true,
+      "dignities": {
+        "ruler": false,
+        "exalted": false,
+        "triplicity_ruler": false,
+        "term_ruler": true,
+        "face_ruler": false,
+        "mutual_reception_ruler": true,
+        "mutual_reception_exalted": false,
+        "mutual_reception_triplicity_ruler": false,
+        "mutual_reception_term_ruler": false,
+        "mutual_reception_face_ruler": false,
+        "detriment": false,
+        "fall": false,
+        "peregrine": false,
+        "formatted": [
+          "Term Ruler",
+          "Ruler by mutual reception"
+        ]
+      },
+      "score": 7
+    },
+    "4000006": {
+      "index": 4000006,
+      "name": "Mars",
+      "type": {
+        "index": 4000000,
+        "name": "Planet"
+      },
+      "latitude": {
+        "raw": -1.0274560905171428,
+        "formatted": "-01°01'39\"",
+        "direction": "-",
+        "degrees": 1,
+        "minutes": 1,
+        "seconds": 39
+      },
+      "longitude": {
+        "raw": 303.4447076622414,
+        "formatted": "303°26'41\"",
+        "direction": "+",
+        "degrees": 303,
+        "minutes": 26,
+        "seconds": 41
+      },
+      "sign_longitude": {
+        "raw": 3.444707662241399,
+        "formatted": "03°26'41\"",
+        "direction": "+",
+        "degrees": 3,
+        "minutes": 26,
+        "seconds": 41
+      },
+      "sign": {
+        "number": 11,
+        "name": "Aquarius",
+        "element": "Air",
+        "modality": "Fixed"
+      },
+      "decan": {
+        "number": 1,
+        "name": "1st Decan"
+      },
+      "house": {
+        "index": 2000006,
+        "number": 6,
+        "name": "6th House"
+      },
+      "distance": 2.3838483958434558,
+      "speed": 0.78116532947843,
+      "movement": {
+        "direct": true,
+        "stationary": false,
+        "retrograde": false,
+        "typical": true,
+        "formatted": "Direct"
+      },
+      "declination": {
+        "raw": -20.38317719304221,
+        "formatted": "-20°22'59\"",
+        "direction": "-",
+        "degrees": 20,
+        "minutes": 22,
+        "seconds": 59
+      },
+      "out_of_bounds": false,
+      "in_sect": true,
+      "dignities": {
+        "ruler": false,
+        "exalted": false,
+        "triplicity_ruler": false,
+        "term_ruler": false,
+        "face_ruler": false,
+        "mutual_reception_ruler": false,
+        "mutual_reception_exalted": false,
+        "mutual_reception_triplicity_ruler": false,
+        "mutual_reception_term_ruler": false,
+        "mutual_reception_face_ruler": false,
+        "detriment": false,
+        "fall": false,
+        "peregrine": true,
+        "formatted": [
+          "Peregrine"
+        ]
+      },
+      "score": -5
+    },
+    "4000007": {
+      "index": 4000007,
+      "name": "Jupiter",
+      "type": {
+        "index": 4000000,
+        "name": "Planet"
+      },
+      "latitude": {
+        "raw": 0.29761672025312547,
+        "formatted": "00°17'51\"",
+        "direction": "+",
+        "degrees": 0,
+        "minutes": 17,
+        "seconds": 51
+      },
+      "longitude": {
+        "raw": 107.8455274789487,
+        "formatted": "107°50'44\"",
+        "direction": "+",
+        "degrees": 107,
+        "minutes": 50,
+        "seconds": 44
+      },
+      "sign_longitude": {
+        "raw": 17.845527478948696,
+        "formatted": "17°50'44\"",
+        "direction": "+",
+        "degrees": 17,
+        "minutes": 50,
+        "seconds": 44
+      },
+      "sign": {
+        "number": 4,
+        "name": "Cancer",
+        "element": "Water",
+        "modality": "Cardinal"
+      },
+      "decan": {
+        "number": 2,
+        "name": "2nd Decan"
+      },
+      "house": {
+        "index": 2000011,
+        "number": 11,
+        "name": "11th House"
+      },
+      "distance": 4.285486269320525,
+      "speed": -0.1193714616317314,
+      "movement": {
+        "direct": false,
+        "stationary": false,
+        "retrograde": true,
+        "typical": false,
+        "formatted": "Retrograde"
+      },
+      "declination": {
+        "raw": 22.543391848024488,
+        "formatted": "22°32'36\"",
+        "direction": "+",
+        "degrees": 22,
+        "minutes": 32,
+        "seconds": 36
+      },
+      "out_of_bounds": false,
+      "in_sect": false,
+      "dignities": {
+        "ruler": false,
+        "exalted": true,
+        "triplicity_ruler": false,
+        "term_ruler": false,
+        "face_ruler": false,
+        "mutual_reception_ruler": false,
+        "mutual_reception_exalted": false,
+        "mutual_reception_triplicity_ruler": false,
+        "mutual_reception_term_ruler": false,
+        "mutual_reception_face_ruler": false,
+        "detriment": false,
+        "fall": false,
+        "peregrine": false,
+        "formatted": [
+          "Exalted"
+        ]
+      },
+      "score": 4
+    },
+    "4000008": {
+      "index": 4000008,
+      "name": "Saturn",
+      "type": {
+        "index": 4000000,
+        "name": "Planet"
+      },
+      "latitude": {
+        "raw": -2.1825914591267273,
+        "formatted": "-02°10'57\"",
+        "direction": "-",
+        "degrees": 2,
+        "minutes": 10,
+        "seconds": 57
+      },
+      "longitude": {
+        "raw": 358.23626303421247,
+        "formatted": "358°14'11\"",
+        "direction": "+",
+        "degrees": 358,
+        "minutes": 14,
+        "seconds": 11
+      },
+      "sign_longitude": {
+        "raw": 28.23626303421247,
+        "formatted": "28°14'11\"",
+        "direction": "+",
+        "degrees": 28,
+        "minutes": 14,
+        "seconds": 11
+      },
+      "sign": {
+        "number": 12,
+        "name": "Pisces",
+        "element": "Water",
+        "modality": "Mutable"
+      },
+      "decan": {
+        "number": 3,
+        "name": "3rd Decan"
+      },
+      "house": {
+        "index": 2000008,
+        "number": 8,
+        "name": "8th House"
+      },
+      "distance": 10.107586603584176,
+      "speed": 0.09409620250529613,
+      "movement": {
+        "direct": true,
+        "stationary": false,
+        "retrograde": false,
+        "typical": true,
+        "formatted": "Direct"
+      },
+      "declination": {
+        "raw": -2.703948480824163,
+        "formatted": "-02°42'14\"",
+        "direction": "-",
+        "degrees": 2,
+        "minutes": 42,
+        "seconds": 14
+      },
+      "out_of_bounds": false,
+      "in_sect": false,
+      "dignities": {
+        "ruler": false,
+        "exalted": false,
+        "triplicity_ruler": false,
+        "term_ruler": true,
+        "face_ruler": false,
+        "mutual_reception_ruler": false,
+        "mutual_reception_exalted": false,
+        "mutual_reception_triplicity_ruler": false,
+        "mutual_reception_term_ruler": false,
+        "mutual_reception_face_ruler": false,
+        "detriment": false,
+        "fall": false,
+        "peregrine": false,
+        "formatted": [
+          "Term Ruler"
+        ]
+      },
+      "score": 2
+    },
+    "4000009": {
+      "index": 4000009,
+      "name": "Uranus",
+      "type": {
+        "index": 4000000,
+        "name": "Planet"
+      },
+      "latitude": {
+        "raw": -0.18957912410505726,
+        "formatted": "-00°11'22\"",
+        "direction": "-",
+        "degrees": 0,
+        "minutes": 11,
+        "seconds": 22
+      },
+      "longitude": {
+        "raw": 57.48288042207924,
+        "formatted": "57°28'58\"",
+        "direction": "+",
+        "degrees": 57,
+        "minutes": 28,
+        "seconds": 58
+      },
+      "sign_longitude": {
+        "raw": 27.48288042207924,
+        "formatted": "27°28'58\"",
+        "direction": "+",
+        "degrees": 27,
+        "minutes": 28,
+        "seconds": 58
+      },
+      "sign": {
+        "number": 2,
+        "name": "Taurus",
+        "element": "Earth",
+        "modality": "Fixed"
+      },
+      "decan": {
+        "number": 3,
+        "name": "3rd Decan"
+      },
+      "house": {
+        "index": 2000010,
+        "number": 10,
+        "name": "10th House"
+      },
+      "distance": 19.132755269048303,
+      "speed": -0.006341252112074379,
+      "movement": {
+        "direct": false,
+        "stationary": false,
+        "retrograde": true,
+        "typical": false,
+        "formatted": "Retrograde"
+      },
+      "declination": {
+        "raw": 19.412444164860503,
+        "formatted": "19°24'45\"",
+        "direction": "+",
+        "degrees": 19,
+        "minutes": 24,
+        "seconds": 45
+      },
+      "out_of_bounds": false,
+      "dignities": {
+        "ruler": false,
+        "exalted": false,
+        "triplicity_ruler": false,
+        "term_ruler": false,
+        "face_ruler": false,
+        "mutual_reception_ruler": true,
+        "mutual_reception_exalted": false,
+        "mutual_reception_triplicity_ruler": false,
+        "mutual_reception_term_ruler": false,
+        "mutual_reception_face_ruler": false,
+        "detriment": false,
+        "fall": true,
+        "peregrine": false,
+        "formatted": [
+          "Ruler by mutual reception",
+          "Fall"
+        ]
+      },
+      "score": 1
+    },
+    "4000010": {
+      "index": 4000010,
+      "name": "Neptune",
+      "type": {
+        "index": 4000000,
+        "name": "Planet"
+      },
+      "latitude": {
+        "raw": -1.3171753573453726,
+        "formatted": "-01°19'02\"",
+        "direction": "-",
+        "degrees": 1,
+        "minutes": 19,
+        "seconds": 2
+      },
+      "longitude": {
+        "raw": 0.0273704416298617,
+        "formatted": "00°01'39\"",
+        "direction": "+",
+        "degrees": 0,
+        "minutes": 1,
+        "seconds": 39
+      },
+      "sign_longitude": {
+        "raw": 0.0273704416298617,
+        "formatted": "00°01'39\"",
+        "direction": "+",
+        "degrees": 0,
+        "minutes": 1,
+        "seconds": 39
+      },
+      "sign": {
+        "number": 1,
+        "name": "Aries",
+        "element": "Fire",
+        "modality": "Cardinal"
+      },
+      "decan": {
+        "number": 1,
+        "name": "1st Decan"
+      },
+      "house": {
+        "index": 2000008,
+        "number": 8,
+        "name": "8th House"
+      },
+      "distance": 30.477946711659563,
+      "speed": 0.025902207638386604,
+      "movement": {
+        "direct": true,
+        "stationary": false,
+        "retrograde": false,
+        "typical": true,
+        "formatted": "Direct"
+      },
+      "declination": {
+        "raw": -1.1975912724211952,
+        "formatted": "-01°11'51\"",
+        "direction": "-",
+        "degrees": 1,
+        "minutes": 11,
+        "seconds": 51
+      },
+      "out_of_bounds": false,
+      "dignities": {
+        "ruler": false,
+        "exalted": false,
+        "triplicity_ruler": false,
+        "term_ruler": false,
+        "face_ruler": false,
+        "mutual_reception_ruler": false,
+        "mutual_reception_exalted": false,
+        "mutual_reception_triplicity_ruler": false,
+        "mutual_reception_term_ruler": false,
+        "mutual_reception_face_ruler": false,
+        "detriment": false,
+        "fall": false,
+        "peregrine": true,
+        "formatted": [
+          "Peregrine"
+        ]
+      },
+      "score": -5
+    },
+    "4000011": {
+      "index": 4000011,
+      "name": "Pluto",
+      "type": {
+        "index": 4000000,
+        "name": "Planet"
+      },
+      "latitude": {
+        "raw": -3.798952594231262,
+        "formatted": "-03°47'56\"",
+        "direction": "-",
+        "degrees": 3,
+        "minutes": 47,
+        "seconds": 56
+      },
+      "longitude": {
+        "raw": 303.56311275132634,
+        "formatted": "303°33'47\"",
+        "direction": "+",
+        "degrees": 303,
+        "minutes": 33,
+        "seconds": 47
+      },
+      "sign_longitude": {
+        "raw": 3.5631127513263436,
+        "formatted": "03°33'47\"",
+        "direction": "+",
+        "degrees": 3,
+        "minutes": 33,
+        "seconds": 47
+      },
+      "sign": {
+        "number": 11,
+        "name": "Aquarius",
+        "element": "Air",
+        "modality": "Fixed"
+      },
+      "decan": {
+        "number": 1,
+        "name": "1st Decan"
+      },
+      "house": {
+        "index": 2000006,
+        "number": 6,
+        "name": "6th House"
+      },
+      "distance": 36.41934734306653,
+      "speed": 0.03199883640761578,
+      "movement": {
+        "direct": true,
+        "stationary": false,
+        "retrograde": false,
+        "typical": true,
+        "formatted": "Direct"
+      },
+      "declination": {
+        "raw": -23.048180536732485,
+        "formatted": "-23°02'53\"",
+        "direction": "-",
+        "degrees": 23,
+        "minutes": 2,
+        "seconds": 53
+      },
+      "out_of_bounds": false,
+      "dignities": {
+        "ruler": false,
+        "exalted": false,
+        "triplicity_ruler": false,
+        "term_ruler": false,
+        "face_ruler": false,
+        "mutual_reception_ruler": false,
+        "mutual_reception_exalted": false,
+        "mutual_reception_triplicity_ruler": false,
+        "mutual_reception_term_ruler": false,
+        "mutual_reception_face_ruler": false,
+        "detriment": false,
+        "fall": false,
+        "peregrine": true,
+        "formatted": [
+          "Peregrine"
+        ]
+      },
+      "score": -5
+    },
+    "5000001": {
+      "index": 5000001,
+      "name": "Chiron",
+      "type": {
+        "index": 5000000,
+        "name": "Asteroid"
+      },
+      "latitude": {
+        "raw": 0.45789537013079784,
+        "formatted": "00°27'28\"",
+        "direction": "+",
+        "degrees": 0,
+        "minutes": 27,
+        "seconds": 28
+      },
+      "longitude": {
+        "raw": 22.894069757986706,
+        "formatted": "22°53'39\"",
+        "direction": "+",
+        "degrees": 22,
+        "minutes": 53,
+        "seconds": 39
+      },
+      "sign_longitude": {
+        "raw": 22.894069757986706,
+        "formatted": "22°53'39\"",
+        "direction": "+",
+        "degrees": 22,
+        "minutes": 53,
+        "seconds": 39
+      },
+      "sign": {
+        "number": 1,
+        "name": "Aries",
+        "element": "Fire",
+        "modality": "Cardinal"
+      },
+      "decan": {
+        "number": 3,
+        "name": "3rd Decan"
+      },
+      "house": {
+        "index": 2000009,
+        "number": 9,
+        "name": "9th House"
+      },
+      "distance": 18.625425100758598,
+      "speed": 0.023194477316377516,
+      "movement": {
+        "direct": true,
+        "stationary": false,
+        "retrograde": false,
+        "typical": true,
+        "formatted": "Direct"
+      },
+      "declination": {
+        "raw": 9.326916406427333,
+        "formatted": "09°19'37\"",
+        "direction": "+",
+        "degrees": 9,
+        "minutes": 19,
+        "seconds": 37
+      },
+      "out_of_bounds": false
+    },
+    "5000003": {
+      "index": 5000003,
+      "name": "Ceres",
+      "type": {
+        "index": 5000000,
+        "name": "Asteroid"
+      },
+      "latitude": {
+        "raw": -7.285305278760426,
+        "formatted": "-07°17'07\"",
+        "direction": "-",
+        "degrees": 7,
+        "minutes": 17,
+        "seconds": 7
+      },
+      "longitude": {
+        "raw": 14.003580366953214,
+        "formatted": "14°00'13\"",
+        "direction": "+",
+        "degrees": 14,
+        "minutes": 0,
+        "seconds": 13
+      },
+      "sign_longitude": {
+        "raw": 14.003580366953214,
+        "formatted": "14°00'13\"",
+        "direction": "+",
+        "degrees": 14,
+        "minutes": 0,
+        "seconds": 13
+      },
+      "sign": {
+        "number": 1,
+        "name": "Aries",
+        "element": "Fire",
+        "modality": "Cardinal"
+      },
+      "decan": {
+        "number": 2,
+        "name": "2nd Decan"
+      },
+      "house": {
+        "index": 2000008,
+        "number": 8,
+        "name": "8th House"
+      },
+      "distance": 3.1184461117238538,
+      "speed": 0.29914590314548983,
+      "movement": {
+        "direct": true,
+        "stationary": false,
+        "retrograde": false,
+        "typical": true,
+        "formatted": "Direct"
+      },
+      "declination": {
+        "raw": -1.196025982420962,
+        "formatted": "-01°11'46\"",
+        "direction": "-",
+        "degrees": 1,
+        "minutes": 11,
+        "seconds": 46
+      },
+      "out_of_bounds": false
+    },
+    "5000004": {
+      "index": 5000004,
+      "name": "Pallas",
+      "type": {
+        "index": 5000000,
+        "name": "Asteroid"
+      },
+      "latitude": {
+        "raw": 8.33016238549302,
+        "formatted": "08°19'49\"",
+        "direction": "+",
+        "degrees": 8,
+        "minutes": 19,
+        "seconds": 49
+      },
+      "longitude": {
+        "raw": 330.87821482002437,
+        "formatted": "330°52'42\"",
+        "direction": "+",
+        "degrees": 330,
+        "minutes": 52,
+        "seconds": 42
+      },
+      "sign_longitude": {
+        "raw": 0.8782148200243682,
+        "formatted": "00°52'42\"",
+        "direction": "+",
+        "degrees": 0,
+        "minutes": 52,
+        "seconds": 42
+      },
+      "sign": {
+        "number": 12,
+        "name": "Pisces",
+        "element": "Water",
+        "modality": "Mutable"
+      },
+      "decan": {
+        "number": 1,
+        "name": "1st Decan"
+      },
+      "house": {
+        "index": 2000007,
+        "number": 7,
+        "name": "7th House"
+      },
+      "distance": 4.145479869132968,
+      "speed": 0.32175891505181886,
+      "movement": {
+        "direct": true,
+        "stationary": false,
+        "retrograde": false,
+        "typical": true,
+        "formatted": "Direct"
+      },
+      "declination": {
+        "raw": -3.3601128532487925,
+        "formatted": "-03°21'36\"",
+        "direction": "-",
+        "degrees": 3,
+        "minutes": 21,
+        "seconds": 36
+      },
+      "out_of_bounds": false
+    },
+    "5000005": {
+      "index": 5000005,
+      "name": "Juno",
+      "type": {
+        "index": 5000000,
+        "name": "Asteroid"
+      },
+      "latitude": {
+        "raw": 10.059980254073565,
+        "formatted": "10°03'36\"",
+        "direction": "+",
+        "degrees": 10,
+        "minutes": 3,
+        "seconds": 36
+      },
+      "longitude": {
+        "raw": 280.4537417427733,
+        "formatted": "280°27'13\"",
+        "direction": "+",
+        "degrees": 280,
+        "minutes": 27,
+        "seconds": 13
+      },
+      "sign_longitude": {
+        "raw": 10.453741742773275,
+        "formatted": "10°27'13\"",
+        "direction": "+",
+        "degrees": 10,
+        "minutes": 27,
+        "seconds": 13
+      },
+      "sign": {
+        "number": 10,
+        "name": "Capricorn",
+        "element": "Earth",
+        "modality": "Cardinal"
+      },
+      "decan": {
+        "number": 2,
+        "name": "2nd Decan"
+      },
+      "house": {
+        "index": 2000005,
+        "number": 5,
+        "name": "5th House"
+      },
+      "distance": 3.995807755717758,
+      "speed": 0.3529765859332645,
+      "movement": {
+        "direct": true,
+        "stationary": false,
+        "retrograde": false,
+        "typical": true,
+        "formatted": "Direct"
+      },
+      "declination": {
+        "raw": -12.995698307254868,
+        "formatted": "-12°59'45\"",
+        "direction": "-",
+        "degrees": 12,
+        "minutes": 59,
+        "seconds": 45
+      },
+      "out_of_bounds": false
+    },
+    "5000006": {
+      "index": 5000006,
+      "name": "Vesta",
+      "type": {
+        "index": 5000000,
+        "name": "Asteroid"
+      },
+      "latitude": {
+        "raw": -2.0655557634229793,
+        "formatted": "-02°03'56\"",
+        "direction": "-",
+        "degrees": 2,
+        "minutes": 3,
+        "seconds": 56
+      },
+      "longitude": {
+        "raw": 308.3646909226937,
+        "formatted": "308°21'53\"",
+        "direction": "+",
+        "degrees": 308,
+        "minutes": 21,
+        "seconds": 53
+      },
+      "sign_longitude": {
+        "raw": 8.364690922693683,
+        "formatted": "08°21'53\"",
+        "direction": "+",
+        "degrees": 8,
+        "minutes": 21,
+        "seconds": 53
+      },
+      "sign": {
+        "number": 11,
+        "name": "Aquarius",
+        "element": "Air",
+        "modality": "Fixed"
+      },
+      "decan": {
+        "number": 1,
+        "name": "1st Decan"
+      },
+      "house": {
+        "index": 2000006,
+        "number": 6,
+        "name": "6th House"
+      },
+      "distance": 3.2060012296835425,
+      "speed": 0.5228723662460699,
+      "movement": {
+        "direct": true,
+        "stationary": false,
+        "retrograde": false,
+        "typical": true,
+        "formatted": "Direct"
+      },
+      "declination": {
+        "raw": -20.165959030094413,
+        "formatted": "-20°09'57\"",
+        "direction": "-",
+        "degrees": 20,
+        "minutes": 9,
+        "seconds": 57
+      },
+      "out_of_bounds": false
+    }
+  },
+  "houses": {
+    "2000001": {
+      "index": 2000001,
+      "number": 1,
+      "name": "1st House",
+      "type": {
+        "index": 2000000,
+        "name": "House"
+      },
+      "longitude": {
+        "raw": 149.79367208318743,
+        "formatted": "149°47'37\"",
+        "direction": "+",
+        "degrees": 149,
+        "minutes": 47,
+        "seconds": 37
+      },
+      "sign_longitude": {
+        "raw": 29.79367208318743,
+        "formatted": "29°47'37\"",
+        "direction": "+",
+        "degrees": 29,
+        "minutes": 47,
+        "seconds": 37
+      },
+      "sign": {
+        "number": 5,
+        "name": "Leo",
+        "element": "Fire",
+        "modality": "Fixed"
+      },
+      "decan": {
+        "number": 3,
+        "name": "3rd Decan"
+      },
+      "speed": 283.83369472324694,
+      "declination": {
+        "raw": 11.543931090848982,
+        "formatted": "11°32'38\"",
+        "direction": "+",
+        "degrees": 11,
+        "minutes": 32,
+        "seconds": 38
+      },
+      "size": 23.10325574266747
+    },
+    "2000002": {
+      "index": 2000002,
+      "number": 2,
+      "name": "2nd House",
+      "type": {
+        "index": 2000000,
+        "name": "House"
+      },
+      "longitude": {
+        "raw": 172.8969278258549,
+        "formatted": "172°53'49\"",
+        "direction": "+",
+        "degrees": 172,
+        "minutes": 53,
+        "seconds": 49
+      },
+      "sign_longitude": {
+        "raw": 22.896927825854902,
+        "formatted": "22°53'49\"",
+        "direction": "+",
+        "degrees": 22,
+        "minutes": 53,
+        "seconds": 49
+      },
+      "sign": {
+        "number": 6,
+        "name": "Virgo",
+        "element": "Earth",
+        "modality": "Mutable"
+      },
+      "decan": {
+        "number": 3,
+        "name": "3rd Decan"
+      },
+      "speed": 315.3440394616625,
+      "declination": {
+        "raw": 2.8192245750137905,
+        "formatted": "02°49'09\"",
+        "direction": "+",
+        "degrees": 2,
+        "minutes": 49,
+        "seconds": 9
+      },
+      "size": 28.223027114102194
+    },
+    "2000003": {
+      "index": 2000003,
+      "number": 3,
+      "name": "3rd House",
+      "type": {
+        "index": 2000000,
+        "name": "House"
+      },
+      "longitude": {
+        "raw": 201.1199549399571,
+        "formatted": "201°07'12\"",
+        "direction": "+",
+        "degrees": 201,
+        "minutes": 7,
+        "seconds": 12
+      },
+      "sign_longitude": {
+        "raw": 21.119954939957097,
+        "formatted": "21°07'12\"",
+        "direction": "+",
+        "degrees": 21,
+        "minutes": 7,
+        "seconds": 12
+      },
+      "sign": {
+        "number": 7,
+        "name": "Libra",
+        "element": "Air",
+        "modality": "Cardinal"
+      },
+      "decan": {
+        "number": 3,
+        "name": "3rd Decan"
+      },
+      "speed": 345.2018212714337,
+      "declination": {
+        "raw": -8.240098683320673,
+        "formatted": "-08°14'24\"",
+        "direction": "-",
+        "degrees": 8,
+        "minutes": 14,
+        "seconds": 24
+      },
+      "size": 33.12470241726956
+    },
+    "2000004": {
+      "index": 2000004,
+      "number": 4,
+      "name": "4th House",
+      "type": {
+        "index": 2000000,
+        "name": "House"
+      },
+      "longitude": {
+        "raw": 234.24465735722666,
+        "formatted": "234°14'41\"",
+        "direction": "+",
+        "degrees": 234,
+        "minutes": 14,
+        "seconds": 41
+      },
+      "sign_longitude": {
+        "raw": 24.244657357226657,
+        "formatted": "24°14'41\"",
+        "direction": "+",
+        "degrees": 24,
+        "minutes": 14,
+        "seconds": 41
+      },
+      "sign": {
+        "number": 8,
+        "name": "Scorpio",
+        "element": "Water",
+        "modality": "Fixed"
+      },
+      "decan": {
+        "number": 3,
+        "name": "3rd Decan"
+      },
+      "speed": 352.45452819884986,
+      "declination": {
+        "raw": -18.83174061338532,
+        "formatted": "-18°49'54\"",
+        "direction": "-",
+        "degrees": 18,
+        "minutes": 49,
+        "seconds": 54
+      },
+      "size": 34.926156952622904
+    },
+    "2000005": {
+      "index": 2000005,
+      "number": 5,
+      "name": "5th House",
+      "type": {
+        "index": 2000000,
+        "name": "House"
+      },
+      "longitude": {
+        "raw": 269.17081430984956,
+        "formatted": "269°10'15\"",
+        "direction": "+",
+        "degrees": 269,
+        "minutes": 10,
+        "seconds": 15
+      },
+      "sign_longitude": {
+        "raw": 29.17081430984956,
+        "formatted": "29°10'15\"",
+        "direction": "+",
+        "degrees": 29,
+        "minutes": 10,
+        "seconds": 15
+      },
+      "sign": {
+        "number": 9,
+        "name": "Sagittarius",
+        "element": "Fire",
+        "modality": "Mutable"
+      },
+      "decan": {
+        "number": 3,
+        "name": "3rd Decan"
+      },
+      "speed": 331.8768574306045,
+      "declination": {
+        "raw": -23.435624239578534,
+        "formatted": "-23°26'08\"",
+        "direction": "-",
+        "degrees": 23,
+        "minutes": 26,
+        "seconds": 8
+      },
+      "size": 32.3757404104482
+    },
+    "2000006": {
+      "index": 2000006,
+      "number": 6,
+      "name": "6th House",
+      "type": {
+        "index": 2000000,
+        "name": "House"
+      },
+      "longitude": {
+        "raw": 301.54655472029776,
+        "formatted": "301°32'48\"",
+        "direction": "+",
+        "degrees": 301,
+        "minutes": 32,
+        "seconds": 48
+      },
+      "sign_longitude": {
+        "raw": 1.5465547202977632,
+        "formatted": "01°32'48\"",
+        "direction": "+",
+        "degrees": 1,
+        "minutes": 32,
+        "seconds": 48
+      },
+      "sign": {
+        "number": 11,
+        "name": "Aquarius",
+        "element": "Air",
+        "modality": "Fixed"
+      },
+      "decan": {
+        "number": 1,
+        "name": "1st Decan"
+      },
+      "speed": 305.1640313913333,
+      "declination": {
+        "raw": -19.81457476917574,
+        "formatted": "-19°48'52\"",
+        "direction": "-",
+        "degrees": 19,
+        "minutes": 48,
+        "seconds": 52
+      },
+      "size": 28.24711736288964
+    },
+    "2000007": {
+      "index": 2000007,
+      "number": 7,
+      "name": "7th House",
+      "type": {
+        "index": 2000000,
+        "name": "House"
+      },
+      "longitude": {
+        "raw": 329.7936720831874,
+        "formatted": "329°47'37\"",
+        "direction": "+",
+        "degrees": 329,
+        "minutes": 47,
+        "seconds": 37
+      },
+      "sign_longitude": {
+        "raw": 29.793672083187403,
+        "formatted": "29°47'37\"",
+        "direction": "+",
+        "degrees": 29,
+        "minutes": 47,
+        "seconds": 37
+      },
+      "sign": {
+        "number": 11,
+        "name": "Aquarius",
+        "element": "Air",
+        "modality": "Fixed"
+      },
+      "decan": {
+        "number": 3,
+        "name": "3rd Decan"
+      },
+      "speed": 283.83369472324694,
+      "declination": {
+        "raw": -11.543931090849005,
+        "formatted": "-11°32'38\"",
+        "direction": "-",
+        "degrees": 11,
+        "minutes": 32,
+        "seconds": 38
+      },
+      "size": 23.1032557426675
+    },
+    "2000008": {
+      "index": 2000008,
+      "number": 8,
+      "name": "8th House",
+      "type": {
+        "index": 2000000,
+        "name": "House"
+      },
+      "longitude": {
+        "raw": 352.8969278258549,
+        "formatted": "352°53'49\"",
+        "direction": "+",
+        "degrees": 352,
+        "minutes": 53,
+        "seconds": 49
+      },
+      "sign_longitude": {
+        "raw": 22.896927825854902,
+        "formatted": "22°53'49\"",
+        "direction": "+",
+        "degrees": 22,
+        "minutes": 53,
+        "seconds": 49
+      },
+      "sign": {
+        "number": 12,
+        "name": "Pisces",
+        "element": "Water",
+        "modality": "Mutable"
+      },
+      "decan": {
+        "number": 3,
+        "name": "3rd Decan"
+      },
+      "speed": 315.3440394616625,
+      "declination": {
+        "raw": -2.8192245750137923,
+        "formatted": "-02°49'09\"",
+        "direction": "-",
+        "degrees": 2,
+        "minutes": 49,
+        "seconds": 9
+      },
+      "size": 28.223027114102194
+    },
+    "2000009": {
+      "index": 2000009,
+      "number": 9,
+      "name": "9th House",
+      "type": {
+        "index": 2000000,
+        "name": "House"
+      },
+      "longitude": {
+        "raw": 21.119954939957097,
+        "formatted": "21°07'12\"",
+        "direction": "+",
+        "degrees": 21,
+        "minutes": 7,
+        "seconds": 12
+      },
+      "sign_longitude": {
+        "raw": 21.119954939957097,
+        "formatted": "21°07'12\"",
+        "direction": "+",
+        "degrees": 21,
+        "minutes": 7,
+        "seconds": 12
+      },
+      "sign": {
+        "number": 1,
+        "name": "Aries",
+        "element": "Fire",
+        "modality": "Cardinal"
+      },
+      "decan": {
+        "number": 3,
+        "name": "3rd Decan"
+      },
+      "speed": 345.2018212714337,
+      "declination": {
+        "raw": 8.240098683320678,
+        "formatted": "08°14'24\"",
+        "direction": "+",
+        "degrees": 8,
+        "minutes": 14,
+        "seconds": 24
+      },
+      "size": 33.12470241726957
+    },
+    "2000010": {
+      "index": 2000010,
+      "number": 10,
+      "name": "10th House",
+      "type": {
+        "index": 2000000,
+        "name": "House"
+      },
+      "longitude": {
+        "raw": 54.244657357226664,
+        "formatted": "54°14'41\"",
+        "direction": "+",
+        "degrees": 54,
+        "minutes": 14,
+        "seconds": 41
+      },
+      "sign_longitude": {
+        "raw": 24.244657357226664,
+        "formatted": "24°14'41\"",
+        "direction": "+",
+        "degrees": 24,
+        "minutes": 14,
+        "seconds": 41
+      },
+      "sign": {
+        "number": 2,
+        "name": "Taurus",
+        "element": "Earth",
+        "modality": "Fixed"
+      },
+      "decan": {
+        "number": 3,
+        "name": "3rd Decan"
+      },
+      "speed": 352.45452819884986,
+      "declination": {
+        "raw": 18.83174061338532,
+        "formatted": "18°49'54\"",
+        "direction": "+",
+        "degrees": 18,
+        "minutes": 49,
+        "seconds": 54
+      },
+      "size": 34.92615695262291
+    },
+    "2000011": {
+      "index": 2000011,
+      "number": 11,
+      "name": "11th House",
+      "type": {
+        "index": 2000000,
+        "name": "House"
+      },
+      "longitude": {
+        "raw": 89.17081430984958,
+        "formatted": "89°10'15\"",
+        "direction": "+",
+        "degrees": 89,
+        "minutes": 10,
+        "seconds": 15
+      },
+      "sign_longitude": {
+        "raw": 29.170814309849575,
+        "formatted": "29°10'15\"",
+        "direction": "+",
+        "degrees": 29,
+        "minutes": 10,
+        "seconds": 15
+      },
+      "sign": {
+        "number": 3,
+        "name": "Gemini",
+        "element": "Air",
+        "modality": "Mutable"
+      },
+      "decan": {
+        "number": 3,
+        "name": "3rd Decan"
+      },
+      "speed": 331.8768574306045,
+      "declination": {
+        "raw": 23.435624239578537,
+        "formatted": "23°26'08\"",
+        "direction": "+",
+        "degrees": 23,
+        "minutes": 26,
+        "seconds": 8
+      },
+      "size": 32.37574041044819
+    },
+    "2000012": {
+      "index": 2000012,
+      "number": 12,
+      "name": "12th House",
+      "type": {
+        "index": 2000000,
+        "name": "House"
+      },
+      "longitude": {
+        "raw": 121.54655472029776,
+        "formatted": "121°32'48\"",
+        "direction": "+",
+        "degrees": 121,
+        "minutes": 32,
+        "seconds": 48
+      },
+      "sign_longitude": {
+        "raw": 1.5465547202977632,
+        "formatted": "01°32'48\"",
+        "direction": "+",
+        "degrees": 1,
+        "minutes": 32,
+        "seconds": 48
+      },
+      "sign": {
+        "number": 5,
+        "name": "Leo",
+        "element": "Fire",
+        "modality": "Fixed"
+      },
+      "decan": {
+        "number": 1,
+        "name": "1st Decan"
+      },
+      "speed": 305.1640313913333,
+      "declination": {
+        "raw": 19.81457476917574,
+        "formatted": "19°48'52\"",
+        "direction": "+",
+        "degrees": 19,
+        "minutes": 48,
+        "seconds": 52
+      },
+      "size": 28.247117362889668
+    }
+  },
+  "aspects": {
+    "3000002": {
+      "5000004": {
+        "active": 3000002,
+        "passive": 5000004,
+        "type": "Conjunction",
+        "aspect": 0.0,
+        "orb": 5.5,
+        "distance": {
+          "raw": 1.0845427368369656,
+          "formatted": "01°05'04\"",
+          "direction": "+",
+          "degrees": 1,
+          "minutes": 5,
+          "seconds": 4
+        },
+        "difference": {
+          "raw": 1.0845427368369656,
+          "formatted": "01°05'04\"",
+          "direction": "+",
+          "degrees": 1,
+          "minutes": 5,
+          "seconds": 4
+        },
+        "movement": {
+          "applicative": true,
+          "exact": false,
+          "separative": false,
+          "formatted": "Applicative"
+        },
+        "condition": {
+          "associate": false,
+          "dissociate": true,
+          "formatted": "Dissociate"
+        }
+      }
+    },
+    "3000003": {
+      "4000002": {
+        "active": 3000003,
+        "passive": 4000002,
+        "type": "Conjunction",
+        "aspect": 0.0,
+        "orb": 10.0,
+        "distance": {
+          "raw": 4.746937119014419,
+          "formatted": "04°44'49\"",
+          "direction": "+",
+          "degrees": 4,
+          "minutes": 44,
+          "seconds": 49
+        },
+        "difference": {
+          "raw": 4.746937119014419,
+          "formatted": "04°44'49\"",
+          "direction": "+",
+          "degrees": 4,
+          "minutes": 44,
+          "seconds": 49
+        },
+        "movement": {
+          "applicative": true,
+          "exact": false,
+          "separative": false,
+          "formatted": "Applicative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "4000009": {
+        "active": 3000003,
+        "passive": 4000009,
+        "type": "Conjunction",
+        "aspect": 0.0,
+        "orb": 10.0,
+        "distance": {
+          "raw": 3.2382230648525763,
+          "formatted": "03°14'18\"",
+          "direction": "+",
+          "degrees": 3,
+          "minutes": 14,
+          "seconds": 18
+        },
+        "difference": {
+          "raw": 3.2382230648525763,
+          "formatted": "03°14'18\"",
+          "direction": "+",
+          "degrees": 3,
+          "minutes": 14,
+          "seconds": 18
+        },
+        "movement": {
+          "applicative": true,
+          "exact": false,
+          "separative": false,
+          "formatted": "Applicative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      }
+    },
+    "6000010": {
+      "4000001": {
+        "active": 4000001,
+        "passive": 6000010,
+        "type": "Square",
+        "aspect": 90.0,
+        "orb": 5.0,
+        "distance": {
+          "raw": 90.8020776069464,
+          "formatted": "90°48'07\"",
+          "direction": "+",
+          "degrees": 90,
+          "minutes": 48,
+          "seconds": 7
+        },
+        "difference": {
+          "raw": 0.8020776069463977,
+          "formatted": "00°48'07\"",
+          "direction": "+",
+          "degrees": 0,
+          "minutes": 48,
+          "seconds": 7
+        },
+        "movement": {
+          "applicative": true,
+          "exact": false,
+          "separative": false,
+          "formatted": "Applicative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "4000003": {
+        "active": 4000003,
+        "passive": 6000010,
+        "type": "Square",
+        "aspect": 90.0,
+        "orb": 5.0,
+        "distance": {
+          "raw": 86.551008433287,
+          "formatted": "86°33'04\"",
+          "direction": "+",
+          "degrees": 86,
+          "minutes": 33,
+          "seconds": 4
+        },
+        "difference": {
+          "raw": -3.448991566713005,
+          "formatted": "-03°26'56\"",
+          "direction": "-",
+          "degrees": 3,
+          "minutes": 26,
+          "seconds": 56
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "4000004": {
+        "active": 4000004,
+        "passive": 6000010,
+        "type": "Square",
+        "aspect": 90.0,
+        "orb": 5.0,
+        "distance": {
+          "raw": 85.75619823216243,
+          "formatted": "85°45'22\"",
+          "direction": "+",
+          "degrees": 85,
+          "minutes": 45,
+          "seconds": 22
+        },
+        "difference": {
+          "raw": -4.243801767837567,
+          "formatted": "-04°14'38\"",
+          "direction": "-",
+          "degrees": 4,
+          "minutes": 14,
+          "seconds": 38
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "5000006": {
+        "active": 5000006,
+        "passive": 6000010,
+        "type": "Square",
+        "aspect": 90.0,
+        "orb": 0.5,
+        "distance": {
+          "raw": 90.29880076708281,
+          "formatted": "90°17'56\"",
+          "direction": "+",
+          "degrees": 90,
+          "minutes": 17,
+          "seconds": 56
+        },
+        "difference": {
+          "raw": 0.29880076708280967,
+          "formatted": "00°17'56\"",
+          "direction": "+",
+          "degrees": 0,
+          "minutes": 17,
+          "seconds": 56
+        },
+        "movement": {
+          "applicative": false,
+          "exact": true,
+          "separative": false,
+          "formatted": "Exact"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      }
+    },
+    "4000001": {
+      "6000010": {
+        "active": 4000001,
+        "passive": 6000010,
+        "type": "Square",
+        "aspect": 90.0,
+        "orb": 5.0,
+        "distance": {
+          "raw": 90.8020776069464,
+          "formatted": "90°48'07\"",
+          "direction": "+",
+          "degrees": 90,
+          "minutes": 48,
+          "seconds": 7
+        },
+        "difference": {
+          "raw": 0.8020776069463977,
+          "formatted": "00°48'07\"",
+          "direction": "+",
+          "degrees": 0,
+          "minutes": 48,
+          "seconds": 7
+        },
+        "movement": {
+          "applicative": true,
+          "exact": false,
+          "separative": false,
+          "formatted": "Applicative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "4000002": {
+        "active": 4000002,
+        "passive": 4000001,
+        "type": "Trine",
+        "aspect": 120.0,
+        "orb": 10.0,
+        "distance": {
+          "raw": -111.130180393411,
+          "formatted": "-111°07'49\"",
+          "direction": "-",
+          "degrees": 111,
+          "minutes": 7,
+          "seconds": 49
+        },
+        "difference": {
+          "raw": -8.869819606589004,
+          "formatted": "-08°52'11\"",
+          "direction": "-",
+          "degrees": 8,
+          "minutes": 52,
+          "seconds": 11
+        },
+        "movement": {
+          "applicative": true,
+          "exact": false,
+          "separative": false,
+          "formatted": "Applicative"
+        },
+        "condition": {
+          "associate": false,
+          "dissociate": true,
+          "formatted": "Dissociate"
+        }
+      },
+      "4000003": {
+        "active": 4000003,
+        "passive": 4000001,
+        "type": "Conjunction",
+        "aspect": 0.0,
+        "orb": 10.0,
+        "distance": {
+          "raw": -4.251069173659403,
+          "formatted": "-04°15'04\"",
+          "direction": "-",
+          "degrees": 4,
+          "minutes": 15,
+          "seconds": 4
+        },
+        "difference": {
+          "raw": 4.251069173659403,
+          "formatted": "04°15'04\"",
+          "direction": "+",
+          "degrees": 4,
+          "minutes": 15,
+          "seconds": 4
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "4000004": {
+        "active": 4000004,
+        "passive": 4000001,
+        "type": "Conjunction",
+        "aspect": 0.0,
+        "orb": 10.0,
+        "distance": {
+          "raw": -5.045879374783965,
+          "formatted": "-05°02'45\"",
+          "direction": "-",
+          "degrees": 5,
+          "minutes": 2,
+          "seconds": 45
+        },
+        "difference": {
+          "raw": 5.045879374783965,
+          "formatted": "05°02'45\"",
+          "direction": "+",
+          "degrees": 5,
+          "minutes": 2,
+          "seconds": 45
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "4000006": {
+        "active": 4000001,
+        "passive": 4000006,
+        "type": "Conjunction",
+        "aspect": 0.0,
+        "orb": 10.0,
+        "distance": {
+          "raw": -4.416706420588696,
+          "formatted": "-04°25'00\"",
+          "direction": "-",
+          "degrees": 4,
+          "minutes": 25,
+          "seconds": 0
+        },
+        "difference": {
+          "raw": 4.416706420588696,
+          "formatted": "04°25'00\"",
+          "direction": "+",
+          "degrees": 4,
+          "minutes": 25,
+          "seconds": 0
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "4000011": {
+        "active": 4000001,
+        "passive": 4000011,
+        "type": "Conjunction",
+        "aspect": 0.0,
+        "orb": 10.0,
+        "distance": {
+          "raw": -4.298301331503751,
+          "formatted": "-04°17'54\"",
+          "direction": "-",
+          "degrees": 4,
+          "minutes": 17,
+          "seconds": 54
+        },
+        "difference": {
+          "raw": 4.298301331503751,
+          "formatted": "04°17'54\"",
+          "direction": "+",
+          "degrees": 4,
+          "minutes": 17,
+          "seconds": 54
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "5000006": {
+        "active": 4000001,
+        "passive": 5000006,
+        "type": "Conjunction",
+        "aspect": 0.0,
+        "orb": 5.5,
+        "distance": {
+          "raw": 0.5032768398635881,
+          "formatted": "00°30'12\"",
+          "direction": "+",
+          "degrees": 0,
+          "minutes": 30,
+          "seconds": 12
+        },
+        "difference": {
+          "raw": 0.5032768398635881,
+          "formatted": "00°30'12\"",
+          "direction": "+",
+          "degrees": 0,
+          "minutes": 30,
+          "seconds": 12
+        },
+        "movement": {
+          "applicative": true,
+          "exact": false,
+          "separative": false,
+          "formatted": "Applicative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      }
+    },
+    "4000002": {
+      "3000003": {
+        "active": 3000003,
+        "passive": 4000002,
+        "type": "Conjunction",
+        "aspect": 0.0,
+        "orb": 10.0,
+        "distance": {
+          "raw": 4.746937119014419,
+          "formatted": "04°44'49\"",
+          "direction": "+",
+          "degrees": 4,
+          "minutes": 44,
+          "seconds": 49
+        },
+        "difference": {
+          "raw": 4.746937119014419,
+          "formatted": "04°44'49\"",
+          "direction": "+",
+          "degrees": 4,
+          "minutes": 44,
+          "seconds": 49
+        },
+        "movement": {
+          "applicative": true,
+          "exact": false,
+          "separative": false,
+          "formatted": "Applicative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "4000001": {
+        "active": 4000002,
+        "passive": 4000001,
+        "type": "Trine",
+        "aspect": 120.0,
+        "orb": 10.0,
+        "distance": {
+          "raw": -111.130180393411,
+          "formatted": "-111°07'49\"",
+          "direction": "-",
+          "degrees": 111,
+          "minutes": 7,
+          "seconds": 49
+        },
+        "difference": {
+          "raw": -8.869819606589004,
+          "formatted": "-08°52'11\"",
+          "direction": "-",
+          "degrees": 8,
+          "minutes": 52,
+          "seconds": 11
+        },
+        "movement": {
+          "applicative": true,
+          "exact": false,
+          "separative": false,
+          "formatted": "Applicative"
+        },
+        "condition": {
+          "associate": false,
+          "dissociate": true,
+          "formatted": "Dissociate"
+        }
+      },
+      "4000006": {
+        "active": 4000002,
+        "passive": 4000006,
+        "type": "Trine",
+        "aspect": 120.0,
+        "orb": 10.0,
+        "distance": {
+          "raw": -115.54688681399969,
+          "formatted": "-115°32'49\"",
+          "direction": "-",
+          "degrees": 115,
+          "minutes": 32,
+          "seconds": 49
+        },
+        "difference": {
+          "raw": -4.453113186000309,
+          "formatted": "-04°27'11\"",
+          "direction": "-",
+          "degrees": 4,
+          "minutes": 27,
+          "seconds": 11
+        },
+        "movement": {
+          "applicative": true,
+          "exact": false,
+          "separative": false,
+          "formatted": "Applicative"
+        },
+        "condition": {
+          "associate": false,
+          "dissociate": true,
+          "formatted": "Dissociate"
+        }
+      },
+      "4000008": {
+        "active": 4000002,
+        "passive": 4000008,
+        "type": "Sextile",
+        "aspect": 60.0,
+        "orb": 6.0,
+        "distance": {
+          "raw": -60.75533144202859,
+          "formatted": "-60°45'19\"",
+          "direction": "-",
+          "degrees": 60,
+          "minutes": 45,
+          "seconds": 19
+        },
+        "difference": {
+          "raw": 0.7553314420285915,
+          "formatted": "00°45'19\"",
+          "direction": "+",
+          "degrees": 0,
+          "minutes": 45,
+          "seconds": 19
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "4000009": {
+        "active": 4000002,
+        "passive": 4000009,
+        "type": "Conjunction",
+        "aspect": 0.0,
+        "orb": 10.0,
+        "distance": {
+          "raw": -1.5087140541618282,
+          "formatted": "-01°30'31\"",
+          "direction": "-",
+          "degrees": 1,
+          "minutes": 30,
+          "seconds": 31
+        },
+        "difference": {
+          "raw": 1.5087140541618282,
+          "formatted": "01°30'31\"",
+          "direction": "+",
+          "degrees": 1,
+          "minutes": 30,
+          "seconds": 31
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "4000010": {
+        "active": 4000002,
+        "passive": 4000010,
+        "type": "Sextile",
+        "aspect": 60.0,
+        "orb": 6.0,
+        "distance": {
+          "raw": -58.96422403461122,
+          "formatted": "-58°57'51\"",
+          "direction": "-",
+          "degrees": 58,
+          "minutes": 57,
+          "seconds": 51
+        },
+        "difference": {
+          "raw": -1.0357759653887797,
+          "formatted": "-01°02'09\"",
+          "direction": "-",
+          "degrees": 1,
+          "minutes": 2,
+          "seconds": 9
+        },
+        "movement": {
+          "applicative": true,
+          "exact": false,
+          "separative": false,
+          "formatted": "Applicative"
+        },
+        "condition": {
+          "associate": false,
+          "dissociate": true,
+          "formatted": "Dissociate"
+        }
+      },
+      "4000011": {
+        "active": 4000002,
+        "passive": 4000011,
+        "type": "Trine",
+        "aspect": 120.0,
+        "orb": 10.0,
+        "distance": {
+          "raw": -115.42848172491475,
+          "formatted": "-115°25'43\"",
+          "direction": "-",
+          "degrees": 115,
+          "minutes": 25,
+          "seconds": 43
+        },
+        "difference": {
+          "raw": -4.571518275085253,
+          "formatted": "-04°34'17\"",
+          "direction": "-",
+          "degrees": 4,
+          "minutes": 34,
+          "seconds": 17
+        },
+        "movement": {
+          "applicative": true,
+          "exact": false,
+          "separative": false,
+          "formatted": "Applicative"
+        },
+        "condition": {
+          "associate": false,
+          "dissociate": true,
+          "formatted": "Dissociate"
+        }
+      },
+      "5000004": {
+        "active": 4000002,
+        "passive": 5000004,
+        "type": "Square",
+        "aspect": 90.0,
+        "orb": 5.5,
+        "distance": {
+          "raw": -88.1133796562167,
+          "formatted": "-88°06'48\"",
+          "direction": "-",
+          "degrees": 88,
+          "minutes": 6,
+          "seconds": 48
+        },
+        "difference": {
+          "raw": -1.8866203437833065,
+          "formatted": "-01°53'12\"",
+          "direction": "-",
+          "degrees": 1,
+          "minutes": 53,
+          "seconds": 12
+        },
+        "movement": {
+          "applicative": true,
+          "exact": false,
+          "separative": false,
+          "formatted": "Applicative"
+        },
+        "condition": {
+          "associate": false,
+          "dissociate": true,
+          "formatted": "Dissociate"
+        }
+      }
+    },
+    "4000003": {
+      "6000010": {
+        "active": 4000003,
+        "passive": 6000010,
+        "type": "Square",
+        "aspect": 90.0,
+        "orb": 5.0,
+        "distance": {
+          "raw": 86.551008433287,
+          "formatted": "86°33'04\"",
+          "direction": "+",
+          "degrees": 86,
+          "minutes": 33,
+          "seconds": 4
+        },
+        "difference": {
+          "raw": -3.448991566713005,
+          "formatted": "-03°26'56\"",
+          "direction": "-",
+          "degrees": 3,
+          "minutes": 26,
+          "seconds": 56
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "4000001": {
+        "active": 4000003,
+        "passive": 4000001,
+        "type": "Conjunction",
+        "aspect": 0.0,
+        "orb": 10.0,
+        "distance": {
+          "raw": -4.251069173659403,
+          "formatted": "-04°15'04\"",
+          "direction": "-",
+          "degrees": 4,
+          "minutes": 15,
+          "seconds": 4
+        },
+        "difference": {
+          "raw": 4.251069173659403,
+          "formatted": "04°15'04\"",
+          "direction": "+",
+          "degrees": 4,
+          "minutes": 15,
+          "seconds": 4
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "4000004": {
+        "active": 4000003,
+        "passive": 4000004,
+        "type": "Conjunction",
+        "aspect": 0.0,
+        "orb": 10.0,
+        "distance": {
+          "raw": 0.7948102011245624,
+          "formatted": "00°47'41\"",
+          "direction": "+",
+          "degrees": 0,
+          "minutes": 47,
+          "seconds": 41
+        },
+        "difference": {
+          "raw": 0.7948102011245624,
+          "formatted": "00°47'41\"",
+          "direction": "+",
+          "degrees": 0,
+          "minutes": 47,
+          "seconds": 41
+        },
+        "movement": {
+          "applicative": true,
+          "exact": false,
+          "separative": false,
+          "formatted": "Applicative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "4000006": {
+        "active": 4000003,
+        "passive": 4000006,
+        "type": "Conjunction",
+        "aspect": 0.0,
+        "orb": 10.0,
+        "distance": {
+          "raw": -8.667775594248099,
+          "formatted": "-08°40'04\"",
+          "direction": "-",
+          "degrees": 8,
+          "minutes": 40,
+          "seconds": 4
+        },
+        "difference": {
+          "raw": 8.667775594248099,
+          "formatted": "08°40'04\"",
+          "direction": "+",
+          "degrees": 8,
+          "minutes": 40,
+          "seconds": 4
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "4000011": {
+        "active": 4000003,
+        "passive": 4000011,
+        "type": "Conjunction",
+        "aspect": 0.0,
+        "orb": 10.0,
+        "distance": {
+          "raw": -8.549370505163154,
+          "formatted": "-08°32'58\"",
+          "direction": "-",
+          "degrees": 8,
+          "minutes": 32,
+          "seconds": 58
+        },
+        "difference": {
+          "raw": 8.549370505163154,
+          "formatted": "08°32'58\"",
+          "direction": "+",
+          "degrees": 8,
+          "minutes": 32,
+          "seconds": 58
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "5000003": {
+        "active": 4000003,
+        "passive": 5000003,
+        "type": "Sextile",
+        "aspect": 60.0,
+        "orb": 3.5,
+        "distance": {
+          "raw": 61.891097110463704,
+          "formatted": "61°53'28\"",
+          "direction": "+",
+          "degrees": 61,
+          "minutes": 53,
+          "seconds": 28
+        },
+        "difference": {
+          "raw": 1.8910971104637042,
+          "formatted": "01°53'28\"",
+          "direction": "+",
+          "degrees": 1,
+          "minutes": 53,
+          "seconds": 28
+        },
+        "movement": {
+          "applicative": true,
+          "exact": false,
+          "separative": false,
+          "formatted": "Applicative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "5000006": {
+        "active": 4000003,
+        "passive": 5000006,
+        "type": "Conjunction",
+        "aspect": 0.0,
+        "orb": 5.5,
+        "distance": {
+          "raw": -3.7477923337958146,
+          "formatted": "-03°44'52\"",
+          "direction": "-",
+          "degrees": 3,
+          "minutes": 44,
+          "seconds": 52
+        },
+        "difference": {
+          "raw": 3.7477923337958146,
+          "formatted": "03°44'52\"",
+          "direction": "+",
+          "degrees": 3,
+          "minutes": 44,
+          "seconds": 52
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      }
+    },
+    "4000004": {
+      "6000010": {
+        "active": 4000004,
+        "passive": 6000010,
+        "type": "Square",
+        "aspect": 90.0,
+        "orb": 5.0,
+        "distance": {
+          "raw": 85.75619823216243,
+          "formatted": "85°45'22\"",
+          "direction": "+",
+          "degrees": 85,
+          "minutes": 45,
+          "seconds": 22
+        },
+        "difference": {
+          "raw": -4.243801767837567,
+          "formatted": "-04°14'38\"",
+          "direction": "-",
+          "degrees": 4,
+          "minutes": 14,
+          "seconds": 38
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "4000001": {
+        "active": 4000004,
+        "passive": 4000001,
+        "type": "Conjunction",
+        "aspect": 0.0,
+        "orb": 10.0,
+        "distance": {
+          "raw": -5.045879374783965,
+          "formatted": "-05°02'45\"",
+          "direction": "-",
+          "degrees": 5,
+          "minutes": 2,
+          "seconds": 45
+        },
+        "difference": {
+          "raw": 5.045879374783965,
+          "formatted": "05°02'45\"",
+          "direction": "+",
+          "degrees": 5,
+          "minutes": 2,
+          "seconds": 45
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "4000003": {
+        "active": 4000003,
+        "passive": 4000004,
+        "type": "Conjunction",
+        "aspect": 0.0,
+        "orb": 10.0,
+        "distance": {
+          "raw": 0.7948102011245624,
+          "formatted": "00°47'41\"",
+          "direction": "+",
+          "degrees": 0,
+          "minutes": 47,
+          "seconds": 41
+        },
+        "difference": {
+          "raw": 0.7948102011245624,
+          "formatted": "00°47'41\"",
+          "direction": "+",
+          "degrees": 0,
+          "minutes": 47,
+          "seconds": 41
+        },
+        "movement": {
+          "applicative": true,
+          "exact": false,
+          "separative": false,
+          "formatted": "Applicative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "4000006": {
+        "active": 4000004,
+        "passive": 4000006,
+        "type": "Conjunction",
+        "aspect": 0.0,
+        "orb": 10.0,
+        "distance": {
+          "raw": -9.46258579537266,
+          "formatted": "-09°27'45\"",
+          "direction": "-",
+          "degrees": 9,
+          "minutes": 27,
+          "seconds": 45
+        },
+        "difference": {
+          "raw": 9.46258579537266,
+          "formatted": "09°27'45\"",
+          "direction": "+",
+          "degrees": 9,
+          "minutes": 27,
+          "seconds": 45
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "4000011": {
+        "active": 4000004,
+        "passive": 4000011,
+        "type": "Conjunction",
+        "aspect": 0.0,
+        "orb": 10.0,
+        "distance": {
+          "raw": -9.344180706287716,
+          "formatted": "-09°20'39\"",
+          "direction": "-",
+          "degrees": 9,
+          "minutes": 20,
+          "seconds": 39
+        },
+        "difference": {
+          "raw": 9.344180706287716,
+          "formatted": "09°20'39\"",
+          "direction": "+",
+          "degrees": 9,
+          "minutes": 20,
+          "seconds": 39
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "5000003": {
+        "active": 4000004,
+        "passive": 5000003,
+        "type": "Sextile",
+        "aspect": 60.0,
+        "orb": 3.5,
+        "distance": {
+          "raw": 61.09628690933914,
+          "formatted": "61°05'47\"",
+          "direction": "+",
+          "degrees": 61,
+          "minutes": 5,
+          "seconds": 47
+        },
+        "difference": {
+          "raw": 1.0962869093391419,
+          "formatted": "01°05'47\"",
+          "direction": "+",
+          "degrees": 1,
+          "minutes": 5,
+          "seconds": 47
+        },
+        "movement": {
+          "applicative": true,
+          "exact": false,
+          "separative": false,
+          "formatted": "Applicative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "5000006": {
+        "active": 4000004,
+        "passive": 5000006,
+        "type": "Conjunction",
+        "aspect": 0.0,
+        "orb": 5.5,
+        "distance": {
+          "raw": -4.542602534920377,
+          "formatted": "-04°32'33\"",
+          "direction": "-",
+          "degrees": 4,
+          "minutes": 32,
+          "seconds": 33
+        },
+        "difference": {
+          "raw": 4.542602534920377,
+          "formatted": "04°32'33\"",
+          "direction": "+",
+          "degrees": 4,
+          "minutes": 32,
+          "seconds": 33
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      }
+    },
+    "4000006": {
+      "4000001": {
+        "active": 4000001,
+        "passive": 4000006,
+        "type": "Conjunction",
+        "aspect": 0.0,
+        "orb": 10.0,
+        "distance": {
+          "raw": -4.416706420588696,
+          "formatted": "-04°25'00\"",
+          "direction": "-",
+          "degrees": 4,
+          "minutes": 25,
+          "seconds": 0
+        },
+        "difference": {
+          "raw": 4.416706420588696,
+          "formatted": "04°25'00\"",
+          "direction": "+",
+          "degrees": 4,
+          "minutes": 25,
+          "seconds": 0
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "4000002": {
+        "active": 4000002,
+        "passive": 4000006,
+        "type": "Trine",
+        "aspect": 120.0,
+        "orb": 10.0,
+        "distance": {
+          "raw": -115.54688681399969,
+          "formatted": "-115°32'49\"",
+          "direction": "-",
+          "degrees": 115,
+          "minutes": 32,
+          "seconds": 49
+        },
+        "difference": {
+          "raw": -4.453113186000309,
+          "formatted": "-04°27'11\"",
+          "direction": "-",
+          "degrees": 4,
+          "minutes": 27,
+          "seconds": 11
+        },
+        "movement": {
+          "applicative": true,
+          "exact": false,
+          "separative": false,
+          "formatted": "Applicative"
+        },
+        "condition": {
+          "associate": false,
+          "dissociate": true,
+          "formatted": "Dissociate"
+        }
+      },
+      "4000003": {
+        "active": 4000003,
+        "passive": 4000006,
+        "type": "Conjunction",
+        "aspect": 0.0,
+        "orb": 10.0,
+        "distance": {
+          "raw": -8.667775594248099,
+          "formatted": "-08°40'04\"",
+          "direction": "-",
+          "degrees": 8,
+          "minutes": 40,
+          "seconds": 4
+        },
+        "difference": {
+          "raw": 8.667775594248099,
+          "formatted": "08°40'04\"",
+          "direction": "+",
+          "degrees": 8,
+          "minutes": 40,
+          "seconds": 4
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "4000004": {
+        "active": 4000004,
+        "passive": 4000006,
+        "type": "Conjunction",
+        "aspect": 0.0,
+        "orb": 10.0,
+        "distance": {
+          "raw": -9.46258579537266,
+          "formatted": "-09°27'45\"",
+          "direction": "-",
+          "degrees": 9,
+          "minutes": 27,
+          "seconds": 45
+        },
+        "difference": {
+          "raw": 9.46258579537266,
+          "formatted": "09°27'45\"",
+          "direction": "+",
+          "degrees": 9,
+          "minutes": 27,
+          "seconds": 45
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "4000008": {
+        "active": 4000006,
+        "passive": 4000008,
+        "type": "Sextile",
+        "aspect": 60.0,
+        "orb": 6.0,
+        "distance": {
+          "raw": 54.79155537197107,
+          "formatted": "54°47'30\"",
+          "direction": "+",
+          "degrees": 54,
+          "minutes": 47,
+          "seconds": 30
+        },
+        "difference": {
+          "raw": -5.2084446280289285,
+          "formatted": "-05°12'30\"",
+          "direction": "-",
+          "degrees": 5,
+          "minutes": 12,
+          "seconds": 30
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": false,
+          "dissociate": true,
+          "formatted": "Dissociate"
+        }
+      },
+      "4000009": {
+        "active": 4000006,
+        "passive": 4000009,
+        "type": "Trine",
+        "aspect": 120.0,
+        "orb": 10.0,
+        "distance": {
+          "raw": 114.03817275983783,
+          "formatted": "114°02'17\"",
+          "direction": "+",
+          "degrees": 114,
+          "minutes": 2,
+          "seconds": 17
+        },
+        "difference": {
+          "raw": -5.961827240162165,
+          "formatted": "-05°57'43\"",
+          "direction": "-",
+          "degrees": 5,
+          "minutes": 57,
+          "seconds": 43
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": false,
+          "dissociate": true,
+          "formatted": "Dissociate"
+        }
+      },
+      "4000010": {
+        "active": 4000006,
+        "passive": 4000010,
+        "type": "Sextile",
+        "aspect": 60.0,
+        "orb": 6.0,
+        "distance": {
+          "raw": 56.58266277938844,
+          "formatted": "56°34'58\"",
+          "direction": "+",
+          "degrees": 56,
+          "minutes": 34,
+          "seconds": 58
+        },
+        "difference": {
+          "raw": -3.4173372206115573,
+          "formatted": "-03°25'02\"",
+          "direction": "-",
+          "degrees": 3,
+          "minutes": 25,
+          "seconds": 2
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "4000011": {
+        "active": 4000006,
+        "passive": 4000011,
+        "type": "Conjunction",
+        "aspect": 0.0,
+        "orb": 10.0,
+        "distance": {
+          "raw": 0.11840508908494485,
+          "formatted": "00°07'06\"",
+          "direction": "+",
+          "degrees": 0,
+          "minutes": 7,
+          "seconds": 6
+        },
+        "difference": {
+          "raw": 0.11840508908494485,
+          "formatted": "00°07'06\"",
+          "direction": "+",
+          "degrees": 0,
+          "minutes": 7,
+          "seconds": 6
+        },
+        "movement": {
+          "applicative": false,
+          "exact": true,
+          "separative": false,
+          "formatted": "Exact"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "5000006": {
+        "active": 4000006,
+        "passive": 5000006,
+        "type": "Conjunction",
+        "aspect": 0.0,
+        "orb": 5.5,
+        "distance": {
+          "raw": 4.919983260452284,
+          "formatted": "04°55'12\"",
+          "direction": "+",
+          "degrees": 4,
+          "minutes": 55,
+          "seconds": 12
+        },
+        "difference": {
+          "raw": 4.919983260452284,
+          "formatted": "04°55'12\"",
+          "direction": "+",
+          "degrees": 4,
+          "minutes": 55,
+          "seconds": 12
+        },
+        "movement": {
+          "applicative": true,
+          "exact": false,
+          "separative": false,
+          "formatted": "Applicative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      }
+    },
+    "4000007": {
+      "5000001": {
+        "active": 4000007,
+        "passive": 5000001,
+        "type": "Square",
+        "aspect": 90.0,
+        "orb": 5.5,
+        "distance": {
+          "raw": -84.95145772096203,
+          "formatted": "-84°57'05\"",
+          "direction": "-",
+          "degrees": 84,
+          "minutes": 57,
+          "seconds": 5
+        },
+        "difference": {
+          "raw": -5.048542279037974,
+          "formatted": "-05°02'55\"",
+          "direction": "-",
+          "degrees": 5,
+          "minutes": 2,
+          "seconds": 55
+        },
+        "movement": {
+          "applicative": true,
+          "exact": false,
+          "separative": false,
+          "formatted": "Applicative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "5000003": {
+        "active": 5000003,
+        "passive": 4000007,
+        "type": "Square",
+        "aspect": 90.0,
+        "orb": 5.5,
+        "distance": {
+          "raw": 93.84194711199548,
+          "formatted": "93°50'31\"",
+          "direction": "+",
+          "degrees": 93,
+          "minutes": 50,
+          "seconds": 31
+        },
+        "difference": {
+          "raw": 3.8419471119954807,
+          "formatted": "03°50'31\"",
+          "direction": "+",
+          "degrees": 3,
+          "minutes": 50,
+          "seconds": 31
+        },
+        "movement": {
+          "applicative": true,
+          "exact": false,
+          "separative": false,
+          "formatted": "Applicative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      }
+    },
+    "4000008": {
+      "4000002": {
+        "active": 4000002,
+        "passive": 4000008,
+        "type": "Sextile",
+        "aspect": 60.0,
+        "orb": 6.0,
+        "distance": {
+          "raw": -60.75533144202859,
+          "formatted": "-60°45'19\"",
+          "direction": "-",
+          "degrees": 60,
+          "minutes": 45,
+          "seconds": 19
+        },
+        "difference": {
+          "raw": 0.7553314420285915,
+          "formatted": "00°45'19\"",
+          "direction": "+",
+          "degrees": 0,
+          "minutes": 45,
+          "seconds": 19
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "4000006": {
+        "active": 4000006,
+        "passive": 4000008,
+        "type": "Sextile",
+        "aspect": 60.0,
+        "orb": 6.0,
+        "distance": {
+          "raw": 54.79155537197107,
+          "formatted": "54°47'30\"",
+          "direction": "+",
+          "degrees": 54,
+          "minutes": 47,
+          "seconds": 30
+        },
+        "difference": {
+          "raw": -5.2084446280289285,
+          "formatted": "-05°12'30\"",
+          "direction": "-",
+          "degrees": 5,
+          "minutes": 12,
+          "seconds": 30
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": false,
+          "dissociate": true,
+          "formatted": "Dissociate"
+        }
+      },
+      "4000009": {
+        "active": 4000008,
+        "passive": 4000009,
+        "type": "Sextile",
+        "aspect": 60.0,
+        "orb": 6.0,
+        "distance": {
+          "raw": 59.24661738786676,
+          "formatted": "59°14'48\"",
+          "direction": "+",
+          "degrees": 59,
+          "minutes": 14,
+          "seconds": 48
+        },
+        "difference": {
+          "raw": -0.7533826121332368,
+          "formatted": "-00°45'12\"",
+          "direction": "-",
+          "degrees": 0,
+          "minutes": 45,
+          "seconds": 12
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "4000010": {
+        "active": 4000008,
+        "passive": 4000010,
+        "type": "Conjunction",
+        "aspect": 0.0,
+        "orb": 10.0,
+        "distance": {
+          "raw": 1.7911074074173712,
+          "formatted": "01°47'28\"",
+          "direction": "+",
+          "degrees": 1,
+          "minutes": 47,
+          "seconds": 28
+        },
+        "difference": {
+          "raw": 1.7911074074173712,
+          "formatted": "01°47'28\"",
+          "direction": "+",
+          "degrees": 1,
+          "minutes": 47,
+          "seconds": 28
+        },
+        "movement": {
+          "applicative": true,
+          "exact": false,
+          "separative": false,
+          "formatted": "Applicative"
+        },
+        "condition": {
+          "associate": false,
+          "dissociate": true,
+          "formatted": "Dissociate"
+        }
+      },
+      "4000011": {
+        "active": 4000008,
+        "passive": 4000011,
+        "type": "Sextile",
+        "aspect": 60.0,
+        "orb": 6.0,
+        "distance": {
+          "raw": -54.67315028288613,
+          "formatted": "-54°40'23\"",
+          "direction": "-",
+          "degrees": 54,
+          "minutes": 40,
+          "seconds": 23
+        },
+        "difference": {
+          "raw": -5.326849717113873,
+          "formatted": "-05°19'37\"",
+          "direction": "-",
+          "degrees": 5,
+          "minutes": 19,
+          "seconds": 37
+        },
+        "movement": {
+          "applicative": true,
+          "exact": false,
+          "separative": false,
+          "formatted": "Applicative"
+        },
+        "condition": {
+          "associate": false,
+          "dissociate": true,
+          "formatted": "Dissociate"
+        }
+      }
+    },
+    "4000009": {
+      "3000003": {
+        "active": 3000003,
+        "passive": 4000009,
+        "type": "Conjunction",
+        "aspect": 0.0,
+        "orb": 10.0,
+        "distance": {
+          "raw": 3.2382230648525763,
+          "formatted": "03°14'18\"",
+          "direction": "+",
+          "degrees": 3,
+          "minutes": 14,
+          "seconds": 18
+        },
+        "difference": {
+          "raw": 3.2382230648525763,
+          "formatted": "03°14'18\"",
+          "direction": "+",
+          "degrees": 3,
+          "minutes": 14,
+          "seconds": 18
+        },
+        "movement": {
+          "applicative": true,
+          "exact": false,
+          "separative": false,
+          "formatted": "Applicative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "4000002": {
+        "active": 4000002,
+        "passive": 4000009,
+        "type": "Conjunction",
+        "aspect": 0.0,
+        "orb": 10.0,
+        "distance": {
+          "raw": -1.5087140541618282,
+          "formatted": "-01°30'31\"",
+          "direction": "-",
+          "degrees": 1,
+          "minutes": 30,
+          "seconds": 31
+        },
+        "difference": {
+          "raw": 1.5087140541618282,
+          "formatted": "01°30'31\"",
+          "direction": "+",
+          "degrees": 1,
+          "minutes": 30,
+          "seconds": 31
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "4000006": {
+        "active": 4000006,
+        "passive": 4000009,
+        "type": "Trine",
+        "aspect": 120.0,
+        "orb": 10.0,
+        "distance": {
+          "raw": 114.03817275983783,
+          "formatted": "114°02'17\"",
+          "direction": "+",
+          "degrees": 114,
+          "minutes": 2,
+          "seconds": 17
+        },
+        "difference": {
+          "raw": -5.961827240162165,
+          "formatted": "-05°57'43\"",
+          "direction": "-",
+          "degrees": 5,
+          "minutes": 57,
+          "seconds": 43
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": false,
+          "dissociate": true,
+          "formatted": "Dissociate"
+        }
+      },
+      "4000008": {
+        "active": 4000008,
+        "passive": 4000009,
+        "type": "Sextile",
+        "aspect": 60.0,
+        "orb": 6.0,
+        "distance": {
+          "raw": 59.24661738786676,
+          "formatted": "59°14'48\"",
+          "direction": "+",
+          "degrees": 59,
+          "minutes": 14,
+          "seconds": 48
+        },
+        "difference": {
+          "raw": -0.7533826121332368,
+          "formatted": "-00°45'12\"",
+          "direction": "-",
+          "degrees": 0,
+          "minutes": 45,
+          "seconds": 12
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "4000010": {
+        "active": 4000010,
+        "passive": 4000009,
+        "type": "Sextile",
+        "aspect": 60.0,
+        "orb": 6.0,
+        "distance": {
+          "raw": 57.45550998044938,
+          "formatted": "57°27'20\"",
+          "direction": "+",
+          "degrees": 57,
+          "minutes": 27,
+          "seconds": 20
+        },
+        "difference": {
+          "raw": -2.544490019550622,
+          "formatted": "-02°32'40\"",
+          "direction": "-",
+          "degrees": 2,
+          "minutes": 32,
+          "seconds": 40
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": false,
+          "dissociate": true,
+          "formatted": "Dissociate"
+        }
+      },
+      "4000011": {
+        "active": 4000011,
+        "passive": 4000009,
+        "type": "Trine",
+        "aspect": 120.0,
+        "orb": 10.0,
+        "distance": {
+          "raw": 113.91976767075289,
+          "formatted": "113°55'11\"",
+          "direction": "+",
+          "degrees": 113,
+          "minutes": 55,
+          "seconds": 11
+        },
+        "difference": {
+          "raw": -6.08023232924711,
+          "formatted": "-06°04'49\"",
+          "direction": "-",
+          "degrees": 6,
+          "minutes": 4,
+          "seconds": 49
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": false,
+          "dissociate": true,
+          "formatted": "Dissociate"
+        }
+      },
+      "5000004": {
+        "active": 5000004,
+        "passive": 4000009,
+        "type": "Square",
+        "aspect": 90.0,
+        "orb": 5.5,
+        "distance": {
+          "raw": 86.60466560205487,
+          "formatted": "86°36'17\"",
+          "direction": "+",
+          "degrees": 86,
+          "minutes": 36,
+          "seconds": 17
+        },
+        "difference": {
+          "raw": -3.3953343979451347,
+          "formatted": "-03°23'43\"",
+          "direction": "-",
+          "degrees": 3,
+          "minutes": 23,
+          "seconds": 43
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": false,
+          "dissociate": true,
+          "formatted": "Dissociate"
+        }
+      }
+    },
+    "4000010": {
+      "4000002": {
+        "active": 4000002,
+        "passive": 4000010,
+        "type": "Sextile",
+        "aspect": 60.0,
+        "orb": 6.0,
+        "distance": {
+          "raw": -58.96422403461122,
+          "formatted": "-58°57'51\"",
+          "direction": "-",
+          "degrees": 58,
+          "minutes": 57,
+          "seconds": 51
+        },
+        "difference": {
+          "raw": -1.0357759653887797,
+          "formatted": "-01°02'09\"",
+          "direction": "-",
+          "degrees": 1,
+          "minutes": 2,
+          "seconds": 9
+        },
+        "movement": {
+          "applicative": true,
+          "exact": false,
+          "separative": false,
+          "formatted": "Applicative"
+        },
+        "condition": {
+          "associate": false,
+          "dissociate": true,
+          "formatted": "Dissociate"
+        }
+      },
+      "4000006": {
+        "active": 4000006,
+        "passive": 4000010,
+        "type": "Sextile",
+        "aspect": 60.0,
+        "orb": 6.0,
+        "distance": {
+          "raw": 56.58266277938844,
+          "formatted": "56°34'58\"",
+          "direction": "+",
+          "degrees": 56,
+          "minutes": 34,
+          "seconds": 58
+        },
+        "difference": {
+          "raw": -3.4173372206115573,
+          "formatted": "-03°25'02\"",
+          "direction": "-",
+          "degrees": 3,
+          "minutes": 25,
+          "seconds": 2
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "4000008": {
+        "active": 4000008,
+        "passive": 4000010,
+        "type": "Conjunction",
+        "aspect": 0.0,
+        "orb": 10.0,
+        "distance": {
+          "raw": 1.7911074074173712,
+          "formatted": "01°47'28\"",
+          "direction": "+",
+          "degrees": 1,
+          "minutes": 47,
+          "seconds": 28
+        },
+        "difference": {
+          "raw": 1.7911074074173712,
+          "formatted": "01°47'28\"",
+          "direction": "+",
+          "degrees": 1,
+          "minutes": 47,
+          "seconds": 28
+        },
+        "movement": {
+          "applicative": true,
+          "exact": false,
+          "separative": false,
+          "formatted": "Applicative"
+        },
+        "condition": {
+          "associate": false,
+          "dissociate": true,
+          "formatted": "Dissociate"
+        }
+      },
+      "4000009": {
+        "active": 4000010,
+        "passive": 4000009,
+        "type": "Sextile",
+        "aspect": 60.0,
+        "orb": 6.0,
+        "distance": {
+          "raw": 57.45550998044938,
+          "formatted": "57°27'20\"",
+          "direction": "+",
+          "degrees": 57,
+          "minutes": 27,
+          "seconds": 20
+        },
+        "difference": {
+          "raw": -2.544490019550622,
+          "formatted": "-02°32'40\"",
+          "direction": "-",
+          "degrees": 2,
+          "minutes": 32,
+          "seconds": 40
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": false,
+          "dissociate": true,
+          "formatted": "Dissociate"
+        }
+      },
+      "4000011": {
+        "active": 4000011,
+        "passive": 4000010,
+        "type": "Sextile",
+        "aspect": 60.0,
+        "orb": 6.0,
+        "distance": {
+          "raw": 56.4642576903035,
+          "formatted": "56°27'51\"",
+          "direction": "+",
+          "degrees": 56,
+          "minutes": 27,
+          "seconds": 51
+        },
+        "difference": {
+          "raw": -3.535742309696502,
+          "formatted": "-03°32'09\"",
+          "direction": "-",
+          "degrees": 3,
+          "minutes": 32,
+          "seconds": 9
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      }
+    },
+    "4000011": {
+      "4000001": {
+        "active": 4000001,
+        "passive": 4000011,
+        "type": "Conjunction",
+        "aspect": 0.0,
+        "orb": 10.0,
+        "distance": {
+          "raw": -4.298301331503751,
+          "formatted": "-04°17'54\"",
+          "direction": "-",
+          "degrees": 4,
+          "minutes": 17,
+          "seconds": 54
+        },
+        "difference": {
+          "raw": 4.298301331503751,
+          "formatted": "04°17'54\"",
+          "direction": "+",
+          "degrees": 4,
+          "minutes": 17,
+          "seconds": 54
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "4000002": {
+        "active": 4000002,
+        "passive": 4000011,
+        "type": "Trine",
+        "aspect": 120.0,
+        "orb": 10.0,
+        "distance": {
+          "raw": -115.42848172491475,
+          "formatted": "-115°25'43\"",
+          "direction": "-",
+          "degrees": 115,
+          "minutes": 25,
+          "seconds": 43
+        },
+        "difference": {
+          "raw": -4.571518275085253,
+          "formatted": "-04°34'17\"",
+          "direction": "-",
+          "degrees": 4,
+          "minutes": 34,
+          "seconds": 17
+        },
+        "movement": {
+          "applicative": true,
+          "exact": false,
+          "separative": false,
+          "formatted": "Applicative"
+        },
+        "condition": {
+          "associate": false,
+          "dissociate": true,
+          "formatted": "Dissociate"
+        }
+      },
+      "4000003": {
+        "active": 4000003,
+        "passive": 4000011,
+        "type": "Conjunction",
+        "aspect": 0.0,
+        "orb": 10.0,
+        "distance": {
+          "raw": -8.549370505163154,
+          "formatted": "-08°32'58\"",
+          "direction": "-",
+          "degrees": 8,
+          "minutes": 32,
+          "seconds": 58
+        },
+        "difference": {
+          "raw": 8.549370505163154,
+          "formatted": "08°32'58\"",
+          "direction": "+",
+          "degrees": 8,
+          "minutes": 32,
+          "seconds": 58
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "4000004": {
+        "active": 4000004,
+        "passive": 4000011,
+        "type": "Conjunction",
+        "aspect": 0.0,
+        "orb": 10.0,
+        "distance": {
+          "raw": -9.344180706287716,
+          "formatted": "-09°20'39\"",
+          "direction": "-",
+          "degrees": 9,
+          "minutes": 20,
+          "seconds": 39
+        },
+        "difference": {
+          "raw": 9.344180706287716,
+          "formatted": "09°20'39\"",
+          "direction": "+",
+          "degrees": 9,
+          "minutes": 20,
+          "seconds": 39
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "4000006": {
+        "active": 4000006,
+        "passive": 4000011,
+        "type": "Conjunction",
+        "aspect": 0.0,
+        "orb": 10.0,
+        "distance": {
+          "raw": 0.11840508908494485,
+          "formatted": "00°07'06\"",
+          "direction": "+",
+          "degrees": 0,
+          "minutes": 7,
+          "seconds": 6
+        },
+        "difference": {
+          "raw": 0.11840508908494485,
+          "formatted": "00°07'06\"",
+          "direction": "+",
+          "degrees": 0,
+          "minutes": 7,
+          "seconds": 6
+        },
+        "movement": {
+          "applicative": false,
+          "exact": true,
+          "separative": false,
+          "formatted": "Exact"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "4000008": {
+        "active": 4000008,
+        "passive": 4000011,
+        "type": "Sextile",
+        "aspect": 60.0,
+        "orb": 6.0,
+        "distance": {
+          "raw": -54.67315028288613,
+          "formatted": "-54°40'23\"",
+          "direction": "-",
+          "degrees": 54,
+          "minutes": 40,
+          "seconds": 23
+        },
+        "difference": {
+          "raw": -5.326849717113873,
+          "formatted": "-05°19'37\"",
+          "direction": "-",
+          "degrees": 5,
+          "minutes": 19,
+          "seconds": 37
+        },
+        "movement": {
+          "applicative": true,
+          "exact": false,
+          "separative": false,
+          "formatted": "Applicative"
+        },
+        "condition": {
+          "associate": false,
+          "dissociate": true,
+          "formatted": "Dissociate"
+        }
+      },
+      "4000009": {
+        "active": 4000011,
+        "passive": 4000009,
+        "type": "Trine",
+        "aspect": 120.0,
+        "orb": 10.0,
+        "distance": {
+          "raw": 113.91976767075289,
+          "formatted": "113°55'11\"",
+          "direction": "+",
+          "degrees": 113,
+          "minutes": 55,
+          "seconds": 11
+        },
+        "difference": {
+          "raw": -6.08023232924711,
+          "formatted": "-06°04'49\"",
+          "direction": "-",
+          "degrees": 6,
+          "minutes": 4,
+          "seconds": 49
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": false,
+          "dissociate": true,
+          "formatted": "Dissociate"
+        }
+      },
+      "4000010": {
+        "active": 4000011,
+        "passive": 4000010,
+        "type": "Sextile",
+        "aspect": 60.0,
+        "orb": 6.0,
+        "distance": {
+          "raw": 56.4642576903035,
+          "formatted": "56°27'51\"",
+          "direction": "+",
+          "degrees": 56,
+          "minutes": 27,
+          "seconds": 51
+        },
+        "difference": {
+          "raw": -3.535742309696502,
+          "formatted": "-03°32'09\"",
+          "direction": "-",
+          "degrees": 3,
+          "minutes": 32,
+          "seconds": 9
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "5000006": {
+        "active": 5000006,
+        "passive": 4000011,
+        "type": "Conjunction",
+        "aspect": 0.0,
+        "orb": 5.5,
+        "distance": {
+          "raw": -4.801578171367339,
+          "formatted": "-04°48'06\"",
+          "direction": "-",
+          "degrees": 4,
+          "minutes": 48,
+          "seconds": 6
+        },
+        "difference": {
+          "raw": 4.801578171367339,
+          "formatted": "04°48'06\"",
+          "direction": "+",
+          "degrees": 4,
+          "minutes": 48,
+          "seconds": 6
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      }
+    },
+    "5000001": {
+      "4000007": {
+        "active": 4000007,
+        "passive": 5000001,
+        "type": "Square",
+        "aspect": 90.0,
+        "orb": 5.5,
+        "distance": {
+          "raw": -84.95145772096203,
+          "formatted": "-84°57'05\"",
+          "direction": "-",
+          "degrees": 84,
+          "minutes": 57,
+          "seconds": 5
+        },
+        "difference": {
+          "raw": -5.048542279037974,
+          "formatted": "-05°02'55\"",
+          "direction": "-",
+          "degrees": 5,
+          "minutes": 2,
+          "seconds": 55
+        },
+        "movement": {
+          "applicative": true,
+          "exact": false,
+          "separative": false,
+          "formatted": "Applicative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      }
+    },
+    "5000003": {
+      "4000003": {
+        "active": 4000003,
+        "passive": 5000003,
+        "type": "Sextile",
+        "aspect": 60.0,
+        "orb": 3.5,
+        "distance": {
+          "raw": 61.891097110463704,
+          "formatted": "61°53'28\"",
+          "direction": "+",
+          "degrees": 61,
+          "minutes": 53,
+          "seconds": 28
+        },
+        "difference": {
+          "raw": 1.8910971104637042,
+          "formatted": "01°53'28\"",
+          "direction": "+",
+          "degrees": 1,
+          "minutes": 53,
+          "seconds": 28
+        },
+        "movement": {
+          "applicative": true,
+          "exact": false,
+          "separative": false,
+          "formatted": "Applicative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "4000004": {
+        "active": 4000004,
+        "passive": 5000003,
+        "type": "Sextile",
+        "aspect": 60.0,
+        "orb": 3.5,
+        "distance": {
+          "raw": 61.09628690933914,
+          "formatted": "61°05'47\"",
+          "direction": "+",
+          "degrees": 61,
+          "minutes": 5,
+          "seconds": 47
+        },
+        "difference": {
+          "raw": 1.0962869093391419,
+          "formatted": "01°05'47\"",
+          "direction": "+",
+          "degrees": 1,
+          "minutes": 5,
+          "seconds": 47
+        },
+        "movement": {
+          "applicative": true,
+          "exact": false,
+          "separative": false,
+          "formatted": "Applicative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "4000007": {
+        "active": 5000003,
+        "passive": 4000007,
+        "type": "Square",
+        "aspect": 90.0,
+        "orb": 5.5,
+        "distance": {
+          "raw": 93.84194711199548,
+          "formatted": "93°50'31\"",
+          "direction": "+",
+          "degrees": 93,
+          "minutes": 50,
+          "seconds": 31
+        },
+        "difference": {
+          "raw": 3.8419471119954807,
+          "formatted": "03°50'31\"",
+          "direction": "+",
+          "degrees": 3,
+          "minutes": 50,
+          "seconds": 31
+        },
+        "movement": {
+          "applicative": true,
+          "exact": false,
+          "separative": false,
+          "formatted": "Applicative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      }
+    },
+    "5000004": {
+      "3000002": {
+        "active": 3000002,
+        "passive": 5000004,
+        "type": "Conjunction",
+        "aspect": 0.0,
+        "orb": 5.5,
+        "distance": {
+          "raw": 1.0845427368369656,
+          "formatted": "01°05'04\"",
+          "direction": "+",
+          "degrees": 1,
+          "minutes": 5,
+          "seconds": 4
+        },
+        "difference": {
+          "raw": 1.0845427368369656,
+          "formatted": "01°05'04\"",
+          "direction": "+",
+          "degrees": 1,
+          "minutes": 5,
+          "seconds": 4
+        },
+        "movement": {
+          "applicative": true,
+          "exact": false,
+          "separative": false,
+          "formatted": "Applicative"
+        },
+        "condition": {
+          "associate": false,
+          "dissociate": true,
+          "formatted": "Dissociate"
+        }
+      },
+      "4000002": {
+        "active": 4000002,
+        "passive": 5000004,
+        "type": "Square",
+        "aspect": 90.0,
+        "orb": 5.5,
+        "distance": {
+          "raw": -88.1133796562167,
+          "formatted": "-88°06'48\"",
+          "direction": "-",
+          "degrees": 88,
+          "minutes": 6,
+          "seconds": 48
+        },
+        "difference": {
+          "raw": -1.8866203437833065,
+          "formatted": "-01°53'12\"",
+          "direction": "-",
+          "degrees": 1,
+          "minutes": 53,
+          "seconds": 12
+        },
+        "movement": {
+          "applicative": true,
+          "exact": false,
+          "separative": false,
+          "formatted": "Applicative"
+        },
+        "condition": {
+          "associate": false,
+          "dissociate": true,
+          "formatted": "Dissociate"
+        }
+      },
+      "4000009": {
+        "active": 5000004,
+        "passive": 4000009,
+        "type": "Square",
+        "aspect": 90.0,
+        "orb": 5.5,
+        "distance": {
+          "raw": 86.60466560205487,
+          "formatted": "86°36'17\"",
+          "direction": "+",
+          "degrees": 86,
+          "minutes": 36,
+          "seconds": 17
+        },
+        "difference": {
+          "raw": -3.3953343979451347,
+          "formatted": "-03°23'43\"",
+          "direction": "-",
+          "degrees": 3,
+          "minutes": 23,
+          "seconds": 43
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": false,
+          "dissociate": true,
+          "formatted": "Dissociate"
+        }
+      }
+    },
+    "5000006": {
+      "6000010": {
+        "active": 5000006,
+        "passive": 6000010,
+        "type": "Square",
+        "aspect": 90.0,
+        "orb": 0.5,
+        "distance": {
+          "raw": 90.29880076708281,
+          "formatted": "90°17'56\"",
+          "direction": "+",
+          "degrees": 90,
+          "minutes": 17,
+          "seconds": 56
+        },
+        "difference": {
+          "raw": 0.29880076708280967,
+          "formatted": "00°17'56\"",
+          "direction": "+",
+          "degrees": 0,
+          "minutes": 17,
+          "seconds": 56
+        },
+        "movement": {
+          "applicative": false,
+          "exact": true,
+          "separative": false,
+          "formatted": "Exact"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "4000001": {
+        "active": 4000001,
+        "passive": 5000006,
+        "type": "Conjunction",
+        "aspect": 0.0,
+        "orb": 5.5,
+        "distance": {
+          "raw": 0.5032768398635881,
+          "formatted": "00°30'12\"",
+          "direction": "+",
+          "degrees": 0,
+          "minutes": 30,
+          "seconds": 12
+        },
+        "difference": {
+          "raw": 0.5032768398635881,
+          "formatted": "00°30'12\"",
+          "direction": "+",
+          "degrees": 0,
+          "minutes": 30,
+          "seconds": 12
+        },
+        "movement": {
+          "applicative": true,
+          "exact": false,
+          "separative": false,
+          "formatted": "Applicative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "4000003": {
+        "active": 4000003,
+        "passive": 5000006,
+        "type": "Conjunction",
+        "aspect": 0.0,
+        "orb": 5.5,
+        "distance": {
+          "raw": -3.7477923337958146,
+          "formatted": "-03°44'52\"",
+          "direction": "-",
+          "degrees": 3,
+          "minutes": 44,
+          "seconds": 52
+        },
+        "difference": {
+          "raw": 3.7477923337958146,
+          "formatted": "03°44'52\"",
+          "direction": "+",
+          "degrees": 3,
+          "minutes": 44,
+          "seconds": 52
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "4000004": {
+        "active": 4000004,
+        "passive": 5000006,
+        "type": "Conjunction",
+        "aspect": 0.0,
+        "orb": 5.5,
+        "distance": {
+          "raw": -4.542602534920377,
+          "formatted": "-04°32'33\"",
+          "direction": "-",
+          "degrees": 4,
+          "minutes": 32,
+          "seconds": 33
+        },
+        "difference": {
+          "raw": 4.542602534920377,
+          "formatted": "04°32'33\"",
+          "direction": "+",
+          "degrees": 4,
+          "minutes": 32,
+          "seconds": 33
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "4000006": {
+        "active": 4000006,
+        "passive": 5000006,
+        "type": "Conjunction",
+        "aspect": 0.0,
+        "orb": 5.5,
+        "distance": {
+          "raw": 4.919983260452284,
+          "formatted": "04°55'12\"",
+          "direction": "+",
+          "degrees": 4,
+          "minutes": 55,
+          "seconds": 12
+        },
+        "difference": {
+          "raw": 4.919983260452284,
+          "formatted": "04°55'12\"",
+          "direction": "+",
+          "degrees": 4,
+          "minutes": 55,
+          "seconds": 12
+        },
+        "movement": {
+          "applicative": true,
+          "exact": false,
+          "separative": false,
+          "formatted": "Applicative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      },
+      "4000011": {
+        "active": 5000006,
+        "passive": 4000011,
+        "type": "Conjunction",
+        "aspect": 0.0,
+        "orb": 5.5,
+        "distance": {
+          "raw": -4.801578171367339,
+          "formatted": "-04°48'06\"",
+          "direction": "-",
+          "degrees": 4,
+          "minutes": 48,
+          "seconds": 6
+        },
+        "difference": {
+          "raw": 4.801578171367339,
+          "formatted": "04°48'06\"",
+          "direction": "+",
+          "degrees": 4,
+          "minutes": 48,
+          "seconds": 6
+        },
+        "movement": {
+          "applicative": false,
+          "exact": false,
+          "separative": true,
+          "formatted": "Separative"
+        },
+        "condition": {
+          "associate": true,
+          "dissociate": false,
+          "formatted": "Associate"
+        }
+      }
+    }
+  },
+  "weightings": {
+    "elements": {
+      "fire": [
+        3000001,
+        4000010,
+        5000001,
+        5000003
+      ],
+      "earth": [
+        3000003,
+        6000004,
+        6000005,
+        6000010,
+        6000007,
+        4000002,
+        4000009,
+        5000005
+      ],
+      "air": [
+        3000002,
+        4000001,
+        4000003,
+        4000004,
+        4000006,
+        4000011,
+        5000006
+      ],
+      "water": [
+        3000004,
+        6000003,
+        4000007,
+        4000008,
+        5000004
+      ]
+    },
+    "modalities": {
+      "cardinal": [
+        6000005,
+        6000007,
+        4000007,
+        4000010,
+        5000001,
+        5000003,
+        5000005
+      ],
+      "fixed": [
+        3000001,
+        3000002,
+        3000003,
+        3000004,
+        6000010,
+        4000001,
+        4000002,
+        4000003,
+        4000004,
+        4000006,
+        4000009,
+        4000011,
+        5000006
+      ],
+      "mutable": [
+        6000003,
+        6000004,
+        4000008,
+        5000004
+      ]
+    },
+    "quadrants": {
+      "first": [
+        3000001,
+        6000004
+      ],
+      "second": [
+        3000004,
+        6000005,
+        6000007,
+        4000001,
+        4000003,
+        4000004,
+        4000006,
+        4000011,
+        5000005,
+        5000006
+      ],
+      "third": [
+        3000002,
+        6000003,
+        6000010,
+        4000008,
+        4000010,
+        5000001,
+        5000003,
+        5000004
+      ],
+      "fourth": [
+        3000003,
+        4000002,
+        4000007,
+        4000009
+      ]
+    }
+  },
+  "chart_type": "natal",
+  "input": {
+    "date_time": "2026-01-27 20:14:00",
+    "latitude": 40.4168,
+    "longitude": -3.7038,
+    "house_system": "placidus"
+  }
+}

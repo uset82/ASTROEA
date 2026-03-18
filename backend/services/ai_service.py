@@ -13,9 +13,8 @@ class AIService:
     
     OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
     MODELS: List[str] = [
-        "deepseek/deepseek-r1-0528:free",
-        "tngtech/deepseek-r1t-chimera:free",
-        "google/gemma-3n-e4b-it:free",
+        "openrouter/free",                    # Auto-routes to available free models
+        "google/gemma-3-12b-it:free",         # Fallback if router is down
     ]
     MAX_RETRIES = 2
     RETRY_BASE_DELAY = 2.0  # seconds

@@ -9,6 +9,7 @@
     },
     "form": {
         "title": "Enter Birth Details",
+        "currentMoment": "Current Moment Chart",
         "titlePerson1": "Enter Person 1 Details",
         "titlePerson2": "Enter Person 2 Details",
         "titleTransit": "Enter Natal Data (Transit defaults to Now)",

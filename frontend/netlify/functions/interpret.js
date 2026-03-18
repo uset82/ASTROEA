@@ -41,9 +41,8 @@ exports.handler = async (event, context) => {
         // Primary: DeepSeek R1 (from project spec)
         // Fallback: Other available free models
         const models = [
-            'deepseek/deepseek-r1-0528:free',       // Project spec model
-            'tngtech/deepseek-r1t-chimera:free',     // Previous working model
-            'google/gemma-3n-e4b-it:free'            // Google Gemma fallback
+            'openrouter/free',                   // Auto-routes to available free models
+            'google/gemma-3-12b-it:free',        // Fallback if router is down
         ];
 
         let lastError = null;

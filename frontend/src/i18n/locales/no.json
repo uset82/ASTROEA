@@ -9,6 +9,7 @@
     },
     "form": {
         "title": "Skriv Inn Fødselsdata",
+        "currentMoment": "Nåværende Øyeblikk Kart",
         "titlePerson1": "Skriv Inn Data for Person 1",
         "titlePerson2": "Skriv Inn Data for Person 2",
         "titleTransit": "Skriv Inn Nataldata (Transitt standard: Nå)",

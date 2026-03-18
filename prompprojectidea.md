@@ -6,11 +6,9 @@
 
 Create a **professional astrology web application** comparable to **astro.com** or  **Kepler** , capable of generating **accurate natal charts (carta astral)** and  **AI-based interpretations** , using  **modern web technologies** ,  **Python astrology engines** , and  **MCP-based AI tooling** .
 
-model: "nex-agi/deepseek-v3.1-nex-n1:free"
-API : "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"
+model: deepseek/deepseek-r1-0528:free
+API key : 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 
 
-model for recognize image google/gemini-2.0-flash-exp:free
-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
 
 ---
 
@@ -352,4 +350,3 @@ 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
 > * Astrology engine
 > * AI interpretation
 > * UI rendering
->

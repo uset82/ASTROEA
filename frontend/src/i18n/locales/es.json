@@ -9,6 +9,7 @@
     },
     "form": {
         "title": "Ingresa los Datos de Nacimiento",
+        "currentMoment": "Carta del Momento Actual",
         "titlePerson1": "Ingresa los Datos de la Persona 1",
         "titlePerson2": "Ingresa los Datos de la Persona 2",
         "titleTransit": "Ingresa Datos Natales (Tránsito por defecto: Ahora)",

@@ -87,10 +87,33 @@ function BirthDataForm({ onSubmit, isLoading }: BirthDataFormProps) {
         })
     }
 
+    const fillCurrentMoment = () => {
+        const now = new Date()
+        const dateStr = now.toISOString().split('T')[0] // YYYY-MM-DD
+        const timeStr = now.toTimeString().slice(0, 5) // HH:MM
+
+        setDate(dateStr)
+        setTime(timeStr)
+        setName('Carta del Momento')
+    }
+
     const isValid = date && time && latitude !== '' && longitude !== '' && name
+
 
     return (
         <form onSubmit={handleSubmit} className="birth-form">
+            {/* Quick Access Button */}
+            <div className="quick-access">
+                <button
+                    type="button"
+                    className="btn btn-secondary quick-btn"
+                    onClick={fillCurrentMoment}
+                >
+                    <span className="btn-icon">⚡</span>
+                    {t('form.currentMoment') || 'Carta del Momento Actual'}
+                </button>
+            </div>
+
             {/* Name */}
             <div className="form-group">
                 <label className="form-label">{t('form.name')}</label>

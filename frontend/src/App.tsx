@@ -182,6 +182,7 @@ function AppContent() {
                     <div className="header-content">
                         <a href="/" className="logo">
                             <img src="/logo.png" alt="ASTRAEA" className="logo-img" />
+                            <span className="logo-text">Astraea</span>
                         </a>
                         <nav className="nav">
                             <a href="#" className="nav-link active">{t('header.nav')}</a>
@@ -197,11 +198,21 @@ function AppContent() {
 
                     {!chartData && (
                         <section className="hero">
+                            {/* Hero Logo Visual with Glow */}
+                            <div className="hero-visual">
+                                <img src="/logo.png" alt="ASTRAEA" className="hero-logo" />
+                            </div>
+
                             <div className="hero-content">
                                 <h2 className="hero-title">{t('hero.title')}</h2>
                                 <p className="hero-description">
                                     {t('hero.description')}
                                 </p>
+                            </div>
+
+                            {/* Golden Ornament */}
+                            <div className="hero-ornament">
+                                <span className="hero-ornament-star">✦</span>
                             </div>
 
                             <ChartTypeSelector
@@ -318,6 +329,7 @@ function AppContent() {
             {/* Footer */}
             <footer className="footer">
                 <div className="container">
+                    <span className="footer-ornament">✦ ✦ ✦</span>
                     <p>{t('footer.copyright')}</p>
                 </div>
             </footer>
